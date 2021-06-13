@@ -1,0 +1,35 @@
+{
+    "num_retention_days":15,
+    "name":"main",
+    "is_rate_limited":false,
+    "filter":{
+       "query":"*"
+    },
+    "exclusion_filters":[
+       {
+          "is_enabled":true,
+          "filter":{
+             "query":"source:auth-control-standalone status:debug",
+             "sample_rate":1.0
+          },
+          "name":"auth-control-standalone-debug"
+       },
+       {
+          "is_enabled":false,
+          "filter":{
+             "query":"source:bindid-authentication-server status:debug",
+             "sample_rate":1.0
+          },
+          "name":"bindid-authentication-server-debug"
+       },
+       {
+          "is_enabled":true,
+          "filter":{
+             "query":"source:cloudwatch",
+             "sample_rate":1.0
+          },
+          "name":"cloudwatch"
+       }
+    ],
+    "daily_limit":200000000
+ }

@@ -1,0 +1,25 @@
+{
+	"id": 32997233,
+	"name": "AWS SES - Number of Emails Successfully Delivered to The Recipient's Server is Low",
+	"type": "query alert",
+	"query": "sum(last_1h):sum:aws.ses.delivery.sum{*} / sum:aws.ses.send{*} < 1",
+	"message": "Priority:P2 @slack-cloud-alerts-bindid-prd\n\n@webhook-XiteIt\n \nSummary:P3 - Number of Emails Successfully Delivered to The Recipient's Server is Low\nCritical Threshold:{{threshold}}\nWarning Threshold:{{warn_threshold}}\n\nHost:AWS SES\nService:Low Number of Emails Successfully Delivered to The Recipient's Server\nValue:{{value}}\nSeverity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",
+	"tags": [],
+	"options": {
+		"notify_audit": false,
+		"locked": false,
+		"timeout_h": 0,
+		"new_host_delay": 300,
+		"require_full_window": false,
+		"notify_no_data": true,
+		"renotify_interval": "0",
+		"evaluation_delay": 900,
+		"escalation_message": "",
+		"no_data_timeframe": 60,
+		"include_tags": false,
+		"thresholds": {
+			"critical": 1
+		}
+	},
+	"priority": 3
+}

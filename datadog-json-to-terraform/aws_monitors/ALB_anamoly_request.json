@@ -1,0 +1,31 @@
+{
+	"id": 28987179,
+	"name": "AWS ALB Requests Anomaly - Number of Requests (Weekly)",
+	"type": "query alert",
+	"query": "avg(last_12h):anomalies(avg:aws.applicationelb.request_count{*}.as_count(), 'robust', 2, direction='both', alert_window='last_30m', interval=120, count_default_zero='true', seasonality='weekly', timezone='asia/jerusalem') >= 0.6",
+	"message": "@slack-cloud-alerts-bindid-prd\nPriority:P4\n@webhook-XiteIt \n\nSummary:P4 - Requests Anomaly - Number of Weekly Requests is {{value}}\n\nCritical Threshold:{{threshold}}s\nWarning Threshold:{{warn_threshold}}s\n\nHost:AWS ALB\nService:Number of Requests (Weekly)\nValue:{{value}}\nSeverity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",
+	"tags": [],
+	"options": {
+		"notify_audit": false,
+		"locked": false,
+		"timeout_h": 0,
+		"new_host_delay": 300,
+		"require_full_window": true,
+		"notify_no_data": true,
+		"renotify_interval": "0",
+		"evaluation_delay": 900,
+		"escalation_message": "",
+		"no_data_timeframe": 30,
+		"include_tags": false,
+		"thresholds": {
+			"critical": 0.6,
+			"warning": 0.5,
+			"critical_recovery": 0
+		},
+		"threshold_windows": {
+			"trigger_window": "last_30m",
+			"recovery_window": "last_1h"
+		}
+	},
+	"priority": 4
+}

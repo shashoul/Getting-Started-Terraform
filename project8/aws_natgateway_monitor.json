@@ -1,0 +1,28 @@
+{
+	"id": 30872562,
+	"name": "AWS NAT - Number of Destination Bytes Received is High",
+	"type": "query alert",
+	"query": "avg(last_1h):sum:aws.natgateway.bytes_in_from_destination{*} >= 2000000",
+	"message": "{{is_alert}}\n\nAWS NAT - Number of bytes received from KS server \n\n{{is_alert}} @slack-cloud-alerts-prd",
+	"tags": [],
+	"options": {
+		"notify_audit": false,
+		"locked": false,
+		"timeout_h": 0,
+		"silenced": {},
+		"include_tags": true,
+		"no_data_timeframe": 30,
+		"require_full_window": true,
+		"new_host_delay": 300,
+		"notify_no_data": true,
+		"renotify_interval": 0,
+		"evaluation_delay": 900,
+		"escalation_message": "",
+		"thresholds": {
+			"critical": 2000000,
+			"warning": 1900000,
+			"critical_recovery": 1480000
+		}
+	},
+	"priority": 3
+}

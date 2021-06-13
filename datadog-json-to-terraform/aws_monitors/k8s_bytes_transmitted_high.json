@@ -1,0 +1,27 @@
+{
+	"id": 28995134,
+	"name": "Kubernetes Nodes - Number of bytes Transmitted is High",
+	"type": "query alert",
+	"query": "avg(last_1h):sum:kubernetes.network.tx_bytes{*} by {host} > 100000",
+	"message": "@slack-cloud-alerts-bindid-prd\nPriority:P3\n\n@webhook-XiteIt \n\nSummary:P3 - {{value}} bytes Transmitted on Node:{{host}}\nCritical Threshold:{{threshold}}\nWarning Threshold:{{warn_threshold}}\n\nHost:Kubernetes Node:{{host}}\nService:High Number of bytes Transmitted\nValue:{{value}}\nSeverity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",
+	"tags": [],
+	"options": {
+		"notify_audit": false,
+		"locked": false,
+		"timeout_h": 0,
+		"silenced": {},
+		"include_tags": true,
+		"no_data_timeframe": 30,
+		"require_full_window": true,
+		"new_host_delay": 300,
+		"notify_no_data": true,
+		"renotify_interval": 0,
+		"escalation_message": "",
+		"thresholds": {
+			"critical": 100000,
+			"warning": 90000
+		}
+	},
+	"priority": 3,
+	"classification": "integration"
+}

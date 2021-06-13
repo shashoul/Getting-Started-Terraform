@@ -1,0 +1,23 @@
+{
+	"id": 26872306,
+	"name": "Terraform - Azure AKV - Status",
+	"type": "query alert",
+	"query": "avg(last_1h):avg:azure.keyvault_vaults.status{*} < 0",
+	"message": "Azure Key Vault is down. @slack-cloud-alerts-dev-test",
+	"tags": [],
+	"options": {
+		"notify_audit": false,
+		"locked": true,
+		"silenced": {},
+		"include_tags": false,
+		"no_data_timeframe": 30,
+		"new_host_delay": 300,
+		"require_full_window": true,
+		"notify_no_data": true,
+		"thresholds": {
+			"critical": 0,
+			"warning": 0.5
+		}
+	},
+	"priority": null
+}

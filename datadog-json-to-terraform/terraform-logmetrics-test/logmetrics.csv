@@ -1,0 +1,3 @@
+name,filter_query,compute_type,compute_path,group_by
+test1.terraform.shady," @error_category:""OIDC /complete with errors""",count,, @http.status_code @http.method status
+test2.terraform.shady," @error_category:""500: End users""",count,,

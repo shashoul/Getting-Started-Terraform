@@ -1,0 +1,5 @@
+{"attributes": {"compute": {"aggregation_type": "count"},
+                "filter": {"query": "Request started anonymous_invoke policy_request_id ama-rejection-recovery"},
+                "group_by": []},
+ "id": "recovery.journey.invocations",
+ "type": "logs_metrics"}

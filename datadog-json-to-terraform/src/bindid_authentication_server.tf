@@ -1,0 +1,843 @@
+resource "datadog_monitor" bindid_authentication_server_1 {
+
+ name = "Terraform - 4XX: Backend & Management - Uncategorized"
+ type = "log alert"
+ query = "logs(\"source:bindid-authentication-server (\\\"statusCode: [400]\\\" OR \\\"statusCode: [401]\\\" OR \\\"statusCode: [404]\\\" OR \\\"status: [400]\\\" OR \\\"status: [401]\\\") -\\\"uri: [/api/v2/auth/*]\\\" -\\\"client returned with error\\\" -cannot_consume_ticket -(\\\"uri: [/api/v2/mng-ui/support/user*]\\\" \\\"User not found\\\") -(\\\"uri: [/api/v2/mng-ui/reports/user*]\\\" \\\"User not found\\\") -(\\\"uri: [/api/v2/mng-ui/*]\\\" \\\"Bad administrator session\\\") -(\\\"uri: [/api/v2/mng-ui/*]\\\" \\\"Bad credentials provided\\\") -\\\"uri: [/api/v2/oidc/bindid-oidc/complete]\\\" -\\\"Unknown authorization code\\\" -(\\\"uri: [/api/v2/oidc/bindid-oidc/token]\\\" \\\"error: invalid_client\\\") -(\\\"uri: [/api/v2/server-api/anonymous_invoke?aid=bindid-backend-api]\\\" \\\"api_error_code: invalid_auth\\\") -(\\\"uri: [/api/v2/oidc/*]\\\" \\\"error: invalid_request\\\") -\\\"api_error_code: alias_already_set\\\" -(\\\"uri: [/api/v2/oidc/bindid-oidc/token]\\\" invalid_grant) -(\\\"uri: [/api/v2/oidc/bindid-oidc/token]\\\" unsupported_grant_type \\\"Unsupported grant type\\\") -(\\\"uri: [/api/v2/oidc/bindid-oidc/authorize*]\\\" invalid_client \\\"Invalid client credentials\\\")\").index(\"*\").rollup(\"count\").last(\"15m\") >= 1"
+ message = <<EOF
+Summary:P1 - {{value}} 4XX Errors on Backend & Management
+
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:Backend & Management - Uncategorized
+Service:4XX Errors
+Value:{{value}} 
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}
+EOF
+ tags = ["Ring1",]
+ notify_audit = false
+ locked = false
+ timeout_h = 0
+ renotify_interval = 0
+ enable_logs_sample = true
+ monitor_thresholds {
+ critical = 1.0
+ } 
+ new_host_delay = 300
+ notify_no_data = false
+ include_tags = true
+ priority = 1
+}
+
+
+resource "datadog_monitor" bindid_authentication_server_2 {
+
+ name = "Terraform - 500: Backend & Management"
+ type = "log alert"
+ query = "logs(\"source:bindid-authentication-server (\\\"statusCode: [500]\\\" OR \\\"status: [500]\\\" -\\\"uri: [/api/v2/auth/*]\\\" -\\\"uri: [/api/v2/oidc/bindid-oidc/complete]\\\" -\\\"rejection: MethodRejection\\\" -\\\"client returned with error\\\" -cannot_consume_ticket)\").index(\"*\").rollup(\"count\").last(\"15m\") >= 1"
+ message = <<EOF
+Summary:P1 - {{value}} Status Code 500 Errors on Backend & Management
+
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:Backend & Management
+Service:Number of 500 Errors
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}
+EOF
+ tags = ["Ring1",]
+ notify_audit = false
+ locked = false
+ timeout_h = 0
+ renotify_interval = 0
+ enable_logs_sample = true
+ monitor_thresholds {
+ critical = 1.0
+ } 
+ new_host_delay = 300
+ notify_no_data = false
+ include_tags = true
+ priority = 1
+}
+
+
+resource "datadog_monitor" bindid_authentication_server_3 {
+
+ name = "Terraform - 500: End-Users"
+ type = "log alert"
+ query = "logs(\"source:bindid-authentication-server (\\\"statusCode: [500]\\\" (\\\"uri: [/api/v2/auth/*]\\\" OR \\\"uri: [/api/v2/oidc/bindid-oidc/complete]\\\")) -\\\"rejection: MethodRejection\\\" -\\\"client returned with error\\\" -cannot_consume_ticket\").index(\"*\").rollup(\"count\").last(\"15m\") > 3"
+ message = <<EOF
+Summary:P1 - {{value}} Status Code 500 Errors on End-Users
+
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:End-Users
+Service:Number of 500 Errors
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}
+EOF
+ tags = ["Ring1",]
+ notify_audit = false
+ locked = false
+ timeout_h = 0
+ renotify_interval = 0
+ enable_logs_sample = true
+ monitor_thresholds {
+ critical = 3.0
+ } 
+ new_host_delay = 300
+ notify_no_data = false
+ include_tags = true
+ priority = 1
+}
+
+
+resource "datadog_monitor" bindid_authentication_server_4 {
+
+ name = "Terraform - All Invalid Request Errors on /authorize"
+ type = "log alert"
+ query = "logs(\"source:bindid-authentication-server \\\"uri: [/api/v2/oidc/bindid-oidc/authorize?*]\\\" invalid_request\").index(\"*\").rollup(\"count\").last(\"15m\") >= 5"
+ message = <<EOF
+Summary:P1 - {{value}}  Invalid Request Errors on /authorize
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:/authorize
+Service:High Number ofInvalid Request Errors
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}
+EOF
+ tags = ["Ring1",]
+ notify_audit = false
+ locked = false
+ timeout_h = 0
+ renotify_interval = 0
+ enable_logs_sample = true
+ monitor_thresholds {
+ critical = 5.0
+ } 
+ new_host_delay = 300
+ notify_no_data = false
+ include_tags = true
+ priority = 1
+}
+
+
+resource "datadog_monitor" bindid_authentication_server_5 {
+
+ name = "Terraform - Backend & Management - unsupported_grant"
+ type = "log alert"
+ query = "logs(\"source:bindid-authentication-server (\\\"uri: [/api/v2/oidc/bindid-oidc/token]\\\" unsupported_grant_type \\\"Unsupported grant type\\\")\").index(\"*\").rollup(\"count\").last(\"15m\") >= 5"
+ message = <<EOF
+Summary:P1 - {{value}} unsupported_grant on Backend & Management
+
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:Backend & Management
+Service:Number of unsupported_grants
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}
+EOF
+ tags = ["Ring1",]
+ notify_audit = false
+ locked = false
+ timeout_h = 0
+ renotify_interval = 0
+ enable_logs_sample = true
+ monitor_thresholds {
+ critical = 5.0
+ } 
+ new_host_delay = 300
+ notify_no_data = false
+ include_tags = true
+ priority = 1
+}
+
+
+resource "datadog_monitor" bindid_authentication_server_6 {
+
+ name = "Terraform - Backend & Management – invalid_grant"
+ type = "log alert"
+ query = "logs(\"source:bindid-authentication-server (\\\"uri: [/api/v2/oidc/bindid-oidc/token]\\\" invalid_grant)\").index(\"*\").rollup(\"count\").last(\"15m\") >= 5"
+ message = <<EOF
+Summary:P1 - {{value}} invalid_grants on Backend & Management
+
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:Backend & Management
+Service:Number of invalid_grants
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}
+EOF
+ tags = ["Ring1",]
+ notify_audit = false
+ locked = false
+ timeout_h = 0
+ renotify_interval = 0
+ enable_logs_sample = true
+ monitor_thresholds {
+ critical = 5.0
+ } 
+ new_host_delay = 300
+ notify_no_data = false
+ include_tags = true
+ priority = 1
+}
+
+
+resource "datadog_monitor" bindid_authentication_server_7 {
+
+ name = "Terraform - End User - invalid_client"
+ type = "log alert"
+ query = "logs(\"source:bindid-authentication-server (\\\"uri: [/api/v2/oidc/bindid-oidc/authorize*]\\\" invalid_client \\\"Invalid client credentials\\\")\").index(\"*\").rollup(\"count\").last(\"15m\") >= 5"
+ message = <<EOF
+Summary:P1 - End User - {{value}}  invalid_client authentications
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:End User
+Service:Number of Invalid_client Authentications
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}
+EOF
+ tags = ["Ring1",]
+ notify_audit = false
+ locked = false
+ timeout_h = 0
+ renotify_interval = 0
+ enable_logs_sample = true
+ monitor_thresholds {
+ critical = 5.0
+ } 
+ new_host_delay = 300
+ notify_no_data = false
+ include_tags = true
+ priority = 1
+}
+
+
+resource "datadog_monitor" bindid_authentication_server_8 {
+
+ name = "Terraform - FIDO Registration Failures"
+ type = "log alert"
+ query = "logs(\"\\\"assertion_error_code:9\\\"\").index(\"*\").rollup(\"count\").last(\"5m\") >= 1"
+ message = <<EOF
+Summary:P1 - {{value}} FIDO Registration Failures
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:End User
+Service:High Number of FIDO Registration Failures
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}
+EOF
+ tags = ["Ring1",]
+ notify_audit = false
+ locked = false
+ timeout_h = 0
+ renotify_interval = 0
+ enable_logs_sample = true
+ monitor_thresholds {
+ critical = 1.0
+ } 
+ new_host_delay = 300
+ notify_no_data = false
+ include_tags = true
+ priority = 1
+}
+
+
+resource "datadog_monitor" bindid_authentication_server_9 {
+
+ name = "Terraform - Invalid HTTP Method: Backend/Management"
+ type = "log alert"
+ query = "logs(\"source:bindid-authentication-server (\\\"statusCode: [500]\\\" -\\\"uri: [/api/v2/auth/*]\\\" \\\"rejection: MethodRejection\\\")\").index(\"*\").rollup(\"count\").last(\"15m\") >= 5"
+ message = <<EOF
+Summary:P1 - {{value}}  Invalid HTTP Method on Backend/Management
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:Backend/Management
+Service:High Number of Invalid HTTP Method
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}
+EOF
+ tags = ["Ring1",]
+ notify_audit = false
+ locked = false
+ timeout_h = 0
+ renotify_interval = 0
+ enable_logs_sample = true
+ monitor_thresholds {
+ critical = 5.0
+ } 
+ new_host_delay = 300
+ notify_no_data = false
+ include_tags = true
+ priority = 1
+}
+
+
+resource "datadog_monitor" bindid_authentication_server_10 {
+
+ name = "Terraform - Invalid HTTP Method: Frontend/End-User"
+ type = "log alert"
+ query = "logs(\"source:bindid-authentication-server (\\\"statusCode: [500]\\\" \\\"uri: [/api/v2/auth/*]\\\" \\\"rejection: MethodRejection\\\")\").index(\"*\").rollup(\"count\").last(\"15m\") >= 5"
+ message = <<EOF
+Summary:P1 - {{value}}  Invalid HTTP Method on Frontend/End-User
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:Frontend/End-User
+Service:High Number of Invalid HTTP Method
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}
+EOF
+ tags = ["Ring1",]
+ notify_audit = false
+ locked = false
+ timeout_h = 0
+ renotify_interval = 0
+ include_tags = true
+ monitor_thresholds {
+ critical = 5.0
+ } 
+ new_host_delay = 300
+ notify_no_data = false
+ enable_logs_sample = true
+ priority = 1
+}
+
+
+resource "datadog_monitor" bindid_authentication_server_11 {
+
+ name = "Terraform - Invalid Request - Invalid redirect URI on /authorize"
+ type = "log alert"
+ query = "logs(\"source:bindid-authentication-server \\\"uri: [/api/v2/oidc/bindid-oidc/authorize?*]\\\" invalid_request \\\"Invalid redirect uri\\\"\").index(\"*\").rollup(\"count\").last(\"15m\") >= 10"
+ message = <<EOF
+Summary:P1 - {{value}} Invalid redirect URI on /authorize
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:/authorize
+Service:Invalid redirect URI
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}
+EOF
+ tags = ["Ring1",]
+ notify_audit = false
+ locked = false
+ timeout_h = 0
+ renotify_interval = 0
+ enable_logs_sample = true
+ monitor_thresholds {
+ critical = 10.0
+ } 
+ new_host_delay = 300
+ notify_no_data = false
+ include_tags = true
+ priority = 1
+}
+
+
+resource "datadog_monitor" bindid_authentication_server_12 {
+
+ name = "Terraform - Invalid Request - Missing client_id on /authorize"
+ type = "log alert"
+ query = "logs(\"source:bindid-authentication-server \\\"uri: [/api/v2/oidc/bindid-oidc/authorize?*]\\\" invalid_request \\\"Missing \\\" client_id\").index(\"*\").rollup(\"count\").last(\"15m\") >= 5"
+ message = <<EOF
+Summary:P1 - {{value}}  Invalid Request - Missing client_id on /authorize
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:/authorize
+Service:High Number of Invalid Request Errors - Missing client_id on /authorize
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}
+EOF
+ tags = ["Ring1",]
+ notify_audit = false
+ locked = false
+ timeout_h = 0
+ renotify_interval = 0
+ include_tags = true
+ monitor_thresholds {
+ critical = 5.0
+ } 
+ new_host_delay = 300
+ notify_no_data = false
+ enable_logs_sample = true
+ priority = 1
+}
+
+
+resource "datadog_monitor" bindid_authentication_server_13 {
+
+ name = "Terraform - Invalid authentication to BindID Backend API"
+ type = "log alert"
+ query = "logs(\"source:bindid-authentication-server (\\\"uri: [/api/v2/server-api/anonymous_invoke?aid=bindid-backend-api]\\\" \\\"api_error_code: invalid_auth\\\")\").index(\"*\").rollup(\"count\").last(\"15m\") >= 5"
+ message = <<EOF
+Summary:P1 - {{value}}  Invalid authentication to BindID on Backend API
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:Backend API
+Service:High Number of Invalid authentication to BindID
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}
+EOF
+ tags = ["Ring1",]
+ notify_audit = false
+ locked = false
+ timeout_h = 0
+ renotify_interval = 0
+ enable_logs_sample = true
+ monitor_thresholds {
+ critical = 5.0
+ } 
+ new_host_delay = 300
+ notify_no_data = false
+ include_tags = true
+ priority = 1
+}
+
+
+resource "datadog_monitor" bindid_authentication_server_14 {
+
+ name = "Terraform - Invalid client credentials on /token"
+ type = "log alert"
+ query = "logs(\"source:bindid-authentication-server (\\\"uri: [/api/v2/oidc/bindid-oidc/token]\\\" \\\"error: invalid_client\\\")\").index(\"*\").rollup(\"count\").last(\"15m\") >= 5"
+ message = <<EOF
+Summary:P1 - {{value}} Invalid client credentials on /token
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:/token
+Service:Invalid client credentials
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}
+EOF
+ tags = ["Ring1",]
+ notify_audit = false
+ locked = false
+ timeout_h = 0
+ renotify_interval = 0
+ enable_logs_sample = true
+ monitor_thresholds {
+ critical = 5.0
+ } 
+ new_host_delay = 300
+ notify_no_data = false
+ include_tags = true
+ priority = 1
+}
+
+
+resource "datadog_monitor" bindid_authentication_server_15 {
+
+ name = "Terraform - Management Console Bad Logins"
+ type = "log alert"
+ query = "logs(\"source:bindid-authentication-server ((\\\"uri: [/api/v2/mng-ui/*]\\\" \\\"Bad administrator session\\\") OR (\\\"uri: [/api/v2/mng-ui/*]\\\" \\\"Bad credentials provided\\\"))\").index(\"*\").rollup(\"count\").last(\"15m\") > 5"
+ message = <<EOF
+Summary:P1 - {{Value}} Bad Logins on Management Console
+Critical Threshold:{{threshold}}
+Warning Threshold:{{warn_threshold}}
+
+Host:Management Console
+Service:High Number of Bad Logins
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}
+EOF
+ tags = ["Ring1",]
+ notify_audit = false
+ locked = false
+ timeout_h = 0
+ renotify_interval = 0
+ enable_logs_sample = true
+ monitor_thresholds {
+ critical = 5.0
+ } 
+ new_host_delay = 300
+ notify_no_data = false
+ include_tags = true
+ priority = 1
+}
+
+
+resource "datadog_monitor" bindid_authentication_server_16 {
+
+ name = "Terraform - Number of \"Alias already set\" Errors"
+ type = "log alert"
+ query = "logs(\"source:bindid-authentication-server api_error_code alias_already_set\").index(\"*\").rollup(\"count\").last(\"15m\") >= 5"
+ message = <<EOF
+Summary:P1 - "Alias already set" Errors on bindid-authentication-server is {{value}} 
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:bindid-authentication-server
+Service:High Number of "Alias already set" Errors
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}
+EOF
+ tags = ["Ring1",]
+ notify_audit = false
+ locked = false
+ timeout_h = 0
+ renotify_interval = 0
+ enable_logs_sample = true
+ monitor_thresholds {
+ critical = 5.0
+ } 
+ new_host_delay = 300
+ notify_no_data = false
+ include_tags = true
+ priority = 1
+}
+
+
+resource "datadog_monitor" bindid_authentication_server_17 {
+
+ name = "Terraform - OIDC Backend invalid_request errors"
+ type = "log alert"
+ query = "logs(\"source:bindid-authentication-server (\\\"uri: [/api/v2/oidc/*]\\\" \\\"error: invalid_request\\\")\").index(\"*\").rollup(\"count\").last(\"15m\") >= 5"
+ message = <<EOF
+Summary:P1 - "invalid_request" Errors on bindid-authentication-server is {{value}} 
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:bindid-authentication-server
+Service:High Number of "invalid_request" Errors
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}
+EOF
+ tags = ["Ring1",]
+ notify_audit = false
+ locked = false
+ timeout_h = 0
+ renotify_interval = 0
+ enable_logs_sample = true
+ monitor_thresholds {
+ critical = 5.0
+ } 
+ new_host_delay = 300
+ notify_no_data = false
+ include_tags = true
+ priority = 1
+}
+
+
+resource "datadog_monitor" bindid_authentication_server_18 {
+
+ name = "Terraform - Recovery Journey Invocations"
+ type = "log alert"
+ query = "logs(\"״Request started״ ״anonymous_invoke״ ״policy_request_id״ ״ama-rejection-recovery״\").index(\"*\").rollup(\"count\").last(\"15m\") >= 5"
+ message = <<EOF
+Summary:P1 - Recovery Journey Invocations on bindid-authentication-server is {{value}} 
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:bindid-authentication-server
+Service:Recovery Journey Invocations
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}
+EOF
+ tags = ["Ring1",]
+ notify_audit = false
+ locked = false
+ timeout_h = 0
+ renotify_interval = 0
+ include_tags = true
+ monitor_thresholds {
+ critical = 5.0
+ } 
+ new_host_delay = 300
+ notify_no_data = false
+ enable_logs_sample = true
+ priority = 1
+}
+
+
+resource "datadog_monitor" bindid_authentication_server_19 {
+
+ name = "Terraform - Ticket consumption errors"
+ type = "log alert"
+ query = "logs(\"cannot_consume_ticket ERROR 401\").index(\"*\").rollup(\"count\").last(\"15m\") > 5"
+ message = <<EOF
+Summary:cannot_consume_ticket - 401 Errors Number on bindid-authentication-server is {{value}} 
+Critical Threshold:{{threshold}} 
+Warning Threshold:-
+
+Host:bindid-authentication-server
+Service:High cannot_consume_ticket - 401 Errors Number 
+Value:{{value}} 
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}
+EOF
+ tags = ["Ring1",]
+ notify_audit = false
+ locked = false
+ timeout_h = 0
+ renotify_interval = 0
+ enable_logs_sample = true
+ monitor_thresholds {
+ critical = 5.0
+ } 
+ new_host_delay = 300
+ notify_no_data = false
+ include_tags = true
+ priority = 1
+}
+
+
+resource "datadog_monitor" bindid_authentication_server_20 {
+
+ name = "Terraform - Unknown authorization code on /token"
+ type = "log alert"
+ query = "logs(\"source:bindid-authentication-server (\\\"status: [400]\\\" \\\"Unknown authorization code\\\")\").index(\"*\").rollup(\"count\").last(\"15m\") >= 5"
+ message = <<EOF
+Summary:P1 - "Unknown Authorization Code" Errors Number on bindid-authentication-server - /token is {{value}}
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:bindid-authentication-server
+Service:High Unknown Authorization Code Errors
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}
+EOF
+ tags = ["Ring1",]
+ notify_audit = false
+ locked = false
+ timeout_h = 0
+ renotify_interval = 0
+ enable_logs_sample = true
+ monitor_thresholds {
+ critical = 5.0
+ } 
+ new_host_delay = 300
+ notify_no_data = false
+ include_tags = true
+ priority = 1
+}
+
+
+resource "datadog_monitor" bindid_authentication_server_21 {
+
+ name = "Terraform - User Cancellation"
+ type = "log alert"
+ query = "logs(\"source:bindid-authentication-server (\\\"statusCode: [400]\\\" OR \\\"statusCode: [401]\\\" OR \\\"statusCode: [404]\\\") ((\\\"uri: [/api/v2/auth/assert?aid=bindid-ama*]\\\" \\\"errorCode: [4001]\\\" bindid_error_user_declined_title) OR (\\\"uri: [/api/v2/auth/assert?aid=bindid-oidc*]\\\" \\\"errorCode: [4001]\\\" \\\"Authentication cancelled by the user\\\") OR (\\\"uri: [/api/v2/auth/login?aid=bindid-oidc*]\\\" \\\"errorCode: [4001]\\\" \\\"Authentication cancelled by the user\\\"))\").index(\"*\").rollup(\"count\").last(\"15m\") > 5"
+ message = <<EOF
+Summary:P1 - User Cancellation Errors Number on bindid-authentication-server is {{value}}
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:bindid-authentication-server
+Service:High User Cancellation Errors
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}
+EOF
+ tags = ["Ring1",]
+ notify_audit = false
+ locked = false
+ timeout_h = 0
+ renotify_interval = 0
+ enable_logs_sample = true
+ monitor_thresholds {
+ critical = 5.0
+ } 
+ new_host_delay = 300
+ notify_no_data = false
+ include_tags = true
+ priority = 1
+}
+
+
+resource "datadog_monitor" bindid_authentication_server_22 {
+
+ name = "Terraform - User not found for backend/management support APIs"
+ type = "log alert"
+ query = "logs(\"source:bindid-authentication-server ((\\\"uri: [/api/v2/mng-ui/support/user*]\\\" \\\"User not found\\\") OR (\\\"uri: [/api/v2/mng-ui/reports/user*]\\\" \\\"User not found\\\"))\").index(\"*\").rollup(\"count\").last(\"15m\") > 5"
+ message = <<EOF
+Summary:P1 - User Not Found Errors Number on bindid-authentication-server - backend/management support APIs is {{value}}
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:bindid-authentication-server
+Service:High User Not Found Errors
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}
+EOF
+ tags = ["Ring1",]
+ notify_audit = false
+ locked = false
+ timeout_h = 0
+ renotify_interval = 0
+ enable_logs_sample = true
+ monitor_thresholds {
+ critical = 5.0
+ } 
+ new_host_delay = 300
+ notify_no_data = false
+ include_tags = true
+ priority = 1
+}
+
+
+resource "datadog_monitor" bindid_authentication_server_23 {
+
+ name = "Terraform - 4XX: End-Users - Uncategorized"
+ type = "log alert"
+ query = "logs(\"source:bindid-authentication-server (\\\"statusCode: [400]\\\" OR \\\"statusCode: [401]\\\" OR \\\"statusCode: [404]\\\" OR \\\"status: [400]\\\" OR \\\"status: [401]\\\") (\\\"uri: [/api/v2/auth/*]\\\" OR (\\\"uri: [/api/v2/oidc/bindid-oidc/authorize*]\\\" -(invalid_client \\\"Invalid client credentials\\\"))) -\\\"client returned with error\\\" -cannot_consume_ticket -(\\\"uri: [/api/v2/auth/assert?aid=bindid-ama*]\\\" \\\"errorCode: [4001]\\\" bindid_error_user_declined_title) -(\\\"uri: [/api/v2/auth/assert?aid=bindid-oidc*]\\\" \\\"errorCode: [4001]\\\" \\\"Authentication cancelled by the user\\\") -(\\\"uri: [/api/v2/auth/login?aid=bindid-oidc*]\\\" \\\"errorCode: [4001]\\\" \\\"Authentication cancelled by the user\\\") -(\\\"uri: [/api/v2/oidc/bindid-oidc/authorize?*]\\\" invalid_request (\\\"Invalid redirect uri\\\" OR \\\"Missing \\\\\"response_type\\\\\"\\\" OR \\\"Missing \\\" client_id)) -\\\"User not found\\\" -\\\"Device not found\\\"\").index(\"*\").rollup(\"count\").last(\"15m\") > 3"
+ message = <<EOF
+Summary:P1 - {{value}} 4XX End-Users Errors
+
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host: 4XX: End-Users - Uncategorized
+Service: Number of 4XX Errors 
+Value: {{value}}
+Severity: {{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}
+EOF
+ tags = ["Ring1",]
+ notify_audit = false
+ locked = false
+ timeout_h = 0
+ renotify_interval = 0
+ enable_logs_sample = true
+ monitor_thresholds {
+ critical = 3.0
+ } 
+ new_host_delay = 300
+ notify_no_data = false
+ include_tags = true
+ priority = 1
+}
+
+
+resource "datadog_monitor" bindid_authentication_server_24 {
+
+ name = "Terraform - Device not found errors"
+ type = "log alert"
+ query = "logs(\"source:bindid-authentication-server (\\\"statusCode: [400]\\\" OR \\\"statusCode: [401]\\\" OR \\\"statusCode: [404]\\\" OR \\\"status: [400]\\\" OR \\\"status: [401]\\\") \\\"uri: [/api/v2/auth/*]\\\" \\\"Device not found\\\"\").index(\"*\").rollup(\"count\").last(\"15m\") >= 1"
+ message = <<EOF
+Summary:P1 - {{value}} Device not found errors
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:bindid-authentication-server
+Service:High Number of Device not found errors
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}
+EOF
+ tags = ["Ring1",]
+ notify_audit = false
+ locked = false
+ timeout_h = 0
+ renotify_interval = 0
+ enable_logs_sample = true
+ monitor_thresholds {
+ critical = 1.0
+ } 
+ new_host_delay = 300
+ notify_no_data = false
+ include_tags = true
+ priority = 1
+}
+
+
+resource "datadog_monitor" bindid_authentication_server_25 {
+
+ name = "Terraform - Expression evaluation errors"
+ type = "log alert"
+ query = "logs(\"source:bindid-authentication-server \\\"Unexpected exception during field resolution\\\"\").index(\"*\").rollup(\"count\").last(\"15m\") >= 1"
+ message = <<EOF
+Summary:P1 - {{value}} Unexpected exception during field resolution
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:bindid-authentication-server
+Service:High Number of Expression evaluation errors
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}
+EOF
+ tags = ["Ring1",]
+ notify_audit = false
+ locked = false
+ timeout_h = 0
+ renotify_interval = 0
+ enable_logs_sample = true
+ monitor_thresholds {
+ critical = 1.0
+ } 
+ new_host_delay = 300
+ notify_no_data = false
+ include_tags = true
+ priority = 1
+}
+
+
+resource "datadog_monitor" bindid_authentication_server_26 {
+
+ name = "Terraform - OIDC /complete with errors"
+ type = "log alert"
+ query = "logs(\"source:bindid-authentication-server \\\"Client returned with error\\\"\").index(\"*\").rollup(\"count\").last(\"15m\") >= 5"
+ message = <<EOF
+Summary:P1 - "Client returned with error" / "Session rejected by server" Errors on bindid-authentication-server is {{value}} 
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:bindid-authentication-server
+Service:High Number of  "OIDC /complete with errors"
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}
+EOF
+ tags = ["Ring1",]
+ notify_audit = false
+ locked = false
+ timeout_h = 0
+ renotify_interval = 0
+ include_tags = true
+ monitor_thresholds {
+ critical = 5.0
+ } 
+ new_host_delay = 300
+ notify_no_data = false
+ enable_logs_sample = true
+ priority = 1
+}
+
+
+resource "datadog_monitor" bindid_authentication_server_27 {
+
+ name = "Terraform - User not found errors"
+ type = "log alert"
+ query = "logs(\"source:bindid-authentication-server (\\\"statusCode: [400]\\\" OR \\\"statusCode: [401]\\\" OR \\\"statusCode: [404]\\\" OR \\\"status: [400]\\\" OR \\\"status: [401]\\\") \\\"uri: [/api/v2/auth/*]\\\" \\\"User not found\\\"\").index(\"*\").rollup(\"count\").last(\"15m\") >= 1"
+ message = <<EOF
+Summary:P1 - User Not Found Errors Number on bindid-authentication-server is {{value}}
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:bindid-authentication-server
+Service:High User Not Found Errors
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}
+EOF
+ tags = ["Ring1",]
+ notify_audit = false
+ locked = false
+ timeout_h = 0
+ renotify_interval = 0
+ enable_logs_sample = true
+ monitor_thresholds {
+ critical = 1.0
+ } 
+ new_host_delay = 300
+ notify_no_data = false
+ include_tags = true
+ priority = 1
+}
+
+

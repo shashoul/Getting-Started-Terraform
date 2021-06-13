@@ -1,0 +1,27 @@
+{
+	"id": 30873272,
+	"name": "AWS ALB - 3XX Error Rate is High",
+	"type": "query alert",
+	"query": "sum(last_1h):avg:aws.applicationelb.httpcode_elb_3xx{environment:production}.as_count() > 110",
+	"message": "@slack-cloud-alerts-prd",
+	"tags": [],
+	"options": {
+		"notify_audit": false,
+		"locked": false,
+		"timeout_h": 0,
+		"silenced": {},
+		"include_tags": true,
+		"no_data_timeframe": 30,
+		"require_full_window": false,
+		"new_host_delay": 300,
+		"notify_no_data": true,
+		"renotify_interval": 0,
+		"evaluation_delay": 900,
+		"escalation_message": "",
+		"thresholds": {
+			"critical": 110,
+			"warning": 108
+		}
+	},
+	"priority": 1
+}

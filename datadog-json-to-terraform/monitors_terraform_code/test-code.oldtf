@@ -1,0 +1,29 @@
+resource "datadog_monitor" "bindid_authentication_server_categorized_15" {
+
+  name         = "Terraform Shady Test - Invalid Request - Invalid redirect URI on /authorize - Categorized"
+  type         = "log alert"
+  query        = "logs(\"@error_category:\\\"Invalid Request - Invalid redirect URI on /authorize\\\"\").index(\"*\").rollup(\"count\").last(\"15m\") >= 10"
+  message      = <<EOF
+Summary:P1 - {{value}} Invalid redirect URI on /authorize
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:/authorize
+Service:Invalid redirect URI
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}
+EOF
+  tags         = ["Ring1", ]
+  notify_audit = false
+  locked       = false
+  timeout_h    = 0
+  include_tags = true
+  monitor_thresholds {
+    critical = 10.0
+  }
+  new_host_delay     = 300
+  notify_no_data     = false
+  renotify_interval  = 0
+  enable_logs_sample = true
+  priority           = 1
+}

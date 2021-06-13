@@ -1,0 +1,24 @@
+{
+	"id": 28994624,
+	"name": "Kubernetes Nodes - Node is not OK",
+	"type": "query alert",
+	"query": "avg(last_15m):avg:kubernetes_state.node.status{*} by {host} < 1",
+	"message": "@slack-cloud-alerts-bindid-prd\nPriority:P1\n\n@webhook-XiteIt \n\nSummary:Container:P1 - Node:{{host}} is not OK\nCritical Threshold:{{threshold}}\nWarning Threshold:{{warn_threshold}}\n\nHost:Kubernetes Node:{{host}}\nService:Node is not OK\nValue:{{value}}\nSeverity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",
+	"tags": [],
+	"options": {
+		"notify_audit": false,
+		"locked": false,
+		"timeout_h": 0,
+		"new_host_delay": 300,
+		"require_full_window": true,
+		"notify_no_data": true,
+		"renotify_interval": "0",
+		"escalation_message": "",
+		"no_data_timeframe": 30,
+		"include_tags": true,
+		"thresholds": {
+			"critical": 1
+		}
+	},
+	"priority": 1
+}

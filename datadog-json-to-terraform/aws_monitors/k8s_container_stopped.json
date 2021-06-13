@@ -1,0 +1,27 @@
+{
+	"id": 28995313,
+	"name": "Kubernetes Nodes - Container Has Stopped Working",
+	"type": "query alert",
+	"query": "avg(last_15m):sum:kubernetes_state.container.terminated{*} by {container} > 0",
+	"message": "@slack-cloud-alerts-bindid-prd\nPriority:P3\n\n@webhook-XiteIt \n\nSummary:Container:P3 - {{container_name}} Has Stopped Working\nCritical Threshold:-\nWarning Threshold:-\n\nHost:Kubernetes Container:{{container_name}}\nService:Container is Down\nValue:{{value}}\nSeverity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",
+	"tags": [],
+	"options": {
+		"notify_audit": false,
+		"locked": false,
+		"timeout_h": 0,
+		"silenced": {},
+		"include_tags": true,
+		"no_data_timeframe": 30,
+		"require_full_window": true,
+		"new_host_delay": 300,
+		"notify_no_data": true,
+		"renotify_interval": 0,
+		"evaluation_delay": 600,
+		"escalation_message": "",
+		"thresholds": {
+			"critical": 0
+		}
+	},
+	"priority": 3,
+	"classification": "integration"
+}

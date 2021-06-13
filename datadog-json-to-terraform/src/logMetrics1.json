@@ -1,0 +1,10 @@
+{"attributes": {"compute": {"aggregation_type": "count"},
+                "filter": {"query": "*"},
+                "group_by": [{"path": "datadog_is_excluded",
+                              "tag_name": "datadog_is_excluded"},
+                             {"path": "service", "tag_name": "service"},
+                             {"path": "status", "tag_name": "status"},
+                             {"path": "datadog_index",
+                              "tag_name": "datadog_index"}]},
+ "id": "datadog.estimated_usage.logs.ingested_events",
+ "type": "logs_metrics"}

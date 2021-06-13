@@ -1,0 +1,26 @@
+{
+	"id": 28988340,
+	"name": "MongoDB - Process Memory Usage is high",
+	"type": "query alert",
+	"query": "avg(last_10m):avg:mongodb.atlas.mem.resident{*} > 2050",
+	"message": "@slack-cloud-alerts-bindid-prd\nPriority:P2\n\n@webhook-XiteIt \n\nSummary:P2 - Process Memory Usage on MongoDB is {{value}}\nCritical Threshold:{{threshold}}\nWarning Threshold:{{warn_threshold}}\n\nHost:MongoDB\nService:High Process Memory Usage\nValue:{{value}}\nSeverity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",
+	"tags": [],
+	"options": {
+		"notify_audit": false,
+		"locked": false,
+		"timeout_h": 0,
+		"new_host_delay": 300,
+		"require_full_window": true,
+		"notify_no_data": true,
+		"renotify_interval": "0",
+		"evaluation_delay": 600,
+		"escalation_message": "",
+		"no_data_timeframe": 30,
+		"include_tags": false,
+		"thresholds": {
+			"critical": 2050,
+			"warning": 1840
+		}
+	},
+	"priority": 2
+}

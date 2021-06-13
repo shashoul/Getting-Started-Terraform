@@ -1,0 +1,159 @@
+name,priority,type,query,operator,threshold_critical,threshold_warning,threshold_critical_recovery,message,tags,escalation_message,locked,new_host_delay,notify_audit,notify_no_data,renotify_interval,require_full_window,timeout_h,evaluation_delay,no_data_timeframe,include_tags,enable_logs_sample,threshold_windows_recovery_window,threshold_windows_trigger_window
+Terraform (CSV) - MongoDB - Avg CPU Usage is high,,query alert,avg(last_1h):avg:mongodb.atlas.system.cpu.norm.guest{*} + avg:mongodb.atlas.system.cpu.norm.iowait{*} + avg:mongodb.atlas.system.cpu.norm.irq{*} + avg:mongodb.atlas.system.cpu.mongoprocess.norm.kernel{*} + avg:mongodb.atlas.system.cpu.norm.nice{*} + avg:mongodb.atlas.system.cpu.norm.softirq{*} + avg:mongodb.atlas.system.cpu.norm.steal{*} + avg:mongodb.atlas.system.cpu.norm.user{*},>,8,7,7,slack-cloud-alerts-bindid-prd,,,TRUE,300,FALSE,TRUE,,TRUE,,,30,FALSE,,,
+Terraform (CSV) - MongoDB - Avg Disk Space Has Exceeded,,query alert,avg(last_1h):avg:mongodb.atlas.system.disk.space.free{*},>,98500000000,97000000000,97000000000,slack-cloud-alerts-bindid-prd,,,TRUE,300,FALSE,TRUE,,TRUE,,,30,FALSE,,,
+Terraform (CSV) - MongoDB - Avg Total Disk IOPS is high,,query alert,sum(last_1h):avg:mongodb.atlas.system.disk.iops.total{*}.as_count(),>,30000,28000,25000,slack-cloud-alerts-bindid-prd,,,TRUE,300,FALSE,TRUE,,TRUE,,,30,FALSE,,,
+Terraform (CSV) - MongoDB - Process Memory Usage is high,,query alert,avg(last_1h):avg:mongodb.atlas.system.mem.resident{*},>,1750,1740,1740,slack-cloud-alerts-bindid-prd,,,TRUE,300,FALSE,TRUE,,TRUE,,,30,FALSE,,,
+Terraform (CSV) - MongoDB - Number of current connections is above 100,,query alert,avg(last_1h):avg:mongodb.atlas.connections.current{*},>,100,95,95,slack-cloud-alerts-bindid-prd,,,TRUE,300,FALSE,TRUE,0,TRUE,0,,30,FALSE,,,
+Terraform (CSV) - MongoDB - Max CPU Usage is high,,query alert,avg(last_1h):max:mongodb.atlas.system.cpu.norm.guest{*} + max:mongodb.atlas.system.cpu.norm.iowait{*} + max:mongodb.atlas.system.cpu.norm.irq{*} + max:mongodb.atlas.system.cpu.mongoprocess.norm.kernel{*} + max:mongodb.atlas.system.cpu.norm.nice{*} + max:mongodb.atlas.system.cpu.norm.softirq{*} + max:mongodb.atlas.system.cpu.norm.steal{*} + max:mongodb.atlas.system.cpu.norm.user{*},>,12,11,11,slack-cloud-alerts-bindid-prd,,,TRUE,300,FALSE,TRUE,,TRUE,,,30,FALSE,,,
+Terraform (CSV) - MongoDB - Max Disk Space Is Low,,query alert,avg(last_1h):max:mongodb.atlas.system.disk.space.free{*} - max:mongodb.atlas.system.disk.space.used{*},<,10000000000,11000000000,11000000000,This alert triggers when disk space is below 10GB out of 90GB. slack-cloud-alerts-bindid-prd,,,TRUE,300,FALSE,TRUE,,TRUE,,,30,FALSE,,,
+Terraform (CSV) - MongoDB - Top Hosts with Max CPU Usage,,query alert,"avg(last_4h):anomalies(top(max:mongodb.atlas.system.cpu.norm.user{*} by {hostnameport}, 10, 'mean', 'desc'), 'agile', 2, direction='both', alert_window='last_30m', interval=120, count_default_zero='true')",>=,1,0.9,0,Hostname:{{hostnameport.name}} has Max CPU Usage  slack-cloud-alerts-bindid-prd,,,TRUE,300,FALSE,TRUE,,TRUE,,,30,FALSE,,last_30m,last_30m
+Terraform (CSV) - MongoDB - Top hosts by disk space used (Percentage),,query alert,"avg(last_4h):anomalies(top(max:mongodb.atlas.system.disk.space.percentused{*} by {hostnameport}, 10, 'mean', 'desc'), 'agile', 2, direction='both', alert_window='last_30m', interval=120, count_default_zero='true')",>=,1,0.8,0,Hostname:{{hostnameport.name}} has Max Disk Space used.  slack-cloud-alerts-bindid-prd,,,TRUE,300,FALSE,TRUE,,TRUE,,,30,FALSE,,last_30m,last_30m
+Terraform (CSV) - MongoDB - Query Efficiency,,query alert,avg(last_1h):avg:mongodb.atlas.metrics.queryexecutor.scannedobjectsperreturned{*} + avg:mongodb.atlas.metrics.queryexecutor.scannedperreturned{*},>,1.5,1.3,1.3,Indexing queries and returned results may be slow slack-cloud-alerts-bindid-prd,,,TRUE,300,FALSE,TRUE,,TRUE,,,30,FALSE,,,
+Terraform (CSV) - MongoDB - Total Cursors,,query alert,avg(last_1h):avg:mongodb.atlas.cursors.totalopen{*},>,0.9,0.7,0.7,"When a read query is received, MongoDB returns a cursor which represents a pointer to the data (documents). This cursor remains open on the server, consuming memory and large amount of memory being consumed can cause application issues. slack-cloud-alerts-bindid-prd",,,TRUE,300,FALSE,TRUE,,TRUE,,,30,FALSE,,,
+Terraform (CSV) - MongoDB - Read Operations have a high average latency,,query alert,avg(last_1h):avg:mongodb.atlas.oplatencies.reads.avg{*},>,0.13,0.12,0.12,slack-cloud-alerts-bindid-prd,,,TRUE,300,FALSE,TRUE,,TRUE,,,30,FALSE,,,
+Terraform (CSV) - MongoDB - Write Operations have a high average latency,,query alert,avg(last_1h):avg:mongodb.atlas.oplatencies.writes.avg{*},>,0.5,0.45,0.45,slack-cloud-alerts-bindid-prd,,,TRUE,300,FALSE,TRUE,,TRUE,,,30,FALSE,,,
+Terraform (CSV) - MongoDB - Read Requests (Per Second) throughput is high,,query alert,avg(last_1h):sum:mongodb.atlas.opcounters.getmore{*}.as_rate() + sum:mongodb.atlas.opcounters.query{*}.as_rate(),>,9,8.7,8,slack-cloud-alerts-bindid-prd,,,TRUE,300,FALSE,TRUE,,TRUE,,,30,FALSE,,,
+Terraform (CSV) - MongoDB - Write Requests (Per Second) throughput is high,,query alert,avg(last_1h):sum:mongodb.atlas.opcounters.delete{*}.as_rate() + avg:mongodb.atlas.opcounters.insert{*}.as_rate() + sum:mongodb.atlas.opcounters.update{*}.as_rate(),>,2,1.9,1.7,slack-cloud-alerts-bindid-prd,,,TRUE,300,FALSE,TRUE,,TRUE,,,30,FALSE,,,
+Terraform (CSV) - MongoDB - Document Reads,,query alert,avg(last_1h):avg:mongodb.atlas.metrics.document.returned{*}.as_rate(),>,100,98,95,slack-cloud-alerts-bindid-prd,,,TRUE,300,FALSE,TRUE,,TRUE,,,30,FALSE,,,
+Terraform (CSV) - MongoDB - Document Writes,,query alert,avg(last_1h):sum:mongodb.atlas.metrics.document.deleted{*}.as_rate() + sum:mongodb.atlas.metrics.document.inserted{*}.as_rate() + sum:mongodb.atlas.metrics.document.updated{*}.as_rate(),>,4,3.8,3.6,slack-cloud-alerts-bindid-prd,,,TRUE,300,FALSE,TRUE,,TRUE,,,30,FALSE,,,
+Terraform (CSV) - MongoDB - Avg Tasks CPU Usage is high,2,query alert,avg(last_10m):avg:mongodb.atlas.system.cpu.norm.guest{*} + avg:mongodb.atlas.system.cpu.norm.iowait{*} + avg:mongodb.atlas.system.cpu.norm.irq{*} + avg:mongodb.atlas.system.cpu.mongoprocess.norm.kernel{*} + avg:mongodb.atlas.system.cpu.norm.nice{*} + avg:mongodb.atlas.system.cpu.norm.softirq{*} + avg:mongodb.atlas.system.cpu.norm.steal{*} + avg:mongodb.atlas.system.cpu.norm.user{*},>,8,7,7,"slack-cloud-alerts-bindid-prd
+Priority:P2
+
+webhook-XiteIt 
+Summary:P2 - Avg Tasks CPU Usage is {{value}} on MongoDB
+Critical Threshold:{{threshold}}
+Warning Threshold:{{warn_threshold}}
+
+Host:MongoDB
+Service:High Avg Tasks CPU Usage
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,FALSE,300,FALSE,TRUE,0,TRUE,0,600,30,FALSE,,,
+Terraform (CSV) - MongoDB - Avg of IOPS Disk Usage is High,3,query alert,sum(last_10m):avg:mongodb.atlas.system.disk.iops.percentutilization{*},>,50,30,,"slack-cloud-alerts-bindid-prd
+Priority:P3
+
+webhook-XiteIt 
+Summary:P3 - Avg of IOPS Disk Usage is {{value}} on MongoDB
+Critical Threshold:{{threshold}}
+Warning Threshold:{{warn_threshold}}
+
+Host:MongoDB
+Service:High Avg of IOPS Disk Usage
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,FALSE,300,FALSE,TRUE,0,TRUE,0,600,30,FALSE,,,
+Terraform (CSV) - MongoDB - Free Disk Space is Low,1,query alert,sum(last_10m):min:mongodb.atlas.system.disk.space.free{*} by {host},<,70000000000,80000000000,,"slack-cloud-alerts-bindid-prd
+Priority:P1
+
+webhook-XiteIt 
+Summary:P1 - {{value}} Free Disk Space on MongoDB:{{host}}
+Critical Threshold:{{threshold}}
+Warning Threshold:{{warn_threshold}}
+
+Host:MongoDB:{{host}}
+Service:Low Free Disk Space
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,FALSE,300,FALSE,TRUE,0,TRUE,0,600,30,TRUE,,,
+Terraform (CSV) - MongoDB - Number of Current Connections is High,3,query alert,avg(last_10m):avg:mongodb.atlas.connections.current{*},>,75,65,,"slack-cloud-alerts-bindid-prd
+Priority:P3
+
+ webhook-XiteIt
+
+Summary:P3 - {{value}} Current Connections on MongoDB
+Critical Threshold:{{threshold}}
+Warning Threshold:{{warn_threshold}}
+
+Host:MongoDB
+Service:High Number of Current Connections
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,FALSE,300,FALSE,TRUE,0,TRUE,0,600,30,FALSE,,,
+Terraform (CSV) - MongoDB - Number of Inefficient Queries is High,2,query alert,avg(last_10m):avg:mongodb.atlas.metrics.queryexecutor.scannedobjectsperreturned{*} by {host},>,1.5,1.2,,"slack-cloud-alerts-bindid-prd
+Priority:P2
+
+webhook-XiteIt
+
+Summary:P2 - {{value}}  Inefficient Queries on MongoDB:{{host}}
+Critical Threshold:{{threshold}}
+Warning Threshold:{{warn_threshold}}
+
+Host:MongoDB:{{host}}
+Service:High Number of Inefficient Queries
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,FALSE,300,FALSE,TRUE,0,TRUE,0,600,30,TRUE,,,
+Terraform (CSV) - MongoDB - Number of Read Requests is High,2,query alert,sum(last_10m):sum:mongodb.atlas.opcounters.query{*}.as_count(),>,2000,1500,,"slack-cloud-alerts-bindid-prd
+Priority:P2
+
+webhook-XiteIt
+
+
+Summary:P2 - Number of MongoDB Read Requests is {{value}} 
+Critical Threshold:{{threshold}}
+Warning Threshold:{{warn_threshold}}
+
+Host:MongoDB
+Service:High Number of Read Requests
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,FALSE,300,FALSE,TRUE,0,TRUE,0,600,30,FALSE,,,
+Terraform (CSV) - MongoDB - Number of Write Requests is High,2,query alert,sum(last_10m):sum:mongodb.atlas.opcounters.delete{*} + sum:mongodb.atlas.opcounters.insert{*}.as_count() + sum:mongodb.atlas.opcounters.update{*}.as_count(),>,2000,1500,,"slack-cloud-alerts-bindid-prd
+Priority:P2
+webhook-XiteIt 
+
+Summary:P2 - Number of MongoDB Write Requests is {{value}}
+Critical Threshold:{{threshold}}
+Warning Threshold:{{warn_threshold}}
+
+Host:MongoDB
+Service:High Number of Write Requests
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,FALSE,300,FALSE,TRUE,0,TRUE,0,600,30,FALSE,,,
+Terraform (CSV) - MongoDB - Process Memory Usage is high,2,query alert,avg(last_10m):avg:mongodb.atlas.mem.resident{*},>,2050,1840,,"slack-cloud-alerts-bindid-prd
+Priority:P2
+
+webhook-XiteIt 
+
+Summary:P2 - Process Memory Usage on MongoDB is {{value}}
+Critical Threshold:{{threshold}}
+Warning Threshold:{{warn_threshold}}
+
+Host:MongoDB
+Service:High Process Memory Usage
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,FALSE,300,FALSE,TRUE,0,TRUE,0,600,30,FALSE,,,
+Terraform (CSV) - MongoDB - Read Operations Latency is High,2,query alert,avg(last_10m):avg:mongodb.atlas.oplatencies.reads.avg{*} by {host},>,0.3,0.2,,"slack-cloud-alerts-bindid-prd
+Priority:P2
+
+webhook-XiteIt
+
+Summary:P2 - Read Operations Latency on MongoDB is {{value}}
+Critical Threshold:{{threshold}}
+Warning Threshold:{{warn_threshold}}
+
+Host:MongoDB
+Service:High Read Operations Latency
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,FALSE,300,FALSE,TRUE,0,FALSE,0,600,30,TRUE,,,
+Terraform (CSV) - MongoDB - Write Operations Latency is High,2,query alert,avg(last_1h):avg:mongodb.atlas.oplatencies.writes.avg{!host:production-shard-00-01.dmun4.mongodb.net} by {host},>,0.14,0.13,0.13,"slack-cloud-alerts-bindid-prd
+Priority:P2 
+
+webhook-XiteIt
+
+
+Summary:P2 - Write Operations Latency on MongoDB is {{value}}
+Critical Threshold:{{threshold}}
+Warning Threshold:{{warn_threshold}}
+
+Host:MongoDB
+Service:High Write Operations Latency
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,FALSE,300,FALSE,TRUE,0,TRUE,0,900,30,TRUE,,,
+Terraform (CSV) - MongoDB [production-shard-00-01.dmun4.mongodb.net] - Write Operations Latency is High,2,query alert,avg(last_10m):avg:mongodb.atlas.oplatencies.writes.avg{host:production-shard-00-01.dmun4.mongodb.net},>,0.5,0.45,,"slack-cloud-alerts-bindid-prd
+Priority:P2
+
+webhook-XiteIt 
+
+Summary:P2 - Write Operations Latency on production-shard-00-01.dmun4.mongodb.net is {{value}}
+Critical Threshold:{{threshold}}
+Warning Threshold:{{warn_threshold}}
+
+Host:MongoDB - production-shard-00-01.dmun4.mongodb.net
+Service:High Write Operations Latency
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,FALSE,300,FALSE,TRUE,0,TRUE,0,600,30,TRUE,,,

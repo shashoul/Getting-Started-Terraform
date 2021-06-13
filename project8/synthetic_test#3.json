@@ -1,0 +1,52 @@
+{
+    "status":"paused",
+    "public_id":"z2b-gec-5ak",
+    "tags":[
+       
+    ],
+    "locations":[
+       "aws:eu-central-1"
+    ],
+    "message":"Notify @qa",
+    "name":"Shady Terraform Test ... A Browser test on example.org",
+    "monitor_id":32732712,
+    "type":"browser",
+    "config":{
+       "variables":[
+          {
+             "pattern":"{{numeric(3)}}",
+             "type":"text",
+             "example":"597",
+             "name":"MY_PATTERN_VAR"
+          },
+          {
+             "pattern":"jd8-afe-ydv.{{ numeric(10) }}@synthetics.dtdg.co",
+             "type":"email",
+             "example":"jd8-afe-ydv.4546132139@synthetics.dtdg.co",
+             "name":"MY_EMAIL_VAR"
+          },
+          {
+             "type":"global",
+             "id":"76636cd1-82e2-4aeb-9cfe-51366a8198a2",
+             "name":"MY_GLOBAL_VAR"
+          }
+       ],
+       "request":{
+          "url":"https://app.datadoghq.com",
+          "method":"GET"
+       },
+       "assertions":[
+          
+       ],
+       "configVariables":[
+          
+       ]
+    },
+    "options":{
+       "device_ids":[
+          "laptop_large"
+       ],
+       "min_location_failed":1,
+       "tick_every":3600
+    }
+ }

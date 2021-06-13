@@ -1,0 +1,29 @@
+{
+	"id": 32808325,
+	"name": "[kubernetes] Monitor Kubernetes Failed Pods in Namespaces",
+	"type": "query alert",
+	"query": "change(avg(last_5m),last_5m):sum:kubernetes_state.pod.status_phase{phase:failed} by {kubernetes_cluster,kube_namespace} > 10",
+	"message": "More than ten pods are failing in ({{kubernetes_cluster.name}} cluster).\n@webhook-XiteIt\n\nSummary:Number of Failed Pods on Namespace {{kubernetes_cluster.name}} is {{value}}\nCritical Threshold:{{threshold}}\nWarning Threshold:{{warn_threshold}}\n\nHost:Kubernetes - {{kubernetes_cluster.name}}\nService:High Kubernetes Failed Pods in Namespaces\nValue:{{value}}\nSeverity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",
+	"tags": [
+		"integration:kubernetes"
+	],
+	"options": {
+		"notify_audit": false,
+		"locked": false,
+		"timeout_h": 0,
+		"silenced": {},
+		"include_tags": true,
+		"no_data_timeframe": null,
+		"require_full_window": false,
+		"new_host_delay": 300,
+		"notify_no_data": false,
+		"renotify_interval": 0,
+		"escalation_message": "",
+		"thresholds": {
+			"critical": 10,
+			"warning": 5
+		}
+	},
+	"priority": null,
+	"classification": "integration"
+}

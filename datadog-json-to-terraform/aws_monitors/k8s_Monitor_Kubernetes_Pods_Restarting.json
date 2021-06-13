@@ -1,0 +1,29 @@
+{
+	"id": 32808222,
+	"name": "[kubernetes] Monitor Kubernetes Pods Restarting",
+	"type": "query alert",
+	"query": "change(sum(last_5m),last_5m):exclude_null(avg:kubernetes.containers.restarts{*} by {pod_name}) > 5",
+	"message": "Pods are restarting multiple times in the last five minutes.\n\n@webhook-XiteIt\n\nSummary:Kubernetes - {{pod_name.name}}  Has Been Restarted {{value}} Times in The Last 5 Minutes.  \nCritical Threshold:{{threshold}}\nWarning Threshold:{{warn_threshold}} \n\nHost:Kubernetes - {{pod_name.name}}\nService:High Pods Restarting Time\nValue:{{value}}\nSeverity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",
+	"tags": [
+		"integration:kubernetes"
+	],
+	"options": {
+		"notify_audit": true,
+		"locked": false,
+		"timeout_h": 0,
+		"silenced": {},
+		"include_tags": true,
+		"no_data_timeframe": 10,
+		"require_full_window": false,
+		"new_host_delay": 300,
+		"notify_no_data": true,
+		"renotify_interval": 0,
+		"escalation_message": "",
+		"thresholds": {
+			"critical": 5,
+			"warning": 3
+		}
+	},
+	"priority": null,
+	"classification": "integration"
+}

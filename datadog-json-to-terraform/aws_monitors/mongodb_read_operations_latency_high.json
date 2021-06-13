@@ -1,0 +1,26 @@
+{
+	"id": 28989417,
+	"name": "MongoDB - Read Operations Latency is High",
+	"type": "query alert",
+	"query": "avg(last_10m):avg:mongodb.atlas.oplatencies.reads.avg{*} by {host} > 0.3",
+	"message": "@slack-cloud-alerts-bindid-prd\nPriority:P2\n\n@webhook-XiteIt\n\nSummary:P2 - Read Operations Latency on MongoDB is {{value}}\nCritical Threshold:{{threshold}}\nWarning Threshold:{{warn_threshold}}\n\nHost:MongoDB\nService:High Read Operations Latency\nValue:{{value}}\nSeverity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",
+	"tags": [],
+	"options": {
+		"notify_audit": false,
+		"locked": false,
+		"timeout_h": 0,
+		"new_host_delay": 300,
+		"require_full_window": false,
+		"notify_no_data": true,
+		"renotify_interval": "0",
+		"evaluation_delay": 600,
+		"escalation_message": "",
+		"no_data_timeframe": 30,
+		"include_tags": true,
+		"thresholds": {
+			"critical": 0.3,
+			"warning": 0.2
+		}
+	},
+	"priority": 2
+}

@@ -1,0 +1,4 @@
+name,filter_query
+"enduser","@uri:\/api\/v2\/auth\/* OR @uri:\/api\/v2\/oidc\/bindid-oidc\/authorize*"
+"backend","-@uri:\/api\/v2\/auth\/* AND -@uri:\/api\/v2\/oidc\/bindid-oidc\/authorize*"
+"testapi","@uri:\/api\/test\/endpoint"

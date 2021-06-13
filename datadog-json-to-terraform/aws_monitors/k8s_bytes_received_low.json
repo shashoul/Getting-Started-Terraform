@@ -1,0 +1,26 @@
+{
+	"id": 28994938,
+	"name": "Kubernetes Nodes - Number of bytes received is Low",
+	"type": "query alert",
+	"query": "avg(last_10m):sum:kubernetes.network.rx_bytes{*} by {host} < 15000",
+	"message": "@slack-cloud-alerts-bindid-prd\nPriority:P3\n\n@webhook-XiteIt \n\nSummary:P3 - {{Value}} bytes received on Node:{{host}}\nCritical Threshold:{{threshold}}\nWarning Threshold:{{warn_threshold}}\n\nHost:Kubernetes Node:{{host}}\nService:Low Number of bytes received\nValue:{{value}}\nSeverity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",
+	"tags": [],
+	"options": {
+		"notify_audit": false,
+		"locked": false,
+		"timeout_h": 0,
+		"new_host_delay": 300,
+		"require_full_window": true,
+		"notify_no_data": true,
+		"renotify_interval": "0",
+		"evaluation_delay": 600,
+		"escalation_message": "",
+		"no_data_timeframe": 30,
+		"include_tags": true,
+		"thresholds": {
+			"critical": 15000,
+			"warning": 20000
+		}
+	},
+	"priority": 3
+}

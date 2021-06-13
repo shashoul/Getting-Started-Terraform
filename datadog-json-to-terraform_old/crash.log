@@ -1,0 +1,1014 @@
+2021/03/17 12:14:50 [INFO] Terraform version: 0.14.7  
+2021/03/17 12:14:50 [INFO] Go runtime version: go1.15.8
+2021/03/17 12:14:50 [INFO] CLI args: []string{"/usr/local/bin/terraform", "apply", "dashboard.tfplan"}
+2021/03/17 12:14:50 [DEBUG] Attempting to open CLI config file: /Users/shady/.terraformrc
+2021/03/17 12:14:50 [DEBUG] File doesn't exist, but doesn't need to. Ignoring.
+2021/03/17 12:14:50 [DEBUG] ignoring non-existing provider search directory terraform.d/plugins
+2021/03/17 12:14:50 [DEBUG] ignoring non-existing provider search directory /Users/shady/.terraform.d/plugins
+2021/03/17 12:14:50 [DEBUG] ignoring non-existing provider search directory /Users/shady/Library/Application Support/io.terraform/plugins
+2021/03/17 12:14:50 [DEBUG] ignoring non-existing provider search directory /Library/Application Support/io.terraform/plugins
+2021/03/17 12:14:50 [INFO] CLI command args: []string{"apply", "dashboard.tfplan"}
+2021/03/17 12:14:50 [TRACE] Meta.BackendForPlan: instantiated backend of type *local.Local
+2021/03/17 12:14:50 [TRACE] providercache.fillMetaCache: scanning directory .terraform/providers
+2021/03/17 12:14:50 [TRACE] getproviders.SearchLocalDirectory: .terraform/providers is a symlink to .terraform/providers
+2021/03/17 12:14:50 [TRACE] getproviders.SearchLocalDirectory: found registry.terraform.io/datadog/datadog v2.21.0 for darwin_amd64 at .terraform/providers/registry.terraform.io/datadog/datadog/2.21.0/darwin_amd64
+2021/03/17 12:14:50 [TRACE] providercache.fillMetaCache: including .terraform/providers/registry.terraform.io/datadog/datadog/2.21.0/darwin_amd64 as a candidate package for registry.terraform.io/datadog/datadog 2.21.0
+2021/03/17 12:14:50 [DEBUG] checking for provisioner in "."
+2021/03/17 12:14:50 [DEBUG] checking for provisioner in "/usr/local/bin"
+2021/03/17 12:14:50 [INFO] Failed to read plugin lock file .terraform/plugins/darwin_amd64/lock.json: open .terraform/plugins/darwin_amd64/lock.json: no such file or directory
+2021/03/17 12:14:50 [TRACE] Meta.BackendForPlan: backend *local.Local supports operations
+2021/03/17 12:14:50 [INFO] backend/local: starting Apply operation
+2021/03/17 12:14:50 [TRACE] backend/local: requesting state manager for workspace "default"
+2021/03/17 12:14:50 [TRACE] backend/local: state manager for workspace "default" will:
+ - read initial snapshot from terraform.tfstate
+ - write new snapshots to terraform.tfstate
+ - create any backup at terraform.tfstate.backup
+2021/03/17 12:14:50 [TRACE] backend/local: requesting state lock for workspace "default"
+2021/03/17 12:14:50 [TRACE] statemgr.Filesystem: preparing to manage state snapshots at terraform.tfstate
+2021/03/17 12:14:50 [TRACE] statemgr.Filesystem: no previously-stored snapshot exists
+2021/03/17 12:14:50 [TRACE] statemgr.Filesystem: locking terraform.tfstate using fcntl flock
+2021/03/17 12:14:50 [TRACE] statemgr.Filesystem: writing lock metadata to .terraform.tfstate.lock.info
+2021/03/17 12:14:50 [TRACE] backend/local: reading remote state for workspace "default"
+2021/03/17 12:14:50 [TRACE] statemgr.Filesystem: reading latest snapshot from terraform.tfstate
+2021/03/17 12:14:50 [TRACE] statemgr.Filesystem: snapshot file has nil snapshot, but that's okay
+2021/03/17 12:14:50 [TRACE] statemgr.Filesystem: read nil snapshot
+2021/03/17 12:14:50 [TRACE] backend/local: retrieving local state snapshot for workspace "default"
+2021/03/17 12:14:50 [TRACE] backend/local: building context from plan file
+2021/03/17 12:14:50 [TRACE] terraform.NewContext: starting
+2021/03/17 12:14:50 [TRACE] terraform.NewContext: loading provider schemas
+2021/03/17 12:14:50 [TRACE] LoadSchemas: retrieving schema for provider type "registry.terraform.io/datadog/datadog"
+2021-03-17T12:14:50.448+0200 [INFO]  plugin: configuring client automatic mTLS
+2021-03-17T12:14:50.471+0200 [DEBUG] plugin: starting plugin: path=.terraform/providers/registry.terraform.io/datadog/datadog/2.21.0/darwin_amd64/terraform-provider-datadog_v2.21.0 args=[.terraform/providers/registry.terraform.io/datadog/datadog/2.21.0/darwin_amd64/terraform-provider-datadog_v2.21.0]
+2021-03-17T12:14:50.475+0200 [DEBUG] plugin: plugin started: path=.terraform/providers/registry.terraform.io/datadog/datadog/2.21.0/darwin_amd64/terraform-provider-datadog_v2.21.0 pid=30463
+2021-03-17T12:14:50.475+0200 [DEBUG] plugin: waiting for RPC address: path=.terraform/providers/registry.terraform.io/datadog/datadog/2.21.0/darwin_amd64/terraform-provider-datadog_v2.21.0
+2021-03-17T12:14:50.492+0200 [INFO]  plugin.terraform-provider-datadog_v2.21.0: configuring server automatic mTLS: timestamp=2021-03-17T12:14:50.491+0200
+2021-03-17T12:14:50.516+0200 [DEBUG] plugin: using plugin: version=5
+2021-03-17T12:14:50.516+0200 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: plugin address: address=/var/folders/mx/4gqd2w1929v9hzdjxh3bftcw0000gp/T/plugin805755258 network=unix timestamp=2021-03-17T12:14:50.515+0200
+2021/03/17 12:14:50 [TRACE] GRPCProvider: GetSchema
+2021-03-17T12:14:50.569+0200 [TRACE] plugin.stdio: waiting for stdio data
+2021/03/17 12:14:50 [TRACE] No provider meta schema returned
+2021/03/17 12:14:50 [TRACE] GRPCProvider: Close
+2021-03-17T12:14:50.601+0200 [WARN]  plugin.stdio: received EOF, stopping recv loop: err="rpc error: code = Unavailable desc = transport is closing"
+2021-03-17T12:14:50.602+0200 [DEBUG] plugin: plugin process exited: path=.terraform/providers/registry.terraform.io/datadog/datadog/2.21.0/darwin_amd64/terraform-provider-datadog_v2.21.0 pid=30463
+2021-03-17T12:14:50.602+0200 [DEBUG] plugin: plugin exited
+2021/03/17 12:14:50 [TRACE] terraform.NewContext: complete
+2021/03/17 12:14:50 [TRACE] backend/local: finished building terraform.Context
+2021/03/17 12:14:50 [INFO] backend/local: apply calling Apply
+2021/03/17 12:14:50 [INFO] terraform: building graph: GraphTypeApply
+2021/03/17 12:14:50 [TRACE] Executing graph transform *terraform.ConfigTransformer
+2021/03/17 12:14:50 [TRACE] ConfigTransformer: Starting for path: 
+2021/03/17 12:14:50 [TRACE] Completed graph transform *terraform.ConfigTransformer with new graph:
+  datadog_dashboard.aws_billing_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  datadog_dashboard.aws_elb_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  datadog_dashboard.aws_mq_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  datadog_dashboard.business_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  datadog_dashboard.jvm_overview_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  datadog_dashboard.k8s_overview_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  datadog_dashboard.load_test_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  datadog_dashboard.rum_mobile_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  ------
+2021/03/17 12:14:50 [TRACE] Executing graph transform *terraform.RootVariableTransformer
+2021/03/17 12:14:50 [TRACE] Completed graph transform *terraform.RootVariableTransformer (no changes)
+2021/03/17 12:14:50 [TRACE] Executing graph transform *terraform.ModuleVariableTransformer
+2021/03/17 12:14:50 [TRACE] Completed graph transform *terraform.ModuleVariableTransformer (no changes)
+2021/03/17 12:14:50 [TRACE] Executing graph transform *terraform.LocalTransformer
+2021/03/17 12:14:50 [TRACE] Completed graph transform *terraform.LocalTransformer (no changes)
+2021/03/17 12:14:50 [TRACE] Executing graph transform *terraform.OutputTransformer
+2021/03/17 12:14:50 [TRACE] Completed graph transform *terraform.OutputTransformer (no changes)
+2021/03/17 12:14:50 [TRACE] Executing graph transform *terraform.DiffTransformer
+2021/03/17 12:14:50 [TRACE] DiffTransformer starting
+2021/03/17 12:14:50 [TRACE] DiffTransformer: found Create change for datadog_dashboard.business_dashboard 
+2021/03/17 12:14:50 [TRACE] DiffTransformer: datadog_dashboard.business_dashboard will be represented by datadog_dashboard.business_dashboard
+2021/03/17 12:14:50 [TRACE] DiffTransformer: found Create change for datadog_dashboard.aws_billing_dashboard 
+2021/03/17 12:14:50 [TRACE] DiffTransformer: datadog_dashboard.aws_billing_dashboard will be represented by datadog_dashboard.aws_billing_dashboard
+2021/03/17 12:14:50 [TRACE] DiffTransformer: found Create change for datadog_dashboard.aws_elb_dashboard 
+2021/03/17 12:14:50 [TRACE] DiffTransformer: datadog_dashboard.aws_elb_dashboard will be represented by datadog_dashboard.aws_elb_dashboard
+2021/03/17 12:14:50 [TRACE] DiffTransformer: found Create change for datadog_dashboard.rum_mobile_dashboard 
+2021/03/17 12:14:50 [TRACE] DiffTransformer: datadog_dashboard.rum_mobile_dashboard will be represented by datadog_dashboard.rum_mobile_dashboard
+2021/03/17 12:14:50 [TRACE] DiffTransformer: found Create change for datadog_dashboard.aws_mq_dashboard 
+2021/03/17 12:14:50 [TRACE] DiffTransformer: datadog_dashboard.aws_mq_dashboard will be represented by datadog_dashboard.aws_mq_dashboard
+2021/03/17 12:14:50 [TRACE] DiffTransformer: found Create change for datadog_dashboard.load_test_dashboard 
+2021/03/17 12:14:50 [TRACE] DiffTransformer: datadog_dashboard.load_test_dashboard will be represented by datadog_dashboard.load_test_dashboard
+2021/03/17 12:14:50 [TRACE] DiffTransformer: found Create change for datadog_dashboard.jvm_overview_dashboard 
+2021/03/17 12:14:50 [TRACE] DiffTransformer: datadog_dashboard.jvm_overview_dashboard will be represented by datadog_dashboard.jvm_overview_dashboard
+2021/03/17 12:14:50 [TRACE] DiffTransformer: found Create change for datadog_dashboard.k8s_overview_dashboard 
+2021/03/17 12:14:50 [TRACE] DiffTransformer: datadog_dashboard.k8s_overview_dashboard will be represented by datadog_dashboard.k8s_overview_dashboard
+2021/03/17 12:14:50 [TRACE] DiffTransformer complete
+2021/03/17 12:14:50 [TRACE] Completed graph transform *terraform.DiffTransformer with new graph:
+  datadog_dashboard.aws_billing_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.aws_billing_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  datadog_dashboard.aws_billing_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  datadog_dashboard.aws_elb_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.aws_elb_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  datadog_dashboard.aws_elb_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  datadog_dashboard.aws_mq_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.aws_mq_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  datadog_dashboard.aws_mq_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  datadog_dashboard.business_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.business_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  datadog_dashboard.business_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  datadog_dashboard.jvm_overview_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.jvm_overview_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  datadog_dashboard.jvm_overview_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  datadog_dashboard.k8s_overview_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.k8s_overview_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  datadog_dashboard.k8s_overview_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  datadog_dashboard.load_test_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.load_test_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  datadog_dashboard.load_test_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  datadog_dashboard.rum_mobile_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.rum_mobile_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  datadog_dashboard.rum_mobile_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  ------
+2021/03/17 12:14:50 [TRACE] Executing graph transform *terraform.AttachStateTransformer
+2021/03/17 12:14:50 [DEBUG] Resource state not found for node "datadog_dashboard.business_dashboard", instance datadog_dashboard.business_dashboard
+2021/03/17 12:14:50 [DEBUG] Resource state not found for node "datadog_dashboard.aws_billing_dashboard", instance datadog_dashboard.aws_billing_dashboard
+2021/03/17 12:14:50 [DEBUG] Resource state not found for node "datadog_dashboard.k8s_overview_dashboard", instance datadog_dashboard.k8s_overview_dashboard
+2021/03/17 12:14:50 [DEBUG] Resource state not found for node "datadog_dashboard.aws_elb_dashboard", instance datadog_dashboard.aws_elb_dashboard
+2021/03/17 12:14:50 [DEBUG] Resource state not found for node "datadog_dashboard.load_test_dashboard", instance datadog_dashboard.load_test_dashboard
+2021/03/17 12:14:50 [DEBUG] Resource state not found for node "datadog_dashboard.jvm_overview_dashboard", instance datadog_dashboard.jvm_overview_dashboard
+2021/03/17 12:14:50 [DEBUG] Resource state not found for node "datadog_dashboard.rum_mobile_dashboard", instance datadog_dashboard.rum_mobile_dashboard
+2021/03/17 12:14:50 [DEBUG] Resource state not found for node "datadog_dashboard.aws_mq_dashboard", instance datadog_dashboard.aws_mq_dashboard
+2021/03/17 12:14:50 [TRACE] Completed graph transform *terraform.AttachStateTransformer (no changes)
+2021/03/17 12:14:50 [TRACE] Executing graph transform *terraform.OrphanOutputTransformer
+2021/03/17 12:14:50 [TRACE] Completed graph transform *terraform.OrphanOutputTransformer (no changes)
+2021/03/17 12:14:50 [TRACE] Executing graph transform *terraform.AttachResourceConfigTransformer
+2021/03/17 12:14:50 [TRACE] AttachResourceConfigTransformer: attaching to "datadog_dashboard.jvm_overview_dashboard (expand)" (*terraform.nodeExpandApplyableResource) config from jvm_overview_dashboard.tf:1,1-54
+2021/03/17 12:14:50 [TRACE] AttachResourceConfigTransformer: attaching provider meta configs to datadog_dashboard.jvm_overview_dashboard (expand)
+2021/03/17 12:14:50 [TRACE] AttachResourceConfigTransformer: attaching to "datadog_dashboard.rum_mobile_dashboard (expand)" (*terraform.nodeExpandApplyableResource) config from rum_mobile_dashboard.tf:1,1-52
+2021/03/17 12:14:50 [TRACE] AttachResourceConfigTransformer: attaching provider meta configs to datadog_dashboard.rum_mobile_dashboard (expand)
+2021/03/17 12:14:50 [TRACE] AttachResourceConfigTransformer: attaching to "datadog_dashboard.business_dashboard" (*terraform.NodeApplyableResourceInstance) config from business.tf:1,1-50
+2021/03/17 12:14:50 [TRACE] AttachResourceConfigTransformer: attaching provider meta configs to datadog_dashboard.business_dashboard
+2021/03/17 12:14:50 [TRACE] AttachResourceConfigTransformer: attaching to "datadog_dashboard.aws_billing_dashboard" (*terraform.NodeApplyableResourceInstance) config from aws_billing_dashboard.tf:1,1-53
+2021/03/17 12:14:50 [TRACE] AttachResourceConfigTransformer: attaching provider meta configs to datadog_dashboard.aws_billing_dashboard
+2021/03/17 12:14:50 [TRACE] AttachResourceConfigTransformer: attaching to "datadog_dashboard.k8s_overview_dashboard" (*terraform.NodeApplyableResourceInstance) config from k8s_overview_dashboard.tf:1,1-54
+2021/03/17 12:14:50 [TRACE] AttachResourceConfigTransformer: attaching provider meta configs to datadog_dashboard.k8s_overview_dashboard
+2021/03/17 12:14:50 [TRACE] AttachResourceConfigTransformer: attaching to "datadog_dashboard.k8s_overview_dashboard (expand)" (*terraform.nodeExpandApplyableResource) config from k8s_overview_dashboard.tf:1,1-54
+2021/03/17 12:14:50 [TRACE] AttachResourceConfigTransformer: attaching provider meta configs to datadog_dashboard.k8s_overview_dashboard (expand)
+2021/03/17 12:14:50 [TRACE] AttachResourceConfigTransformer: attaching to "datadog_dashboard.aws_elb_dashboard" (*terraform.NodeApplyableResourceInstance) config from aws_elb_dashboard.tf:1,1-49
+2021/03/17 12:14:50 [TRACE] AttachResourceConfigTransformer: attaching provider meta configs to datadog_dashboard.aws_elb_dashboard
+2021/03/17 12:14:50 [TRACE] AttachResourceConfigTransformer: attaching to "datadog_dashboard.load_test_dashboard (expand)" (*terraform.nodeExpandApplyableResource) config from load_test_dashboard.tf:1,1-51
+2021/03/17 12:14:50 [TRACE] AttachResourceConfigTransformer: attaching provider meta configs to datadog_dashboard.load_test_dashboard (expand)
+2021/03/17 12:14:50 [TRACE] AttachResourceConfigTransformer: attaching to "datadog_dashboard.aws_elb_dashboard (expand)" (*terraform.nodeExpandApplyableResource) config from aws_elb_dashboard.tf:1,1-49
+2021/03/17 12:14:50 [TRACE] AttachResourceConfigTransformer: attaching provider meta configs to datadog_dashboard.aws_elb_dashboard (expand)
+2021/03/17 12:14:50 [TRACE] AttachResourceConfigTransformer: attaching to "datadog_dashboard.business_dashboard (expand)" (*terraform.nodeExpandApplyableResource) config from business.tf:1,1-50
+2021/03/17 12:14:50 [TRACE] AttachResourceConfigTransformer: attaching provider meta configs to datadog_dashboard.business_dashboard (expand)
+2021/03/17 12:14:50 [TRACE] AttachResourceConfigTransformer: attaching to "datadog_dashboard.load_test_dashboard" (*terraform.NodeApplyableResourceInstance) config from load_test_dashboard.tf:1,1-51
+2021/03/17 12:14:50 [TRACE] AttachResourceConfigTransformer: attaching provider meta configs to datadog_dashboard.load_test_dashboard
+2021/03/17 12:14:50 [TRACE] AttachResourceConfigTransformer: attaching to "datadog_dashboard.jvm_overview_dashboard" (*terraform.NodeApplyableResourceInstance) config from jvm_overview_dashboard.tf:1,1-54
+2021/03/17 12:14:50 [TRACE] AttachResourceConfigTransformer: attaching provider meta configs to datadog_dashboard.jvm_overview_dashboard
+2021/03/17 12:14:50 [TRACE] AttachResourceConfigTransformer: attaching to "datadog_dashboard.aws_billing_dashboard (expand)" (*terraform.nodeExpandApplyableResource) config from aws_billing_dashboard.tf:1,1-53
+2021/03/17 12:14:50 [TRACE] AttachResourceConfigTransformer: attaching provider meta configs to datadog_dashboard.aws_billing_dashboard (expand)
+2021/03/17 12:14:50 [TRACE] AttachResourceConfigTransformer: attaching to "datadog_dashboard.aws_mq_dashboard (expand)" (*terraform.nodeExpandApplyableResource) config from aws_mq_dashboard.tf:1,1-48
+2021/03/17 12:14:50 [TRACE] AttachResourceConfigTransformer: attaching provider meta configs to datadog_dashboard.aws_mq_dashboard (expand)
+2021/03/17 12:14:50 [TRACE] AttachResourceConfigTransformer: attaching to "datadog_dashboard.rum_mobile_dashboard" (*terraform.NodeApplyableResourceInstance) config from rum_mobile_dashboard.tf:1,1-52
+2021/03/17 12:14:50 [TRACE] AttachResourceConfigTransformer: attaching provider meta configs to datadog_dashboard.rum_mobile_dashboard
+2021/03/17 12:14:50 [TRACE] AttachResourceConfigTransformer: attaching to "datadog_dashboard.aws_mq_dashboard" (*terraform.NodeApplyableResourceInstance) config from aws_mq_dashboard.tf:1,1-48
+2021/03/17 12:14:50 [TRACE] AttachResourceConfigTransformer: attaching provider meta configs to datadog_dashboard.aws_mq_dashboard
+2021/03/17 12:14:50 [TRACE] Completed graph transform *terraform.AttachResourceConfigTransformer (no changes)
+2021/03/17 12:14:50 [TRACE] Executing graph transform *terraform.MissingProvisionerTransformer
+2021/03/17 12:14:50 [TRACE] Completed graph transform *terraform.MissingProvisionerTransformer (no changes)
+2021/03/17 12:14:50 [TRACE] Executing graph transform *terraform.ProvisionerTransformer
+2021/03/17 12:14:50 [TRACE] Completed graph transform *terraform.ProvisionerTransformer (no changes)
+2021/03/17 12:14:50 [TRACE] Executing graph transform *terraform.graphTransformerMulti
+2021/03/17 12:14:50 [TRACE] (graphTransformerMulti) Executing graph transform *terraform.ProviderConfigTransformer
+2021/03/17 12:14:50 [TRACE] (graphTransformerMulti) Completed graph transform *terraform.ProviderConfigTransformer with new graph:
+  datadog_dashboard.aws_billing_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.aws_billing_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  datadog_dashboard.aws_billing_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  datadog_dashboard.aws_elb_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.aws_elb_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  datadog_dashboard.aws_elb_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  datadog_dashboard.aws_mq_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.aws_mq_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  datadog_dashboard.aws_mq_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  datadog_dashboard.business_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.business_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  datadog_dashboard.business_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  datadog_dashboard.jvm_overview_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.jvm_overview_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  datadog_dashboard.jvm_overview_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  datadog_dashboard.k8s_overview_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.k8s_overview_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  datadog_dashboard.k8s_overview_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  datadog_dashboard.load_test_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.load_test_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  datadog_dashboard.load_test_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  datadog_dashboard.rum_mobile_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.rum_mobile_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  datadog_dashboard.rum_mobile_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  ------
+2021/03/17 12:14:50 [TRACE] (graphTransformerMulti) Executing graph transform *terraform.MissingProviderTransformer
+2021/03/17 12:14:50 [DEBUG] adding implicit provider configuration provider["registry.terraform.io/datadog/datadog"], implied first by datadog_dashboard.aws_elb_dashboard (expand)
+2021/03/17 12:14:50 [TRACE] (graphTransformerMulti) Completed graph transform *terraform.MissingProviderTransformer with new graph:
+  datadog_dashboard.aws_billing_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.aws_billing_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  datadog_dashboard.aws_billing_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  datadog_dashboard.aws_elb_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.aws_elb_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  datadog_dashboard.aws_elb_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  datadog_dashboard.aws_mq_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.aws_mq_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  datadog_dashboard.aws_mq_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  datadog_dashboard.business_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.business_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  datadog_dashboard.business_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  datadog_dashboard.jvm_overview_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.jvm_overview_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  datadog_dashboard.jvm_overview_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  datadog_dashboard.k8s_overview_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.k8s_overview_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  datadog_dashboard.k8s_overview_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  datadog_dashboard.load_test_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.load_test_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  datadog_dashboard.load_test_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  datadog_dashboard.rum_mobile_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.rum_mobile_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  datadog_dashboard.rum_mobile_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  ------
+2021/03/17 12:14:50 [TRACE] (graphTransformerMulti) Executing graph transform *terraform.ProviderTransformer
+2021/03/17 12:14:50 [TRACE] ProviderTransformer: exact match for provider["registry.terraform.io/datadog/datadog"] serving datadog_dashboard.load_test_dashboard (expand)
+2021/03/17 12:14:50 [DEBUG] ProviderTransformer: "datadog_dashboard.load_test_dashboard (expand)" (*terraform.nodeExpandApplyableResource) needs provider["registry.terraform.io/datadog/datadog"]
+2021/03/17 12:14:50 [TRACE] ProviderTransformer: exact match for provider["registry.terraform.io/datadog/datadog"] serving datadog_dashboard.jvm_overview_dashboard
+2021/03/17 12:14:50 [DEBUG] ProviderTransformer: "datadog_dashboard.jvm_overview_dashboard" (*terraform.NodeApplyableResourceInstance) needs provider["registry.terraform.io/datadog/datadog"]
+2021/03/17 12:14:50 [TRACE] ProviderTransformer: exact match for provider["registry.terraform.io/datadog/datadog"] serving datadog_dashboard.aws_mq_dashboard
+2021/03/17 12:14:50 [DEBUG] ProviderTransformer: "datadog_dashboard.aws_mq_dashboard" (*terraform.NodeApplyableResourceInstance) needs provider["registry.terraform.io/datadog/datadog"]
+2021/03/17 12:14:50 [TRACE] ProviderTransformer: exact match for provider["registry.terraform.io/datadog/datadog"] serving datadog_dashboard.rum_mobile_dashboard (expand)
+2021/03/17 12:14:50 [DEBUG] ProviderTransformer: "datadog_dashboard.rum_mobile_dashboard (expand)" (*terraform.nodeExpandApplyableResource) needs provider["registry.terraform.io/datadog/datadog"]
+2021/03/17 12:14:50 [TRACE] ProviderTransformer: exact match for provider["registry.terraform.io/datadog/datadog"] serving datadog_dashboard.aws_elb_dashboard
+2021/03/17 12:14:50 [DEBUG] ProviderTransformer: "datadog_dashboard.aws_elb_dashboard" (*terraform.NodeApplyableResourceInstance) needs provider["registry.terraform.io/datadog/datadog"]
+2021/03/17 12:14:50 [TRACE] ProviderTransformer: exact match for provider["registry.terraform.io/datadog/datadog"] serving datadog_dashboard.load_test_dashboard
+2021/03/17 12:14:50 [DEBUG] ProviderTransformer: "datadog_dashboard.load_test_dashboard" (*terraform.NodeApplyableResourceInstance) needs provider["registry.terraform.io/datadog/datadog"]
+2021/03/17 12:14:50 [TRACE] ProviderTransformer: exact match for provider["registry.terraform.io/datadog/datadog"] serving datadog_dashboard.aws_billing_dashboard (expand)
+2021/03/17 12:14:50 [DEBUG] ProviderTransformer: "datadog_dashboard.aws_billing_dashboard (expand)" (*terraform.nodeExpandApplyableResource) needs provider["registry.terraform.io/datadog/datadog"]
+2021/03/17 12:14:50 [TRACE] ProviderTransformer: exact match for provider["registry.terraform.io/datadog/datadog"] serving datadog_dashboard.jvm_overview_dashboard (expand)
+2021/03/17 12:14:50 [DEBUG] ProviderTransformer: "datadog_dashboard.jvm_overview_dashboard (expand)" (*terraform.nodeExpandApplyableResource) needs provider["registry.terraform.io/datadog/datadog"]
+2021/03/17 12:14:50 [TRACE] ProviderTransformer: exact match for provider["registry.terraform.io/datadog/datadog"] serving datadog_dashboard.business_dashboard
+2021/03/17 12:14:50 [DEBUG] ProviderTransformer: "datadog_dashboard.business_dashboard" (*terraform.NodeApplyableResourceInstance) needs provider["registry.terraform.io/datadog/datadog"]
+2021/03/17 12:14:50 [TRACE] ProviderTransformer: exact match for provider["registry.terraform.io/datadog/datadog"] serving datadog_dashboard.aws_billing_dashboard
+2021/03/17 12:14:50 [DEBUG] ProviderTransformer: "datadog_dashboard.aws_billing_dashboard" (*terraform.NodeApplyableResourceInstance) needs provider["registry.terraform.io/datadog/datadog"]
+2021/03/17 12:14:50 [TRACE] ProviderTransformer: exact match for provider["registry.terraform.io/datadog/datadog"] serving datadog_dashboard.k8s_overview_dashboard (expand)
+2021/03/17 12:14:50 [DEBUG] ProviderTransformer: "datadog_dashboard.k8s_overview_dashboard (expand)" (*terraform.nodeExpandApplyableResource) needs provider["registry.terraform.io/datadog/datadog"]
+2021/03/17 12:14:50 [TRACE] ProviderTransformer: exact match for provider["registry.terraform.io/datadog/datadog"] serving datadog_dashboard.aws_elb_dashboard (expand)
+2021/03/17 12:14:50 [DEBUG] ProviderTransformer: "datadog_dashboard.aws_elb_dashboard (expand)" (*terraform.nodeExpandApplyableResource) needs provider["registry.terraform.io/datadog/datadog"]
+2021/03/17 12:14:50 [TRACE] ProviderTransformer: exact match for provider["registry.terraform.io/datadog/datadog"] serving datadog_dashboard.business_dashboard (expand)
+2021/03/17 12:14:50 [DEBUG] ProviderTransformer: "datadog_dashboard.business_dashboard (expand)" (*terraform.nodeExpandApplyableResource) needs provider["registry.terraform.io/datadog/datadog"]
+2021/03/17 12:14:50 [TRACE] ProviderTransformer: exact match for provider["registry.terraform.io/datadog/datadog"] serving datadog_dashboard.aws_mq_dashboard (expand)
+2021/03/17 12:14:50 [DEBUG] ProviderTransformer: "datadog_dashboard.aws_mq_dashboard (expand)" (*terraform.nodeExpandApplyableResource) needs provider["registry.terraform.io/datadog/datadog"]
+2021/03/17 12:14:50 [TRACE] ProviderTransformer: exact match for provider["registry.terraform.io/datadog/datadog"] serving datadog_dashboard.rum_mobile_dashboard
+2021/03/17 12:14:50 [DEBUG] ProviderTransformer: "datadog_dashboard.rum_mobile_dashboard" (*terraform.NodeApplyableResourceInstance) needs provider["registry.terraform.io/datadog/datadog"]
+2021/03/17 12:14:50 [TRACE] ProviderTransformer: exact match for provider["registry.terraform.io/datadog/datadog"] serving datadog_dashboard.k8s_overview_dashboard
+2021/03/17 12:14:50 [DEBUG] ProviderTransformer: "datadog_dashboard.k8s_overview_dashboard" (*terraform.NodeApplyableResourceInstance) needs provider["registry.terraform.io/datadog/datadog"]
+2021/03/17 12:14:50 [TRACE] (graphTransformerMulti) Completed graph transform *terraform.ProviderTransformer with new graph:
+  datadog_dashboard.aws_billing_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.aws_billing_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.aws_billing_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.aws_elb_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.aws_elb_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.aws_elb_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.aws_mq_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.aws_mq_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.aws_mq_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.business_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.business_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.business_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.jvm_overview_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.jvm_overview_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.jvm_overview_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.k8s_overview_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.k8s_overview_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.k8s_overview_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.load_test_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.load_test_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.load_test_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.rum_mobile_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.rum_mobile_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.rum_mobile_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  ------
+2021/03/17 12:14:50 [TRACE] (graphTransformerMulti) Executing graph transform *terraform.PruneProviderTransformer
+2021/03/17 12:14:50 [TRACE] (graphTransformerMulti) Completed graph transform *terraform.PruneProviderTransformer (no changes)
+2021/03/17 12:14:50 [TRACE] (graphTransformerMulti) Executing graph transform *terraform.ParentProviderTransformer
+2021/03/17 12:14:50 [TRACE] (graphTransformerMulti) Completed graph transform *terraform.ParentProviderTransformer (no changes)
+2021/03/17 12:14:50 [TRACE] Completed graph transform *terraform.graphTransformerMulti with new graph:
+  datadog_dashboard.aws_billing_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.aws_billing_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.aws_billing_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.aws_elb_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.aws_elb_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.aws_elb_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.aws_mq_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.aws_mq_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.aws_mq_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.business_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.business_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.business_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.jvm_overview_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.jvm_overview_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.jvm_overview_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.k8s_overview_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.k8s_overview_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.k8s_overview_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.load_test_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.load_test_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.load_test_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.rum_mobile_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.rum_mobile_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.rum_mobile_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  ------
+2021/03/17 12:14:50 [TRACE] Executing graph transform *terraform.RemovedModuleTransformer
+2021/03/17 12:14:50 [TRACE] Completed graph transform *terraform.RemovedModuleTransformer (no changes)
+2021/03/17 12:14:50 [TRACE] Executing graph transform *terraform.AttachSchemaTransformer
+2021/03/17 12:14:50 [TRACE] AttachSchemaTransformer: attaching resource schema to datadog_dashboard.load_test_dashboard (expand)
+2021/03/17 12:14:50 [TRACE] AttachSchemaTransformer: attaching resource schema to datadog_dashboard.aws_elb_dashboard (expand)
+2021/03/17 12:14:50 [TRACE] AttachSchemaTransformer: attaching resource schema to datadog_dashboard.business_dashboard (expand)
+2021/03/17 12:14:50 [TRACE] AttachSchemaTransformer: attaching resource schema to datadog_dashboard.load_test_dashboard
+2021/03/17 12:14:50 [TRACE] AttachSchemaTransformer: attaching resource schema to datadog_dashboard.jvm_overview_dashboard
+2021/03/17 12:14:50 [TRACE] AttachSchemaTransformer: attaching resource schema to datadog_dashboard.aws_billing_dashboard (expand)
+2021/03/17 12:14:50 [TRACE] AttachSchemaTransformer: attaching resource schema to datadog_dashboard.aws_mq_dashboard (expand)
+2021/03/17 12:14:50 [TRACE] AttachSchemaTransformer: attaching resource schema to datadog_dashboard.rum_mobile_dashboard
+2021/03/17 12:14:50 [TRACE] AttachSchemaTransformer: attaching resource schema to datadog_dashboard.aws_mq_dashboard
+2021/03/17 12:14:50 [TRACE] AttachSchemaTransformer: attaching provider config schema to provider["registry.terraform.io/datadog/datadog"]
+2021/03/17 12:14:50 [TRACE] AttachSchemaTransformer: attaching resource schema to datadog_dashboard.jvm_overview_dashboard (expand)
+2021/03/17 12:14:50 [TRACE] AttachSchemaTransformer: attaching resource schema to datadog_dashboard.rum_mobile_dashboard (expand)
+2021/03/17 12:14:50 [TRACE] AttachSchemaTransformer: attaching resource schema to datadog_dashboard.business_dashboard
+2021/03/17 12:14:50 [TRACE] AttachSchemaTransformer: attaching resource schema to datadog_dashboard.aws_billing_dashboard
+2021/03/17 12:14:50 [TRACE] AttachSchemaTransformer: attaching resource schema to datadog_dashboard.k8s_overview_dashboard
+2021/03/17 12:14:50 [TRACE] AttachSchemaTransformer: attaching resource schema to datadog_dashboard.k8s_overview_dashboard (expand)
+2021/03/17 12:14:50 [TRACE] AttachSchemaTransformer: attaching resource schema to datadog_dashboard.aws_elb_dashboard
+2021/03/17 12:14:50 [TRACE] Completed graph transform *terraform.AttachSchemaTransformer (no changes)
+2021/03/17 12:14:50 [TRACE] Executing graph transform *terraform.ModuleExpansionTransformer
+2021/03/17 12:14:50 [TRACE] Completed graph transform *terraform.ModuleExpansionTransformer (no changes)
+2021/03/17 12:14:50 [TRACE] Executing graph transform *terraform.ReferenceTransformer
+2021/03/17 12:14:50 [DEBUG] ReferenceTransformer: "datadog_dashboard.aws_billing_dashboard (expand)" references: []
+2021/03/17 12:14:50 [DEBUG] ReferenceTransformer: "datadog_dashboard.aws_mq_dashboard (expand)" references: []
+2021/03/17 12:14:50 [DEBUG] ReferenceTransformer: "datadog_dashboard.rum_mobile_dashboard" references: []
+2021/03/17 12:14:50 [DEBUG] ReferenceTransformer: "datadog_dashboard.aws_mq_dashboard" references: []
+2021/03/17 12:14:50 [DEBUG] ReferenceTransformer: "provider[\"registry.terraform.io/datadog/datadog\"]" references: []
+2021/03/17 12:14:50 [DEBUG] ReferenceTransformer: "datadog_dashboard.jvm_overview_dashboard (expand)" references: []
+2021/03/17 12:14:50 [DEBUG] ReferenceTransformer: "datadog_dashboard.rum_mobile_dashboard (expand)" references: []
+2021/03/17 12:14:50 [DEBUG] ReferenceTransformer: "datadog_dashboard.business_dashboard" references: []
+2021/03/17 12:14:50 [DEBUG] ReferenceTransformer: "datadog_dashboard.aws_billing_dashboard" references: []
+2021/03/17 12:14:50 [DEBUG] ReferenceTransformer: "datadog_dashboard.k8s_overview_dashboard" references: []
+2021/03/17 12:14:50 [DEBUG] ReferenceTransformer: "datadog_dashboard.k8s_overview_dashboard (expand)" references: []
+2021/03/17 12:14:50 [DEBUG] ReferenceTransformer: "datadog_dashboard.aws_elb_dashboard" references: []
+2021/03/17 12:14:50 [DEBUG] ReferenceTransformer: "datadog_dashboard.load_test_dashboard (expand)" references: []
+2021/03/17 12:14:50 [DEBUG] ReferenceTransformer: "datadog_dashboard.aws_elb_dashboard (expand)" references: []
+2021/03/17 12:14:50 [DEBUG] ReferenceTransformer: "datadog_dashboard.business_dashboard (expand)" references: []
+2021/03/17 12:14:50 [DEBUG] ReferenceTransformer: "datadog_dashboard.load_test_dashboard" references: []
+2021/03/17 12:14:50 [DEBUG] ReferenceTransformer: "datadog_dashboard.jvm_overview_dashboard" references: []
+2021/03/17 12:14:50 [TRACE] Completed graph transform *terraform.ReferenceTransformer (no changes)
+2021/03/17 12:14:50 [TRACE] Executing graph transform *terraform.AttachDependenciesTransformer
+2021/03/17 12:14:50 [TRACE] AttachDependenciesTransformer: datadog_dashboard.aws_elb_dashboard depends on []
+2021/03/17 12:14:50 [TRACE] AttachDependenciesTransformer: datadog_dashboard.jvm_overview_dashboard depends on []
+2021/03/17 12:14:50 [TRACE] AttachDependenciesTransformer: datadog_dashboard.load_test_dashboard depends on []
+2021/03/17 12:14:50 [TRACE] AttachDependenciesTransformer: datadog_dashboard.rum_mobile_dashboard depends on []
+2021/03/17 12:14:50 [TRACE] AttachDependenciesTransformer: datadog_dashboard.aws_mq_dashboard depends on []
+2021/03/17 12:14:50 [TRACE] AttachDependenciesTransformer: datadog_dashboard.k8s_overview_dashboard depends on []
+2021/03/17 12:14:50 [TRACE] AttachDependenciesTransformer: datadog_dashboard.business_dashboard depends on []
+2021/03/17 12:14:50 [TRACE] AttachDependenciesTransformer: datadog_dashboard.aws_billing_dashboard depends on []
+2021/03/17 12:14:50 [TRACE] Completed graph transform *terraform.AttachDependenciesTransformer (no changes)
+2021/03/17 12:14:50 [TRACE] Executing graph transform *terraform.ForcedCBDTransformer
+2021/03/17 12:14:50 [TRACE] ForcedCBDTransformer: "datadog_dashboard.aws_elb_dashboard" (*terraform.NodeApplyableResourceInstance) has no CBD descendent, so skipping
+2021/03/17 12:14:50 [TRACE] ForcedCBDTransformer: "datadog_dashboard.load_test_dashboard" (*terraform.NodeApplyableResourceInstance) has no CBD descendent, so skipping
+2021/03/17 12:14:50 [TRACE] ForcedCBDTransformer: "datadog_dashboard.jvm_overview_dashboard" (*terraform.NodeApplyableResourceInstance) has no CBD descendent, so skipping
+2021/03/17 12:14:50 [TRACE] ForcedCBDTransformer: "datadog_dashboard.rum_mobile_dashboard" (*terraform.NodeApplyableResourceInstance) has no CBD descendent, so skipping
+2021/03/17 12:14:50 [TRACE] ForcedCBDTransformer: "datadog_dashboard.aws_mq_dashboard" (*terraform.NodeApplyableResourceInstance) has no CBD descendent, so skipping
+2021/03/17 12:14:50 [TRACE] ForcedCBDTransformer: "datadog_dashboard.business_dashboard" (*terraform.NodeApplyableResourceInstance) has no CBD descendent, so skipping
+2021/03/17 12:14:50 [TRACE] ForcedCBDTransformer: "datadog_dashboard.aws_billing_dashboard" (*terraform.NodeApplyableResourceInstance) has no CBD descendent, so skipping
+2021/03/17 12:14:50 [TRACE] ForcedCBDTransformer: "datadog_dashboard.k8s_overview_dashboard" (*terraform.NodeApplyableResourceInstance) has no CBD descendent, so skipping
+2021/03/17 12:14:50 [TRACE] Completed graph transform *terraform.ForcedCBDTransformer (no changes)
+2021/03/17 12:14:50 [TRACE] Executing graph transform *terraform.DestroyEdgeTransformer
+2021/03/17 12:14:50 [TRACE] Completed graph transform *terraform.DestroyEdgeTransformer (no changes)
+2021/03/17 12:14:50 [TRACE] Executing graph transform *terraform.CBDEdgeTransformer
+2021/03/17 12:14:50 [TRACE] Completed graph transform *terraform.CBDEdgeTransformer (no changes)
+2021/03/17 12:14:50 [TRACE] Executing graph transform *terraform.pruneUnusedNodesTransformer
+2021/03/17 12:14:50 [TRACE] Completed graph transform *terraform.pruneUnusedNodesTransformer (no changes)
+2021/03/17 12:14:50 [TRACE] Executing graph transform *terraform.TargetsTransformer
+2021/03/17 12:14:50 [TRACE] Completed graph transform *terraform.TargetsTransformer (no changes)
+2021/03/17 12:14:50 [TRACE] Executing graph transform *terraform.CountBoundaryTransformer
+2021/03/17 12:14:50 [TRACE] Completed graph transform *terraform.CountBoundaryTransformer with new graph:
+  datadog_dashboard.aws_billing_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.aws_billing_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.aws_billing_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.aws_elb_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.aws_elb_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.aws_elb_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.aws_mq_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.aws_mq_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.aws_mq_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.business_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.business_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.business_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.jvm_overview_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.jvm_overview_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.jvm_overview_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.k8s_overview_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.k8s_overview_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.k8s_overview_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.load_test_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.load_test_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.load_test_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.rum_mobile_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.rum_mobile_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.rum_mobile_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  meta.count-boundary (EachMode fixup) - *terraform.NodeCountBoundary
+    datadog_dashboard.aws_billing_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.aws_billing_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    datadog_dashboard.aws_elb_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.aws_elb_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    datadog_dashboard.aws_mq_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.aws_mq_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    datadog_dashboard.business_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.business_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    datadog_dashboard.jvm_overview_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.jvm_overview_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    datadog_dashboard.k8s_overview_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.k8s_overview_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    datadog_dashboard.load_test_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.load_test_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    datadog_dashboard.rum_mobile_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.rum_mobile_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  ------
+2021/03/17 12:14:50 [TRACE] Executing graph transform *terraform.CloseProviderTransformer
+2021/03/17 12:14:50 [TRACE] Completed graph transform *terraform.CloseProviderTransformer with new graph:
+  datadog_dashboard.aws_billing_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.aws_billing_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.aws_billing_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.aws_elb_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.aws_elb_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.aws_elb_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.aws_mq_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.aws_mq_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.aws_mq_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.business_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.business_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.business_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.jvm_overview_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.jvm_overview_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.jvm_overview_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.k8s_overview_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.k8s_overview_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.k8s_overview_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.load_test_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.load_test_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.load_test_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.rum_mobile_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.rum_mobile_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.rum_mobile_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  meta.count-boundary (EachMode fixup) - *terraform.NodeCountBoundary
+    datadog_dashboard.aws_billing_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.aws_billing_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    datadog_dashboard.aws_elb_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.aws_elb_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    datadog_dashboard.aws_mq_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.aws_mq_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    datadog_dashboard.business_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.business_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    datadog_dashboard.jvm_overview_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.jvm_overview_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    datadog_dashboard.k8s_overview_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.k8s_overview_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    datadog_dashboard.load_test_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.load_test_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    datadog_dashboard.rum_mobile_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.rum_mobile_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  provider["registry.terraform.io/datadog/datadog"] (close) - *terraform.graphNodeCloseProvider
+    datadog_dashboard.aws_billing_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.aws_billing_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    datadog_dashboard.aws_elb_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.aws_elb_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    datadog_dashboard.aws_mq_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.aws_mq_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    datadog_dashboard.business_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.business_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    datadog_dashboard.jvm_overview_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.jvm_overview_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    datadog_dashboard.k8s_overview_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.k8s_overview_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    datadog_dashboard.load_test_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.load_test_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    datadog_dashboard.rum_mobile_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.rum_mobile_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  ------
+2021/03/17 12:14:50 [TRACE] Executing graph transform *terraform.CloseProvisionerTransformer
+2021/03/17 12:14:50 [TRACE] Completed graph transform *terraform.CloseProvisionerTransformer (no changes)
+2021/03/17 12:14:50 [TRACE] Executing graph transform *terraform.CloseRootModuleTransformer
+2021/03/17 12:14:50 [TRACE] Completed graph transform *terraform.CloseRootModuleTransformer with new graph:
+  datadog_dashboard.aws_billing_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.aws_billing_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.aws_billing_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.aws_elb_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.aws_elb_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.aws_elb_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.aws_mq_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.aws_mq_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.aws_mq_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.business_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.business_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.business_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.jvm_overview_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.jvm_overview_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.jvm_overview_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.k8s_overview_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.k8s_overview_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.k8s_overview_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.load_test_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.load_test_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.load_test_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.rum_mobile_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.rum_mobile_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.rum_mobile_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  meta.count-boundary (EachMode fixup) - *terraform.NodeCountBoundary
+    datadog_dashboard.aws_billing_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.aws_billing_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    datadog_dashboard.aws_elb_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.aws_elb_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    datadog_dashboard.aws_mq_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.aws_mq_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    datadog_dashboard.business_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.business_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    datadog_dashboard.jvm_overview_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.jvm_overview_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    datadog_dashboard.k8s_overview_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.k8s_overview_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    datadog_dashboard.load_test_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.load_test_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    datadog_dashboard.rum_mobile_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.rum_mobile_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  provider["registry.terraform.io/datadog/datadog"] (close) - *terraform.graphNodeCloseProvider
+    datadog_dashboard.aws_billing_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.aws_billing_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    datadog_dashboard.aws_elb_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.aws_elb_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    datadog_dashboard.aws_mq_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.aws_mq_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    datadog_dashboard.business_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.business_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    datadog_dashboard.jvm_overview_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.jvm_overview_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    datadog_dashboard.k8s_overview_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.k8s_overview_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    datadog_dashboard.load_test_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.load_test_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    datadog_dashboard.rum_mobile_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.rum_mobile_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  root - *terraform.nodeCloseModule
+    meta.count-boundary (EachMode fixup) - *terraform.NodeCountBoundary
+    provider["registry.terraform.io/datadog/datadog"] (close) - *terraform.graphNodeCloseProvider
+  ------
+2021/03/17 12:14:50 [TRACE] Executing graph transform *terraform.TransitiveReductionTransformer
+2021/03/17 12:14:50 [TRACE] Completed graph transform *terraform.TransitiveReductionTransformer with new graph:
+  datadog_dashboard.aws_billing_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.aws_billing_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  datadog_dashboard.aws_billing_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.aws_elb_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.aws_elb_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  datadog_dashboard.aws_elb_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.aws_mq_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.aws_mq_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  datadog_dashboard.aws_mq_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.business_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.business_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  datadog_dashboard.business_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.jvm_overview_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.jvm_overview_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  datadog_dashboard.jvm_overview_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.k8s_overview_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.k8s_overview_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  datadog_dashboard.k8s_overview_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.load_test_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.load_test_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  datadog_dashboard.load_test_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_dashboard.rum_mobile_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.rum_mobile_dashboard (expand) - *terraform.nodeExpandApplyableResource
+  datadog_dashboard.rum_mobile_dashboard (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  meta.count-boundary (EachMode fixup) - *terraform.NodeCountBoundary
+    datadog_dashboard.aws_billing_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.aws_elb_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.aws_mq_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.business_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.jvm_overview_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.k8s_overview_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.load_test_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.rum_mobile_dashboard - *terraform.NodeApplyableResourceInstance
+  provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  provider["registry.terraform.io/datadog/datadog"] (close) - *terraform.graphNodeCloseProvider
+    datadog_dashboard.aws_billing_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.aws_elb_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.aws_mq_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.business_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.jvm_overview_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.k8s_overview_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.load_test_dashboard - *terraform.NodeApplyableResourceInstance
+    datadog_dashboard.rum_mobile_dashboard - *terraform.NodeApplyableResourceInstance
+  root - *terraform.nodeCloseModule
+    meta.count-boundary (EachMode fixup) - *terraform.NodeCountBoundary
+    provider["registry.terraform.io/datadog/datadog"] (close) - *terraform.graphNodeCloseProvider
+  ------
+2021/03/17 12:14:50 [DEBUG] Starting graph walk: walkApply
+2021/03/17 12:14:50 [TRACE] dag/walk: visiting "provider[\"registry.terraform.io/datadog/datadog\"]"
+2021/03/17 12:14:50 [TRACE] vertex "provider[\"registry.terraform.io/datadog/datadog\"]": starting visit (*terraform.NodeApplyableProvider)
+2021-03-17T12:14:50.623+0200 [INFO]  plugin: configuring client automatic mTLS
+2021-03-17T12:14:50.645+0200 [DEBUG] plugin: starting plugin: path=.terraform/providers/registry.terraform.io/datadog/datadog/2.21.0/darwin_amd64/terraform-provider-datadog_v2.21.0 args=[.terraform/providers/registry.terraform.io/datadog/datadog/2.21.0/darwin_amd64/terraform-provider-datadog_v2.21.0]
+2021-03-17T12:14:50.649+0200 [DEBUG] plugin: plugin started: path=.terraform/providers/registry.terraform.io/datadog/datadog/2.21.0/darwin_amd64/terraform-provider-datadog_v2.21.0 pid=30464
+2021-03-17T12:14:50.649+0200 [DEBUG] plugin: waiting for RPC address: path=.terraform/providers/registry.terraform.io/datadog/datadog/2.21.0/darwin_amd64/terraform-provider-datadog_v2.21.0
+2021-03-17T12:14:50.667+0200 [INFO]  plugin.terraform-provider-datadog_v2.21.0: configuring server automatic mTLS: timestamp=2021-03-17T12:14:50.667+0200
+2021-03-17T12:14:50.692+0200 [DEBUG] plugin: using plugin: version=5
+2021-03-17T12:14:50.692+0200 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: plugin address: address=/var/folders/mx/4gqd2w1929v9hzdjxh3bftcw0000gp/T/plugin181133471 network=unix timestamp=2021-03-17T12:14:50.691+0200
+2021/03/17 12:14:50 [TRACE] BuiltinEvalContext: Initialized "provider[\"registry.terraform.io/datadog/datadog\"]" provider for provider["registry.terraform.io/datadog/datadog"]
+2021/03/17 12:14:50 [TRACE] buildProviderConfig for provider["registry.terraform.io/datadog/datadog"]: no configuration at all
+2021/03/17 12:14:50 [TRACE] GRPCProvider: GetSchema
+2021-03-17T12:14:50.742+0200 [TRACE] plugin.stdio: waiting for stdio data
+2021/03/17 12:14:50 [TRACE] No provider meta schema returned
+2021/03/17 12:14:50 [TRACE] GRPCProvider: Configure
+2021-03-17T12:14:50.772+0200 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: 2021/03/17 12:14:50 [INFO] Datadog client successfully initialized, now validating...
+2021-03-17T12:14:51.605+0200 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: 2021/03/17 12:14:51 [INFO] Datadog Client successfully validated.
+2021/03/17 12:14:51 [TRACE] vertex "provider[\"registry.terraform.io/datadog/datadog\"]": visit complete
+2021/03/17 12:14:51 [TRACE] dag/walk: visiting "datadog_dashboard.aws_elb_dashboard (expand)"
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.aws_elb_dashboard (expand)": starting visit (*terraform.nodeExpandApplyableResource)
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.aws_elb_dashboard (expand)": expanding dynamic subgraph
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.aws_elb_dashboard (expand)": entering dynamic subgraph
+2021/03/17 12:14:51 [TRACE] dag/walk: visiting "datadog_dashboard.jvm_overview_dashboard (expand)"
+2021/03/17 12:14:51 [TRACE] dag/walk: visiting "datadog_dashboard.business_dashboard (expand)"
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.business_dashboard (expand)": starting visit (*terraform.nodeExpandApplyableResource)
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.business_dashboard (expand)": expanding dynamic subgraph
+2021/03/17 12:14:51 [TRACE] dag/walk: visiting "datadog_dashboard.aws_mq_dashboard (expand)"
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.aws_mq_dashboard (expand)": starting visit (*terraform.nodeExpandApplyableResource)
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.business_dashboard (expand)": entering dynamic subgraph
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.aws_mq_dashboard (expand)": expanding dynamic subgraph
+2021/03/17 12:14:51 [TRACE] dag/walk: visiting "datadog_dashboard.aws_elb_dashboard"
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.aws_elb_dashboard": starting visit (*terraform.NodeApplyableResource)
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.aws_mq_dashboard (expand)": entering dynamic subgraph
+2021/03/17 12:14:51 [TRACE] dag/walk: visiting "datadog_dashboard.k8s_overview_dashboard (expand)"
+2021/03/17 12:14:51 [TRACE] dag/walk: visiting "datadog_dashboard.rum_mobile_dashboard (expand)"
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.k8s_overview_dashboard (expand)": starting visit (*terraform.nodeExpandApplyableResource)
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.rum_mobile_dashboard (expand)": starting visit (*terraform.nodeExpandApplyableResource)
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.rum_mobile_dashboard (expand)": expanding dynamic subgraph
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.k8s_overview_dashboard (expand)": expanding dynamic subgraph
+2021/03/17 12:14:51 [TRACE] dag/walk: visiting "datadog_dashboard.aws_billing_dashboard (expand)"
+2021/03/17 12:14:51 [TRACE] dag/walk: visiting "datadog_dashboard.aws_mq_dashboard"
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.aws_billing_dashboard (expand)": starting visit (*terraform.nodeExpandApplyableResource)
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.aws_elb_dashboard": visit complete
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.aws_billing_dashboard (expand)": expanding dynamic subgraph
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.aws_mq_dashboard": starting visit (*terraform.NodeApplyableResource)
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.aws_mq_dashboard": visit complete
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.aws_mq_dashboard (expand)": dynamic subgraph completed successfully
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.aws_mq_dashboard (expand)": visit complete
+2021/03/17 12:14:51 [TRACE] dag/walk: visiting "datadog_dashboard.business_dashboard"
+2021/03/17 12:14:51 [TRACE] dag/walk: visiting "datadog_dashboard.aws_mq_dashboard"
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.aws_mq_dashboard": starting visit (*terraform.NodeApplyableResourceInstance)
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.business_dashboard": starting visit (*terraform.NodeApplyableResource)
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.rum_mobile_dashboard (expand)": entering dynamic subgraph
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.jvm_overview_dashboard (expand)": starting visit (*terraform.nodeExpandApplyableResource)
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.business_dashboard": visit complete
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.jvm_overview_dashboard (expand)": expanding dynamic subgraph
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.business_dashboard (expand)": dynamic subgraph completed successfully
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.business_dashboard (expand)": visit complete
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.jvm_overview_dashboard (expand)": entering dynamic subgraph
+2021/03/17 12:14:51 [TRACE] dag/walk: visiting "datadog_dashboard.load_test_dashboard (expand)"
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.load_test_dashboard (expand)": starting visit (*terraform.nodeExpandApplyableResource)
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.load_test_dashboard (expand)": expanding dynamic subgraph
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.k8s_overview_dashboard (expand)": entering dynamic subgraph
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.aws_elb_dashboard (expand)": dynamic subgraph completed successfully
+2021/03/17 12:14:51 [TRACE] dag/walk: visiting "datadog_dashboard.k8s_overview_dashboard"
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.aws_elb_dashboard (expand)": visit complete
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.k8s_overview_dashboard": starting visit (*terraform.NodeApplyableResource)
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.k8s_overview_dashboard": visit complete
+2021/03/17 12:14:51 [TRACE] dag/walk: visiting "datadog_dashboard.aws_elb_dashboard"
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.aws_elb_dashboard": starting visit (*terraform.NodeApplyableResourceInstance)
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.k8s_overview_dashboard (expand)": dynamic subgraph completed successfully
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.k8s_overview_dashboard (expand)": visit complete
+2021/03/17 12:14:51 [TRACE] dag/walk: visiting "datadog_dashboard.rum_mobile_dashboard"
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.rum_mobile_dashboard": starting visit (*terraform.NodeApplyableResource)
+2021/03/17 12:14:51 [TRACE] dag/walk: visiting "datadog_dashboard.k8s_overview_dashboard"
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.k8s_overview_dashboard": starting visit (*terraform.NodeApplyableResourceInstance)
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.rum_mobile_dashboard": visit complete
+2021/03/17 12:14:51 [TRACE] dag/walk: visiting "datadog_dashboard.business_dashboard"
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.rum_mobile_dashboard (expand)": dynamic subgraph completed successfully
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.business_dashboard": starting visit (*terraform.NodeApplyableResourceInstance)
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.rum_mobile_dashboard (expand)": visit complete
+2021/03/17 12:14:51 [TRACE] dag/walk: visiting "datadog_dashboard.rum_mobile_dashboard"
+2021/03/17 12:14:51 [TRACE] dag/walk: visiting "datadog_dashboard.jvm_overview_dashboard"
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.rum_mobile_dashboard": starting visit (*terraform.NodeApplyableResourceInstance)
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.jvm_overview_dashboard": starting visit (*terraform.NodeApplyableResource)
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.load_test_dashboard (expand)": entering dynamic subgraph
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.jvm_overview_dashboard": visit complete
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.jvm_overview_dashboard (expand)": dynamic subgraph completed successfully
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.jvm_overview_dashboard (expand)": visit complete
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.aws_billing_dashboard (expand)": entering dynamic subgraph
+2021/03/17 12:14:51 [TRACE] dag/walk: visiting "datadog_dashboard.jvm_overview_dashboard"
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.jvm_overview_dashboard": starting visit (*terraform.NodeApplyableResourceInstance)
+2021/03/17 12:14:51 [TRACE] dag/walk: visiting "datadog_dashboard.aws_billing_dashboard"
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.aws_billing_dashboard": starting visit (*terraform.NodeApplyableResource)
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.aws_billing_dashboard": visit complete
+2021/03/17 12:14:51 [TRACE] dag/walk: visiting "datadog_dashboard.load_test_dashboard"
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.aws_billing_dashboard (expand)": dynamic subgraph completed successfully
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.load_test_dashboard": starting visit (*terraform.NodeApplyableResource)
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.aws_billing_dashboard (expand)": visit complete
+2021/03/17 12:14:51 [TRACE] dag/walk: visiting "datadog_dashboard.aws_billing_dashboard"
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.aws_billing_dashboard": starting visit (*terraform.NodeApplyableResourceInstance)
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.load_test_dashboard": visit complete
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.load_test_dashboard (expand)": dynamic subgraph completed successfully
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.load_test_dashboard (expand)": visit complete
+2021/03/17 12:14:51 [TRACE] dag/walk: visiting "datadog_dashboard.load_test_dashboard"
+2021/03/17 12:14:51 [TRACE] vertex "datadog_dashboard.load_test_dashboard": starting visit (*terraform.NodeApplyableResourceInstance)
+2021/03/17 12:14:51 [TRACE] EvalReadDiff: Read Create change from plan for datadog_dashboard.business_dashboard
+2021/03/17 12:14:51 [TRACE] EvalReadState: reading state for datadog_dashboard.business_dashboard
+2021/03/17 12:14:51 [TRACE] EvalReadState: no state present for datadog_dashboard.business_dashboard
+2021/03/17 12:14:51 [TRACE] EvalReadDiff: Read Create change from plan for datadog_dashboard.business_dashboard
+2021/03/17 12:14:51 [TRACE] EvalReadDiff: Read Create change from plan for datadog_dashboard.aws_billing_dashboard
+2021/03/17 12:14:51 [TRACE] EvalReadState: reading state for datadog_dashboard.aws_billing_dashboard
+2021/03/17 12:14:51 [TRACE] EvalReadState: no state present for datadog_dashboard.aws_billing_dashboard
+2021/03/17 12:14:51 [TRACE] EvalReadDiff: Read Create change from plan for datadog_dashboard.rum_mobile_dashboard
+2021/03/17 12:14:51 [TRACE] EvalReadState: reading state for datadog_dashboard.rum_mobile_dashboard
+2021/03/17 12:14:51 [TRACE] EvalReadState: no state present for datadog_dashboard.rum_mobile_dashboard
+2021/03/17 12:14:51 [TRACE] EvalReadDiff: Read Create change from plan for datadog_dashboard.aws_elb_dashboard
+2021/03/17 12:14:51 [TRACE] EvalReadState: reading state for datadog_dashboard.aws_elb_dashboard
+2021/03/17 12:14:51 [TRACE] EvalReadState: no state present for datadog_dashboard.aws_elb_dashboard
+2021/03/17 12:14:51 [TRACE] EvalReadDiff: Read Create change from plan for datadog_dashboard.aws_mq_dashboard
+2021/03/17 12:14:51 [TRACE] EvalReadState: reading state for datadog_dashboard.aws_mq_dashboard
+2021/03/17 12:14:51 [TRACE] EvalReadState: no state present for datadog_dashboard.aws_mq_dashboard
+2021/03/17 12:14:51 [TRACE] EvalReadDiff: Read Create change from plan for datadog_dashboard.load_test_dashboard
+2021/03/17 12:14:51 [TRACE] EvalReadState: reading state for datadog_dashboard.load_test_dashboard
+2021/03/17 12:14:51 [TRACE] EvalReadState: no state present for datadog_dashboard.load_test_dashboard
+2021/03/17 12:14:51 [TRACE] EvalReadDiff: Read Create change from plan for datadog_dashboard.aws_billing_dashboard
+2021/03/17 12:14:51 [TRACE] EvalReadDiff: Read Create change from plan for datadog_dashboard.rum_mobile_dashboard
+2021/03/17 12:14:51 [TRACE] Re-validating config for "datadog_dashboard.business_dashboard"
+2021/03/17 12:14:51 [TRACE] GRPCProvider: ValidateResourceTypeConfig
+2021/03/17 12:14:51 [TRACE] EvalReadDiff: Read Create change from plan for datadog_dashboard.aws_elb_dashboard
+2021/03/17 12:14:51 [TRACE] EvalReadDiff: Read Create change from plan for datadog_dashboard.jvm_overview_dashboard
+2021/03/17 12:14:51 [TRACE] EvalReadState: reading state for datadog_dashboard.jvm_overview_dashboard
+2021/03/17 12:14:51 [TRACE] EvalReadState: no state present for datadog_dashboard.jvm_overview_dashboard
+2021/03/17 12:14:51 [TRACE] EvalReadDiff: Read Create change from plan for datadog_dashboard.aws_mq_dashboard
+2021/03/17 12:14:51 [TRACE] EvalReadDiff: Read Create change from plan for datadog_dashboard.k8s_overview_dashboard
+2021/03/17 12:14:51 [TRACE] EvalReadState: reading state for datadog_dashboard.k8s_overview_dashboard
+2021/03/17 12:14:51 [TRACE] EvalReadState: no state present for datadog_dashboard.k8s_overview_dashboard
+2021/03/17 12:14:51 [TRACE] EvalReadDiff: Read Create change from plan for datadog_dashboard.load_test_dashboard
+2021/03/17 12:14:51 [TRACE] EvalReadDiff: Read Create change from plan for datadog_dashboard.jvm_overview_dashboard
+2021/03/17 12:14:51 [TRACE] GRPCProvider: PlanResourceChange
+2021/03/17 12:14:51 [TRACE] EvalReadDiff: Read Create change from plan for datadog_dashboard.k8s_overview_dashboard
+2021/03/17 12:14:51 [TRACE] Re-validating config for "datadog_dashboard.rum_mobile_dashboard"
+2021/03/17 12:14:51 [TRACE] GRPCProvider: ValidateResourceTypeConfig
+2021/03/17 12:14:51 [TRACE] Re-validating config for "datadog_dashboard.aws_billing_dashboard"
+2021/03/17 12:14:51 [TRACE] GRPCProvider: ValidateResourceTypeConfig
+2021/03/17 12:14:51 [TRACE] GRPCProvider: PlanResourceChange
+2021/03/17 12:14:51 [TRACE] GRPCProvider: PlanResourceChange
+2021/03/17 12:14:51 [TRACE] Re-validating config for "datadog_dashboard.aws_elb_dashboard"
+2021/03/17 12:14:51 [TRACE] GRPCProvider: ValidateResourceTypeConfig
+2021/03/17 12:14:51 [TRACE] Re-validating config for "datadog_dashboard.load_test_dashboard"
+2021/03/17 12:14:51 [TRACE] GRPCProvider: ValidateResourceTypeConfig
+2021/03/17 12:14:51 [TRACE] GRPCProvider: PlanResourceChange
+2021/03/17 12:14:51 [TRACE] GRPCProvider: PlanResourceChange
+2021/03/17 12:14:51 [TRACE] EvalCheckPlannedChange: Verifying that actual change (action Create) matches planned change (action Create)
+2021/03/17 12:14:51 [TRACE] EvalReadState: reading state for datadog_dashboard.business_dashboard
+2021/03/17 12:14:51 [TRACE] EvalReadState: no state present for datadog_dashboard.business_dashboard
+2021/03/17 12:14:51 [TRACE] Re-validating config for "datadog_dashboard.aws_mq_dashboard"
+2021/03/17 12:14:51 [TRACE] GRPCProvider: ValidateResourceTypeConfig
+2021/03/17 12:14:51 [DEBUG] EvalApply: ProviderMeta config value set
+2021/03/17 12:14:51 [DEBUG] datadog_dashboard.business_dashboard: applying the planned Create change
+2021/03/17 12:14:51 [TRACE] GRPCProvider: ApplyResourceChange
+2021-03-17T12:14:51.838+0200 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: 2021/03/17 12:14:51 [DEBUG] setting computed for "dashboard_lists_removed" from ComputedKeys
+2021/03/17 12:14:51 [TRACE] GRPCProvider: PlanResourceChange
+2021/03/17 12:14:51 [TRACE] Re-validating config for "datadog_dashboard.jvm_overview_dashboard"
+2021/03/17 12:14:51 [TRACE] GRPCProvider: ValidateResourceTypeConfig
+2021/03/17 12:14:52 [TRACE] GRPCProvider: PlanResourceChange
+2021/03/17 12:14:52 [TRACE] EvalCheckPlannedChange: Verifying that actual change (action Create) matches planned change (action Create)
+2021/03/17 12:14:52 [TRACE] EvalReadState: reading state for datadog_dashboard.aws_billing_dashboard
+2021/03/17 12:14:52 [TRACE] EvalReadState: no state present for datadog_dashboard.aws_billing_dashboard
+2021/03/17 12:14:52 [TRACE] EvalCheckPlannedChange: Verifying that actual change (action Create) matches planned change (action Create)
+2021/03/17 12:14:52 [TRACE] EvalReadState: reading state for datadog_dashboard.rum_mobile_dashboard
+2021/03/17 12:14:52 [TRACE] EvalReadState: no state present for datadog_dashboard.rum_mobile_dashboard
+2021/03/17 12:14:52 [TRACE] EvalCheckPlannedChange: Verifying that actual change (action Create) matches planned change (action Create)
+2021/03/17 12:14:52 [TRACE] EvalReadState: reading state for datadog_dashboard.aws_elb_dashboard
+2021/03/17 12:14:52 [TRACE] EvalReadState: no state present for datadog_dashboard.aws_elb_dashboard
+2021/03/17 12:14:52 [DEBUG] EvalApply: ProviderMeta config value set
+2021/03/17 12:14:52 [DEBUG] datadog_dashboard.aws_billing_dashboard: applying the planned Create change
+2021/03/17 12:14:52 [TRACE] GRPCProvider: ApplyResourceChange
+2021-03-17T12:14:52.115+0200 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: 2021/03/17 12:14:52 [DEBUG] setting computed for "dashboard_lists_removed" from ComputedKeys
+2021/03/17 12:14:52 [DEBUG] EvalApply: ProviderMeta config value set
+2021/03/17 12:14:52 [DEBUG] datadog_dashboard.rum_mobile_dashboard: applying the planned Create change
+2021/03/17 12:14:52 [TRACE] GRPCProvider: ApplyResourceChange
+2021/03/17 12:14:52 [DEBUG] EvalApply: ProviderMeta config value set
+2021/03/17 12:14:52 [DEBUG] datadog_dashboard.aws_elb_dashboard: applying the planned Create change
+2021/03/17 12:14:52 [TRACE] GRPCProvider: ApplyResourceChange
+2021-03-17T12:14:52.161+0200 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: 2021/03/17 12:14:52 [DEBUG] setting computed for "dashboard_lists_removed" from ComputedKeys
+2021-03-17T12:14:52.184+0200 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: 2021/03/17 12:14:52 [DEBUG] setting computed for "dashboard_lists_removed" from ComputedKeys
+2021/03/17 12:14:52 [TRACE] EvalCheckPlannedChange: Verifying that actual change (action Create) matches planned change (action Create)
+2021/03/17 12:14:52 [TRACE] EvalReadState: reading state for datadog_dashboard.aws_mq_dashboard
+2021/03/17 12:14:52 [TRACE] EvalReadState: no state present for datadog_dashboard.aws_mq_dashboard
+2021/03/17 12:14:52 [TRACE] EvalCheckPlannedChange: Verifying that actual change (action Create) matches planned change (action Create)
+2021/03/17 12:14:52 [TRACE] EvalReadState: reading state for datadog_dashboard.load_test_dashboard
+2021/03/17 12:14:52 [TRACE] EvalReadState: no state present for datadog_dashboard.load_test_dashboard
+2021/03/17 12:14:52 [DEBUG] EvalApply: ProviderMeta config value set
+2021/03/17 12:14:52 [DEBUG] datadog_dashboard.load_test_dashboard: applying the planned Create change
+2021/03/17 12:14:52 [TRACE] GRPCProvider: ApplyResourceChange
+2021/03/17 12:14:52 [DEBUG] EvalApply: ProviderMeta config value set
+2021/03/17 12:14:52 [DEBUG] datadog_dashboard.aws_mq_dashboard: applying the planned Create change
+2021/03/17 12:14:52 [TRACE] GRPCProvider: ApplyResourceChange
+2021/03/17 12:14:52 [TRACE] Re-validating config for "datadog_dashboard.k8s_overview_dashboard"
+2021/03/17 12:14:52 [TRACE] GRPCProvider: ValidateResourceTypeConfig
+2021-03-17T12:14:52.382+0200 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: 2021/03/17 12:14:52 [DEBUG] setting computed for "dashboard_lists_removed" from ComputedKeys
+2021-03-17T12:14:52.409+0200 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: 2021/03/17 12:14:52 [DEBUG] setting computed for "dashboard_lists_removed" from ComputedKeys
+2021/03/17 12:14:52 [TRACE] EvalCheckPlannedChange: Verifying that actual change (action Create) matches planned change (action Create)
+2021/03/17 12:14:52 [TRACE] EvalReadState: reading state for datadog_dashboard.jvm_overview_dashboard
+2021/03/17 12:14:52 [TRACE] EvalReadState: no state present for datadog_dashboard.jvm_overview_dashboard
+2021/03/17 12:14:52 [TRACE] GRPCProvider: PlanResourceChange
+2021/03/17 12:14:52 [DEBUG] EvalApply: ProviderMeta config value set
+2021/03/17 12:14:52 [DEBUG] datadog_dashboard.jvm_overview_dashboard: applying the planned Create change
+2021/03/17 12:14:52 [TRACE] GRPCProvider: ApplyResourceChange
+2021-03-17T12:14:52.701+0200 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: 2021/03/17 12:14:52 [DEBUG] Waiting for state to become: [success]
+2021-03-17T12:14:52.704+0200 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: 2021/03/17 12:14:52 [DEBUG] setting computed for "dashboard_lists_removed" from ComputedKeys
+2021-03-17T12:14:52.747+0200 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: panic: interface conversion: interface {} is nil, not map[string]interface {}
+2021-03-17T12:14:52.747+0200 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: 
+2021-03-17T12:14:52.747+0200 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: goroutine 209 [running]:
+2021-03-17T12:14:52.747+0200 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: github.com/terraform-providers/terraform-provider-datadog/datadog.buildDatadogToplistRequests(0xc00063b180, 0xc000622db0)
+2021-03-17T12:14:52.747+0200 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: 	github.com/terraform-providers/terraform-provider-datadog/datadog/resource_datadog_dashboard.go:4848 +0x7e7
+2021-03-17T12:14:52.747+0200 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: github.com/terraform-providers/terraform-provider-datadog/datadog.buildDatadogToplistDefinition(0xc000622db0, 0xc000622ba0)
+2021-03-17T12:14:52.747+0200 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: 	github.com/terraform-providers/terraform-provider-datadog/datadog/resource_datadog_dashboard.go:4764 +0xe5
+2021-03-17T12:14:52.747+0200 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: github.com/terraform-providers/terraform-provider-datadog/datadog.buildDatadogWidget(0xc000622ba0, 0xc0023c40d0, 0x0, 0x0)
+2021-03-17T12:14:52.747+0200 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: 	github.com/terraform-providers/terraform-provider-datadog/datadog/resource_datadog_dashboard.go:879 +0x16a5
+2021-03-17T12:14:52.747+0200 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: github.com/terraform-providers/terraform-provider-datadog/datadog.buildDatadogWidgets(0xc00063b478, 0x23983d8, 0x6, 0x20a7560)
+2021-03-17T12:14:52.747+0200 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: 	github.com/terraform-providers/terraform-provider-datadog/datadog/resource_datadog_dashboard.go:772 +0xee
+2021-03-17T12:14:52.747+0200 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: github.com/terraform-providers/terraform-provider-datadog/datadog.buildDatadogDashboard(0xc000339730, 0x0, 0x0, 0x0)
+2021-03-17T12:14:52.747+0200 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: 	github.com/terraform-providers/terraform-provider-datadog/datadog/resource_datadog_dashboard.go:298 +0x291
+2021-03-17T12:14:52.747+0200 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: github.com/terraform-providers/terraform-provider-datadog/datadog.resourceDatadogDashboardCreate(0xc000339730, 0x215efc0, 0xc0009dc0c0, 0x2, 0x30c26e0)
+2021-03-17T12:14:52.747+0200 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: 	github.com/terraform-providers/terraform-provider-datadog/datadog/resource_datadog_dashboard.go:117 +0x87
+2021-03-17T12:14:52.747+0200 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: github.com/hashicorp/terraform-plugin-sdk/helper/schema.(*Resource).Apply(0xc00013d680, 0xc00158a6e0, 0xc002c5f680, 0x215efc0, 0xc0009dc0c0, 0x217a501, 0xc0022dd408, 0xc002d14510)
+2021-03-17T12:14:52.747+0200 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: 	github.com/hashicorp/terraform-plugin-sdk@v1.15.0/helper/schema/resource.go:310 +0x375
+2021-03-17T12:14:52.747+0200 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: github.com/hashicorp/terraform-plugin-sdk/helper/schema.(*Provider).Apply(0xc000046100, 0xc00063ba38, 0xc00158a6e0, 0xc002c5f680, 0xc002513168, 0xc00242df08, 0x217cec0)
+2021-03-17T12:14:52.747+0200 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: 	github.com/hashicorp/terraform-plugin-sdk@v1.15.0/helper/schema/provider.go:294 +0x99
+2021-03-17T12:14:52.747+0200 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: github.com/hashicorp/terraform-plugin-sdk/internal/helper/plugin.(*GRPCProviderServer).ApplyResourceChange(0xc000288130, 0x2662f80, 0xc0022a01b0, 0xc002150000, 0xc000288130, 0xc0022a01b0, 0xc000c43ba0)
+2021-03-17T12:14:52.747+0200 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: 	github.com/hashicorp/terraform-plugin-sdk@v1.15.0/internal/helper/plugin/grpc_provider.go:885 +0x8ab
+2021-03-17T12:14:52.747+0200 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: github.com/hashicorp/terraform-plugin-sdk/internal/tfplugin5._Provider_ApplyResourceChange_Handler(0x2324c80, 0xc000288130, 0x2662f80, 0xc0022a01b0, 0xc001f7a120, 0x0, 0x2662f80, 0xc0022a01b0, 0xc0023b0000, 0xfca0)
+2021-03-17T12:14:52.747+0200 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: 	github.com/hashicorp/terraform-plugin-sdk@v1.15.0/internal/tfplugin5/tfplugin5.pb.go:3305 +0x214
+2021-03-17T12:14:52.748+0200 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: google.golang.org/grpc.(*Server).processUnaryRPC(0xc0003a9880, 0x266ec40, 0xc00057d080, 0xc00227ba00, 0xc000449c50, 0x307e9c0, 0x0, 0x0, 0x0)
+2021-03-17T12:14:52.748+0200 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: 	google.golang.org/grpc@v1.30.0/server.go:1171 +0x522
+2021-03-17T12:14:52.748+0200 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: google.golang.org/grpc.(*Server).handleStream(0xc0003a9880, 0x266ec40, 0xc00057d080, 0xc00227ba00, 0x0)
+2021-03-17T12:14:52.748+0200 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: 	google.golang.org/grpc@v1.30.0/server.go:1494 +0xcc5
+2021-03-17T12:14:52.748+0200 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: google.golang.org/grpc.(*Server).serveStreams.func1.2(0xc0000be490, 0xc0003a9880, 0x266ec40, 0xc00057d080, 0xc00227ba00)
+2021-03-17T12:14:52.748+0200 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: 	google.golang.org/grpc@v1.30.0/server.go:834 +0xa5
+2021-03-17T12:14:52.748+0200 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: created by google.golang.org/grpc.(*Server).serveStreams.func1
+2021-03-17T12:14:52.748+0200 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: 	google.golang.org/grpc@v1.30.0/server.go:832 +0x1fd
+2021/03/17 12:14:52 [TRACE] vertex "datadog_dashboard.k8s_overview_dashboard": visit complete
+2021-03-17T12:14:52.753+0200 [WARN]  plugin.stdio: received EOF, stopping recv loop: err="rpc error: code = Unavailable desc = transport is closing"
+2021-03-17T12:14:52.753+0200 [DEBUG] plugin: plugin process exited: path=.terraform/providers/registry.terraform.io/datadog/datadog/2.21.0/darwin_amd64/terraform-provider-datadog_v2.21.0 pid=30464 error="exit status 2"
+2021/03/17 12:14:52 [DEBUG] datadog_dashboard.aws_elb_dashboard: apply errored, but we're indicating that via the Error pointer rather than returning it: rpc error: code = Unavailable desc = transport is closing
+2021/03/17 12:14:52 [DEBUG] datadog_dashboard.load_test_dashboard: apply errored, but we're indicating that via the Error pointer rather than returning it: rpc error: code = Unavailable desc = transport is closing
+2021/03/17 12:14:52 [TRACE] EvalMaybeTainted: datadog_dashboard.aws_elb_dashboard encountered an error during creation, so it is now marked as tainted
+2021/03/17 12:14:52 [TRACE] EvalMaybeTainted: datadog_dashboard.load_test_dashboard encountered an error during creation, so it is now marked as tainted
+2021/03/17 12:14:52 [DEBUG] datadog_dashboard.aws_mq_dashboard: apply errored, but we're indicating that via the Error pointer rather than returning it: rpc error: code = Unavailable desc = transport is closing
+2021/03/17 12:14:52 [TRACE] EvalWriteState: removing state object for datadog_dashboard.aws_elb_dashboard
+2021/03/17 12:14:52 [TRACE] EvalWriteState: removing state object for datadog_dashboard.load_test_dashboard
+2021/03/17 12:14:52 [TRACE] EvalMaybeTainted: datadog_dashboard.aws_mq_dashboard encountered an error during creation, so it is now marked as tainted
+2021/03/17 12:14:52 [TRACE] EvalApplyProvisioners: datadog_dashboard.aws_elb_dashboard has no state, so skipping provisioners
+2021/03/17 12:14:52 [TRACE] EvalApplyProvisioners: datadog_dashboard.load_test_dashboard has no state, so skipping provisioners
+2021/03/17 12:14:52 [TRACE] EvalWriteState: removing state object for datadog_dashboard.aws_mq_dashboard
+2021/03/17 12:14:52 [TRACE] EvalMaybeTainted: datadog_dashboard.aws_elb_dashboard encountered an error during creation, so it is now marked as tainted
+2021/03/17 12:14:52 [TRACE] EvalMaybeTainted: datadog_dashboard.load_test_dashboard encountered an error during creation, so it is now marked as tainted
+2021/03/17 12:14:52 [TRACE] EvalApplyProvisioners: datadog_dashboard.aws_mq_dashboard has no state, so skipping provisioners
+2021/03/17 12:14:52 [TRACE] EvalWriteState: removing state object for datadog_dashboard.aws_elb_dashboard
+2021/03/17 12:14:52 [TRACE] EvalMaybeTainted: datadog_dashboard.aws_mq_dashboard encountered an error during creation, so it is now marked as tainted
+2021/03/17 12:14:52 [TRACE] EvalWriteState: removing state object for datadog_dashboard.load_test_dashboard
+2021/03/17 12:14:52 [TRACE] EvalWriteState: removing state object for datadog_dashboard.aws_mq_dashboard
+2021/03/17 12:14:52 [TRACE] vertex "datadog_dashboard.aws_elb_dashboard": visit complete
+2021/03/17 12:14:52 [TRACE] vertex "datadog_dashboard.aws_mq_dashboard": visit complete
+2021/03/17 12:14:52 [TRACE] vertex "datadog_dashboard.load_test_dashboard": visit complete
+2021/03/17 12:14:52 [DEBUG] datadog_dashboard.aws_billing_dashboard: apply errored, but we're indicating that via the Error pointer rather than returning it: rpc error: code = Unavailable desc = transport is closing
+2021/03/17 12:14:52 [TRACE] EvalMaybeTainted: datadog_dashboard.aws_billing_dashboard encountered an error during creation, so it is now marked as tainted
+2021/03/17 12:14:52 [TRACE] EvalWriteState: removing state object for datadog_dashboard.aws_billing_dashboard
+2021/03/17 12:14:52 [TRACE] EvalApplyProvisioners: datadog_dashboard.aws_billing_dashboard has no state, so skipping provisioners
+2021/03/17 12:14:52 [TRACE] EvalMaybeTainted: datadog_dashboard.aws_billing_dashboard encountered an error during creation, so it is now marked as tainted
+2021/03/17 12:14:52 [TRACE] EvalWriteState: removing state object for datadog_dashboard.aws_billing_dashboard
+2021/03/17 12:14:52 [DEBUG] datadog_dashboard.rum_mobile_dashboard: apply errored, but we're indicating that via the Error pointer rather than returning it: rpc error: code = Unavailable desc = transport is closing
+2021/03/17 12:14:52 [TRACE] vertex "datadog_dashboard.aws_billing_dashboard": visit complete
+2021/03/17 12:14:52 [TRACE] EvalMaybeTainted: datadog_dashboard.rum_mobile_dashboard encountered an error during creation, so it is now marked as tainted
+2021/03/17 12:14:52 [DEBUG] datadog_dashboard.jvm_overview_dashboard: apply errored, but we're indicating that via the Error pointer rather than returning it: rpc error: code = Unavailable desc = transport is closing
+2021/03/17 12:14:52 [TRACE] EvalMaybeTainted: datadog_dashboard.jvm_overview_dashboard encountered an error during creation, so it is now marked as tainted
+2021/03/17 12:14:52 [TRACE] EvalWriteState: removing state object for datadog_dashboard.jvm_overview_dashboard
+2021/03/17 12:14:52 [TRACE] EvalWriteState: removing state object for datadog_dashboard.rum_mobile_dashboard
+2021/03/17 12:14:52 [TRACE] EvalApplyProvisioners: datadog_dashboard.jvm_overview_dashboard has no state, so skipping provisioners
+2021/03/17 12:14:52 [TRACE] EvalApplyProvisioners: datadog_dashboard.rum_mobile_dashboard has no state, so skipping provisioners
+2021/03/17 12:14:52 [TRACE] EvalMaybeTainted: datadog_dashboard.rum_mobile_dashboard encountered an error during creation, so it is now marked as tainted
+2021/03/17 12:14:52 [TRACE] EvalMaybeTainted: datadog_dashboard.jvm_overview_dashboard encountered an error during creation, so it is now marked as tainted
+2021/03/17 12:14:52 [TRACE] EvalWriteState: removing state object for datadog_dashboard.rum_mobile_dashboard
+2021/03/17 12:14:52 [TRACE] EvalWriteState: removing state object for datadog_dashboard.jvm_overview_dashboard
+2021/03/17 12:14:52 [TRACE] vertex "datadog_dashboard.rum_mobile_dashboard": visit complete
+2021/03/17 12:14:52 [TRACE] vertex "datadog_dashboard.jvm_overview_dashboard": visit complete
+2021/03/17 12:14:52 [DEBUG] datadog_dashboard.business_dashboard: apply errored, but we're indicating that via the Error pointer rather than returning it: rpc error: code = Unavailable desc = transport is closing
+2021/03/17 12:14:52 [TRACE] EvalMaybeTainted: datadog_dashboard.business_dashboard encountered an error during creation, so it is now marked as tainted
+2021/03/17 12:14:52 [TRACE] EvalWriteState: removing state object for datadog_dashboard.business_dashboard
+2021/03/17 12:14:52 [TRACE] EvalApplyProvisioners: datadog_dashboard.business_dashboard has no state, so skipping provisioners
+2021/03/17 12:14:52 [TRACE] EvalMaybeTainted: datadog_dashboard.business_dashboard encountered an error during creation, so it is now marked as tainted
+2021/03/17 12:14:52 [TRACE] EvalWriteState: removing state object for datadog_dashboard.business_dashboard
+2021/03/17 12:14:52 [TRACE] vertex "datadog_dashboard.business_dashboard": visit complete
+2021/03/17 12:14:52 [TRACE] dag/walk: upstream of "meta.count-boundary (EachMode fixup)" errored, so skipping
+2021/03/17 12:14:52 [TRACE] dag/walk: upstream of "provider[\"registry.terraform.io/datadog/datadog\"] (close)" errored, so skipping
+2021/03/17 12:14:52 [TRACE] dag/walk: upstream of "root" errored, so skipping
+2021/03/17 12:14:52 [TRACE] statemgr.Filesystem: reading latest snapshot from terraform.tfstate
+2021/03/17 12:14:52 [TRACE] statemgr.Filesystem: snapshot file has nil snapshot, but that's okay
+2021/03/17 12:14:52 [TRACE] statemgr.Filesystem: read nil snapshot
+2021/03/17 12:14:52 [TRACE] statemgr.Filesystem: no original state snapshot to back up
+2021/03/17 12:14:52 [TRACE] statemgr.Filesystem: state has changed since last snapshot, so incrementing serial to 1
+2021/03/17 12:14:52 [TRACE] statemgr.Filesystem: writing snapshot at terraform.tfstate
+2021/03/17 12:14:52 [TRACE] statemgr.Filesystem: removing lock metadata file .terraform.tfstate.lock.info
+2021/03/17 12:14:52 [TRACE] statemgr.Filesystem: unlocking terraform.tfstate using fcntl flock
+2021-03-17T12:14:52.780+0200 [DEBUG] plugin: plugin exited

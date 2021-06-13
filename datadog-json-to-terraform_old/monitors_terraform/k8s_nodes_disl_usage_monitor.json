@@ -1,0 +1,24 @@
+{
+	"id": 20874225,
+	"name": "Shady Terraform Test... - Kubernetes Nodes - Disk Usage has been exceeded",
+	"type": "query alert",
+	"query": "avg(last_30m):avg:kubernetes.filesystem.usage_pct{*} > 0.00053",
+	"message": "@slack-cloud-alerts-dev-test",
+	"tags": [],
+	"options": {
+		"notify_audit": false,
+		"locked": true,
+		"silenced": {},
+		"include_tags": false,
+		"no_data_timeframe": 60,
+		"new_host_delay": 300,
+		"require_full_window": true,
+		"notify_no_data": true,
+		"thresholds": {
+			"critical": 0.00053,
+			"warning": 0.0005,
+			"critical_recovery": 0.00049
+		}
+	},
+	"priority": null
+}

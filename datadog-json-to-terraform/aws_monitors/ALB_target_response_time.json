@@ -1,0 +1,26 @@
+{
+	"id": 28986984,
+	"name": "AWS ALB - Target Respone Time is too High",
+	"type": "query alert",
+	"query": "sum(last_15m):max:aws.applicationelb.target_response_time.maximum{environment:production} by {targetgroup} > 3",
+	"message": "@slack-cloud-alerts-bindid-prd\nPriority:P1\n\n@webhook-XiteIt \n\nSummary:P1 - Response Time is {{value}} on {{targetgroup}}\n\nCritical Threshold:{{threshold}}s\nWarning Threshold:{{warn_threshold}}s\n\nHost:AWS ALB\nService:Respone Time per Target Group\nValue:{{value}}\nSeverity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",
+	"tags": [],
+	"options": {
+		"notify_audit": false,
+		"locked": false,
+		"timeout_h": 0,
+		"new_host_delay": 300,
+		"require_full_window": false,
+		"notify_no_data": true,
+		"renotify_interval": "0",
+		"evaluation_delay": 900,
+		"escalation_message": "",
+		"no_data_timeframe": 120,
+		"include_tags": true,
+		"thresholds": {
+			"critical": 3,
+			"warning": 2
+		}
+	},
+	"priority": 1
+}

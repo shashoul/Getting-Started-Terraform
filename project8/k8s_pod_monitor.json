@@ -1,0 +1,27 @@
+{
+	"id": 30875736,
+	"name": "Kubernetes -  Memory Usage is high on Pod",
+	"type": "query alert",
+	"query": "avg(last_1m):max:kubernetes.memory.usage_pct{*} by {pod_name} > 3",
+	"message": "@slack-cloud-alerts-prd",
+	"tags": [],
+	"options": {
+		"notify_audit": false,
+		"locked": false,
+		"timeout_h": 0,
+		"silenced": {},
+		"include_tags": true,
+		"no_data_timeframe": 30,
+		"require_full_window": true,
+		"new_host_delay": 300,
+		"notify_no_data": true,
+		"renotify_interval": 0,
+		"escalation_message": "",
+		"thresholds": {
+			"critical": 3,
+			"warning": 2,
+			"critical_recovery": 2
+		}
+	},
+	"priority": 3
+}

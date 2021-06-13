@@ -1,0 +1,816 @@
+name,priority,type,query,operator,threshold_critical,threshold_warning,threshold_critical_recovery,message,tags,escalation_message,locked,new_host_delay,notify_audit,notify_no_data,renotify_interval,require_full_window,timeout_h,evaluation_delay,no_data_timeframe,include_tags,enable_logs_sample,threshold_windows_recovery_window,threshold_windows_trigger_window
+Terraform (CSV) - AWS EC2 - CPU Avg Usage is high,,query alert,avg(last_1h):avg:aws.ec2.cpuutilization{*},>,25,22,20,slack-cloud-alerts-bindid-prd,,,TRUE,300,FALSE,TRUE,,TRUE,,,30,FALSE,,,
+Terraform (CSV) - AWS EC2 - CPU Max Usage is high,,query alert,avg(last_1h):max:aws.ec2.cpuutilization.maximum{*},>,100,95,90,slack-cloud-alerts-bindid-prd,,,TRUE,300,FALSE,TRUE,,TRUE,,,30,FALSE,,,
+Terraform (CSV) - AWS EC2 - Network In Avg Usage is high,,query alert,avg(last_1h):avg:aws.ec2.network_in{*},>,3000000,2500000,2000000,slack-cloud-alerts-bindid-prd,,,TRUE,300,FALSE,FALSE,,TRUE,,,,FALSE,,,
+Terraform (CSV) - AWS EC2 - Network Out Avg Usage is high,,query alert,avg(last_1h):avg:aws.ec2.network_out{*},>,1400000,1200000,1000000,slack-cloud-alerts-bindid-prd,,,TRUE,300,FALSE,FALSE,,TRUE,,,,FALSE,,,
+Terraform (CSV) - AWS EC2 - Network Out Max Usage is high,,query alert,avg(last_1h):avg:aws.ec2.network_out.maximum{*},>,950000,900000,880000,slack-cloud-alerts-bindid-prd,,,TRUE,300,FALSE,FALSE,,TRUE,,,,FALSE,,,
+Terraform (CSV) - AWS EC2 - Network In Max Usage is high,,query alert,avg(last_1h):avg:aws.ec2.network_in.maximum{*},>,6000000,4600000,4100000,slack-cloud-alerts-bindid-prd,,,TRUE,300,FALSE,FALSE,,TRUE,,,,FALSE,,,
+Terraform (CSV) - AWS EC2 - Number of Failed Host Checks is High,1,query alert,avg(last_10m):sum:aws.ec2.status_check_failed{*},>,0,,,"slack-cloud-alerts-bindid-prd
+Priority:P1
+
+webhook-XiteIt 
+
+Summary:P1 - {{value}} Failed Host Checks on AWS EC2
+
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:AWS ALB
+Service:Number of Failed Host Checks
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,FALSE,300,FALSE,TRUE,0,FALSE,0,900,30,FALSE,,,
+Terraform (CSV) - AWS ALB - High Avg Response time on Load Balancer (over 250ms),,query alert,avg(last_1h):avg:aws.applicationelb.target_response_time.average{*},>,0.25,0.22,0.2,slack-cloud-alerts-bindid-prd,,,TRUE,300,FALSE,TRUE,0,TRUE,0,,120,FALSE,,,
+Terraform (CSV) - AWS ELB - Total Request Count Status (Peaks/Drops),,query alert,avg(last_1h):sum:aws.applicationelb.request_count{*}.as_rate(),>,0.67,0.65,0.63,slack-cloud-alerts-bindid-prd,,,TRUE,300,FALSE,TRUE,,TRUE,,,120,FALSE,,,
+Terraform (CSV) - AWS ELB - High load of 4xx HTTPCode in total,,query alert,sum(last_1h):sum:aws.applicationelb.httpcode_elb_4xx{*} by {host}.as_count(),>,250,220,180,slack-cloud-alerts-bindid-prd,,,FALSE,300,FALSE,FALSE,,TRUE,,,,FALSE,,,
+Terraform (CSV) - AWS ALB - 3XX Error Rate is High,1,query alert,sum(last_15m):avg:aws.applicationelb.httpcode_elb_3xx{environment:production}.as_count(),>,9,7,,"Inactive
+webhook-XiteIt 
+
+Summary:P1 - 3XX Error Rate is {{value}} on AWS ALB
+
+Critical Threshold:{{threshold}}
+Warning Threshold:{{warn_threshold}}
+
+Host:AWS ALB
+Service:3XX Error Rate
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,FALSE,300,FALSE,TRUE,0,FALSE,0,900,30,TRUE,,,
+Terraform (CSV) - AWS ALB - 4XX Error Rate is High,1,query alert,sum(last_15m):sum:aws.applicationelb.httpcode_target_4xx{environment:production}.as_count(),>,50,30,,"slack-bindid-srv-uptime-alerts webhook-Uptime-XiteIt
+
+Summary:P1 - 4XX Error Rate is {{value}} on AWS ALB 
+
+Critical Threshold:{{threshold}}
+Warning Threshold:{{warn_threshold}}
+
+Host:AWS ALB
+Service:4XX Error Rate
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1,,FALSE,300,FALSE,TRUE,0,FALSE,0,900,30,TRUE,,,
+Terraform (CSV) - AWS ALB - 5XX Error Rate is High,1,query alert,sum(last_15m):sum:aws.applicationelb.httpcode_target_5xx{environment:production}.as_count(),>,5,,,"slack-bindid-srv-uptime-alerts webhook-Uptime-XiteIt
+
+Summary:P1 - 5XX Error Rate is {{value}} on AWS ALB
+
+Critical Threshold:{{threshold}}
+Warning Threshold:{{warn_threshold}}
+
+Host:AWS ALB
+Service:5XX Error Rate
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1,,FALSE,300,FALSE,TRUE,0,FALSE,0,900,30,TRUE,,,
+Terraform (CSV) - AWS ALB - Number of Healthy Hosts is Low,1,query alert,avg(last_15m):avg:aws.applicationelb.healthy_host_count.minimum{*} by {targetgroup},<,1,,,"slack-cloud-alerts-bindid-prd
+Priority:P2
+webhook-XiteIt 
+
+Summary:P1 - Number of Healthy Hosts is {{value}} in TG: {{targetgroup}}
+
+Critical Threshold:{{threshold}}
+Warning Threshold:{{warn_threshold}}
+
+Host:AWS ALB
+Service:Number of Healthy Hosts is Low per Target Group
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,FALSE,300,FALSE,TRUE,0,FALSE,0,900,30,FALSE,,,
+Terraform (CSV) - AWS ALB - Number of Requests is High,2,query alert,sum(last_10m):avg:aws.applicationelb.request_count{*}.as_count(),>,4000,3000,,"slack-cloud-alerts-bindid-prd
+webhook-XiteIt 
+Summary:P2 - Number of ALB total Requests is {{value}}
+
+Critical Threshold:{{threshold}}
+Warning Threshold:{{warn_threshold}}
+
+Host:AWS ALB
+Service:Number of Requests is High
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,FALSE,300,FALSE,TRUE,0,FALSE,0,900,30,FALSE,,,
+Terraform (CSV) - AWS ALB - Number of Requests is Low,2,query alert,sum(last_10m):avg:aws.applicationelb.request_count{*}.as_count(),<,20,25,,"slack-cloud-alerts-bindid-prd
+webhook-XiteIt 
+Priority:P2
+
+Summary:P2 - Number of ALB total Requests is {{value}}
+
+Critical Threshold:{{threshold}}
+Warning Threshold:{{warn_threshold}}
+
+Host:AWS ALB
+Service:Number of Requests is Low
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,FALSE,300,FALSE,TRUE,0,FALSE,0,900,30,FALSE,,,
+Terraform (CSV) - AWS ALB - Target 4XX Error Rate is High,1,query alert,sum(last_15m):avg:aws.applicationelb.httpcode_target_4xx{environment:production} by {targetgroup}.as_count(),>,10,6,,"slack-cloud-alerts-bindid-prd
+webhook-XiteIt 
+
+Summary:P1 - 4XX Error Rate is {{value}} on {{targetgroup}}
+
+Critical Threshold:{{threshold}}
+Warning Threshold:{{warn_threshold}}
+
+Host:AWS ALB
+Service:4XX Error Rate per target group
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",targetgroup,,FALSE,300,FALSE,TRUE,0,FALSE,0,900,30,TRUE,,,
+Terraform (CSV) - AWS ALB - Target 5XX Error Rate is High,1,query alert,sum(last_15m):avg:aws.applicationelb.httpcode_target_5xx{environment:production} by {targetgroup}.as_count(),>,5,3,,"slack-cloud-alerts-bindid-prd
+Priority:P1
+webhook-XiteIt 
+
+Summary:P1 - 5XX Error Rate is {{value}}on {{targetgroup}} 
+
+Critical Threshold:{{threshold}}
+Warning Threshold:{{warn_threshold}}
+
+Host:AWS ALB
+Service:5XX Error Rate per target group
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,FALSE,300,FALSE,TRUE,0,FALSE,0,900,120,TRUE,,,
+Terraform (CSV) - AWS ALB - Target Respone Time is too High,1,query alert,sum(last_15m):max:aws.applicationelb.target_response_time.maximum{environment:production} by {targetgroup},>,3,2,,"slack-cloud-alerts-bindid-prd
+Priority:P1
+
+webhook-XiteIt 
+
+Summary:P1 - Response Time is {{value}} on {{targetgroup}}
+
+Critical Threshold:{{threshold}}s
+Warning Threshold:{{warn_threshold}}s
+
+Host:AWS ALB
+Service:Respone Time per Target Group
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,FALSE,300,FALSE,TRUE,0,FALSE,0,900,120,TRUE,,,
+Terraform (CSV) - AWS ALB Requests Anomaly - Number of Requests (Weekly),4,query alert,"avg(last_12h):anomalies(avg:aws.applicationelb.request_count{*}.as_count(), 'robust', 2, direction='both', alert_window='last_30m', interval=120, count_default_zero='true', seasonality='weekly', timezone='asia/jerusalem')",>=,0.6,0.5,0,"slack-cloud-alerts-bindid-prd
+Priority:P4
+webhook-XiteIt 
+
+Summary:P4 - Requests Anomaly - Number of Weekly Requests is {{value}}
+
+Critical Threshold:{{threshold}}s
+Warning Threshold:{{warn_threshold}}s
+
+Host:AWS ALB
+Service:Number of Requests (Weekly)
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,FALSE,300,FALSE,TRUE,0,TRUE,0,900,30,FALSE,,last_1h,last_30m
+Terraform (CSV) - AWS ALB - Average Response Time is High per API Resource,2,metric alert,avg(last_15m):avg:aws.applicationelb.target_response_time.average{environment:production} by {ingress.k8s.aws/resource},>,0.5,0.3,,"slack-cloud-alerts-dev-test
+Priority:P1
+webhook-XiteIt 
+
+Summary:P2 - Average Response Time is {{value}} on {{ingress.k8s.aws/resource}}
+
+Critical Threshold:{{threshold}}s
+Warning Threshold:{{warn_threshold}}s
+
+Host:AWS ALB
+Service:Average Response Time per API Resource
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,FALSE,300,FALSE,TRUE,0,TRUE,0,900,30,TRUE,,,
+Terraform (CSV) - AWS SES - Number of Bounced Emails is High,3,query alert,sum(last_1h):sum:aws.ses.bounce.sum{*},>,5,3,,"Priority:P2 slack-cloud-alerts-bindid-prd
+
+webhook-XiteIt 
+Summary:P3 - {{value}} Bounced Emails on AWS SES
+Critical Threshold:{{threshold}}
+Warning Threshold:{{warn_threshold}}
+
+Host:AWS SES
+Service:High number of Bounced Emails
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,FALSE,300,FALSE,TRUE,0,FALSE,0,900,60,FALSE,,,
+Terraform (CSV) - AWS SES - Number of Delivery Attempts is High,3,query alert,sum(last_1h):count:aws.ses.deliveryattempts{*} / count:aws.ses.send{*},>,1,,,"Priority:P2 slack-cloud-alerts-bindid-prd
+
+webhook-XiteIt 
+Summary:P3 - Number of Delivery Attempts is High
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:AWS SES
+Service:High Number of Delivery Attempts
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,FALSE,300,FALSE,TRUE,0,FALSE,0,900,60,FALSE,,,
+Terraform (CSV) - AWS SES - Number of Emails Signed As Spam by Their Recipients is High,3,query alert,sum(last_1h):count:aws.ses.complaints{*},>,5,3,,"Priority:P2 slack-cloud-alerts-bindid-prd
+
+webhook-XiteIt 
+Summary:P3 - {{value}} Emails Signed As Spam by Their Recipients
+Critical Threshold:{{threshold}}
+Warning Threshold:{{warn_threshold}}
+
+Host:AWS SES
+Service:High Number Emails Signed As Spam
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,FALSE,300,FALSE,TRUE,0,FALSE,0,900,60,FALSE,,,
+Terraform (CSV) - AWS SES - Number of Emails Successfully Delivered to The Recipient's Server is Low,3,query alert,sum(last_1h):sum:aws.ses.delivery.sum{*} / sum:aws.ses.send{*},<,1,,,"Priority:P2 slack-cloud-alerts-bindid-prd
+
+webhook-XiteIt
+ 
+Summary:P3 - Number of Emails Successfully Delivered to The Recipient's Server is Low
+Critical Threshold:{{threshold}}
+Warning Threshold:{{warn_threshold}}
+
+Host:AWS SES
+Service:Low Number of Emails Successfully Delivered to The Recipient's Server
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,FALSE,300,FALSE,TRUE,0,FALSE,0,900,60,FALSE,,,
+Terraform (CSV) - AWS SES - Number of Hard Bounced Emails is High,3,query alert,sum(last_1h):avg:aws.ses.bounces{*},>,5,,,"Priority:P2 slack-cloud-alerts-bindid-prd
+
+webhook-XiteIt
+ 
+Summary:P3 - {{value}} Hard Bounced Emails 
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:AWS SES
+Service:High Number of Hard Bounced Emails
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,FALSE,300,FALSE,TRUE,0,FALSE,0,900,60,FALSE,,,
+Terraform (CSV) - AWS SES - Number of Opened Emails is Low,3,query alert,sum(last_1h):sum:aws.ses.open{*} / sum:aws.ses.send.sum{*},<,1,,,"Priority:P2 slack-cloud-alerts-bindid-prd
+
+webhook-XiteIt
+ 
+Summary:P3 - Number of Opened Emails is Low
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:AWS SES
+Service:Low Number of Opened Emails
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,FALSE,300,FALSE,TRUE,0,FALSE,0,900,60,FALSE,,,
+Terraform (CSV) - AWS SES - Number of Rejected Send Attempts is High,3,query alert,sum(last_1h):avg:aws.ses.rejects{*},>,5,,,"Priority:P2 slack-cloud-alerts-bindid-prd
+
+webhook-XiteIt
+ 
+Summary:P3 - {{value}} Rejected Send Attempts 
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:AWS SES
+Service:High Number of Rejected Send Attempts
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,FALSE,300,FALSE,TRUE,0,FALSE,0,900,60,FALSE,,,
+Terraform (CSV) - AWS SES - Number of Successful Emails Sent is Low,3,query alert,sum(last_1h):avg:aws.ses.send{*} / avg:aws.ses.send.sum{*},<,1,,,"Priority:P2 slack-cloud-alerts-bindid-prd
+
+webhook-XiteIt
+ 
+Summary:P3 - Number of Successful Emails Sent is Low
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:AWS SES
+Service:Low Number of Successful Emails Sent
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,FALSE,300,FALSE,TRUE,0,FALSE,0,900,60,FALSE,,,
+Terraform (CSV) - AWS NAT - High Count of Active Connections,,query alert,sum(last_1h):max:aws.natgateway.active_connection_count{*}.as_count(),>=,55000,50000,30000,slack-cloud-alerts-bindid-prd,,,TRUE,300,FALSE,TRUE,,TRUE,,,30,FALSE,,,
+Terraform (CSV) - AWS NAT - NAT BytesOutToDestination  is Lower than BytesInFromSource,3,query alert,avg(last_30m):sum:aws.natgateway.bytes_out_to_destination{*} / sum:aws.natgateway.bytes_in_from_source{*},<,0.999,1,,"{{is_alert}}
+
+AWS NAT - Number of bytes received from KS server 
+
+{{is_alert}} slack-cloud-alerts-bindid-prd
+Priority:P3
+webhook-XiteIt 
+Summary:P3 - NAT BytesOutToDestination is Lower than BytesInFromSource
+ Critical Threshold:{{threshold}}
+Warning Threshold:{{warn_threshold}}
+
+Host:AWS NAT
+Service:BytesOutToDestination/BytesInFromSource Ratio
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,FALSE,300,FALSE,TRUE,0,TRUE,0,900,30,TRUE,,,
+Terraform (CSV) - AWS NAT - NAT BytesOutToSource is Lower than BytesInFromDestination,3,query alert,avg(last_30m):sum:aws.natgateway.bytes_out_to_source{*} / sum:aws.natgateway.bytes_in_from_destination{*},<,0.999,1,,"{{is_alert}}
+
+AWS NAT - Number of bytes received from KS server 
+
+{{is_alert}} slack-cloud-alerts-bindid-prd
+Priority:P3
+
+webhook-XiteIt 
+Summary:P3 - Number of BytesOutToSource is Lower than BytesInFromDestination
+Critical Threshold:{{threshold}}
+Warning Threshold:{{warn_threshold}}
+
+Host:AWS NAT
+Service:BytesOutToSource/BytesInFromDestination Ratio
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,FALSE,300,FALSE,TRUE,0,TRUE,0,900,30,TRUE,,,
+Terraform (CSV) - AWS NAT - NAT Connection Failures Count is High,2,query alert,sum(last_30m):sum:aws.natgateway.connection_established_count{*}.as_count() / sum:aws.natgateway.connection_attempt_count{*}.as_count(),<,0.999,1,,"{{is_alert}}
+
+AWS NAT - Number of bytes received from KS server 
+
+{{is_alert}} slack-cloud-alerts-bindid-prd
+Priority:P2
+
+webhook-XiteIt 
+Summary:P2 - AWS NAT - NAT Connection Failures Ratio is High
+Critical Threshold:{{threshold}}
+Warning Threshold:{{warn_threshold}}
+
+Host:AWS NAT
+Service:Failures Ratio
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,FALSE,300,FALSE,TRUE,0,TRUE,0,900,30,TRUE,,,
+Terraform (CSV) - AWS NAT - Number of Bytes Sent to Destination Anomaly (Weekly),4,query alert,"avg(last_12h):anomalies(avg:aws.natgateway.bytes_out_to_destination.sum{*}, 'robust', 2, direction='both', alert_window='last_30m', interval=120, count_default_zero='true', seasonality='weekly', timezone='asia/jerusalem')",>=,0.6,0.5,0,"slack-cloud-alerts-bindid-prd
+Priority:P4
+
+webhook-XiteIt 
+Summary:P4 - Weekly Number of Bytes Sent to Destination is {{value}} (Anomaly)
+Critical Threshold:-
+Warning Threshold:-
+
+Host:AWS NAT
+Service:Number of Bytes Sent to Destination - Anomaly
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,FALSE,300,FALSE,TRUE,0,TRUE,0,900,15,FALSE,,last_1h,last_30m
+Terraform (CSV) - AWS NAT - Number of Bytes Sent to Destination is High,3,query alert,avg(last_30m):sum:aws.natgateway.bytes_out_to_destination{*},>,10000000,9000000,,"{{is_alert}}
+
+AWS NAT - Number of bytes received from KS server 
+
+{{is_alert}} slack-cloud-alerts-bindid-prd
+Priority:P3
+
+webhook-XiteIt 
+Summary:P3 - Number of Bytes Sent to Destination is {{value}} 
+Critical Threshold:{{threshold}}
+Warning Threshold:{{warn_threshold}}
+
+Host:AWS NAT
+Service:High number of Bytes Sent to Destination
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,FALSE,300,FALSE,TRUE,0,TRUE,0,900,30,TRUE,,,
+Terraform (CSV) - AWS NAT - Number of Bytes Sent to Destination is Low,3,query alert,avg(last_30m):sum:aws.natgateway.bytes_out_to_destination{*},<,700000,750000,,"{{is_alert}}
+
+AWS NAT - Number of bytes received from KS server 
+
+{{is_alert}} slack-cloud-alerts-bindid-prd
+Priority:P3
+
+webhook-XiteIt 
+Summary:P3 - Number of Bytes Sent to Destination is {{value}} 
+Critical Threshold:{{threshold}}
+Warning Threshold:{{warn_threshold}}
+
+Host:AWS NAT
+Service:Low number of Bytes Sent to Destination
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,FALSE,300,FALSE,TRUE,0,TRUE,0,900,30,TRUE,,,
+Terraform (CSV) - AWS NAT - Number of Bytes Sent to Source Anomaly (Weekly),4,query alert,"avg(last_12h):anomalies(avg:aws.natgateway.packets_out_to_source.sum{*}.as_count(), 'robust', 2, direction='both', alert_window='last_30m', interval=120, count_default_zero='true', seasonality='weekly', timezone='asia/jerusalem')",>=,0.6,0.5,0,"slack-cloud-alerts-bindid-prd
+Priority:P4
+
+webhook-XiteIt 
+Summary:P4 - Weekly Number of Bytes Sent to Source is {{value}} (Anomaly)
+Critical Threshold:-
+Warning Threshold:-
+
+Host:AWS NAT
+Service:Number of Bytes Sent to Source - Anomaly
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,FALSE,300,FALSE,TRUE,0,TRUE,0,900,30,FALSE,,last_1h,last_30m
+Terraform (CSV) - AWS NAT - Number of Destination Bytes Received Anomaly (Weekly),4,query alert,"avg(last_12h):anomalies(avg:aws.natgateway.bytes_in_from_destination.sum{*}, 'robust', 2, direction='both', alert_window='last_30m', interval=120, count_default_zero='true', seasonality='weekly', timezone='asia/jerusalem')",>=,0.6,0.5,0,"slack-cloud-alerts-bindid-prd
+Priority:P4
+
+webhook-XiteIt 
+Summary:P4 - Weekly Number of Destination Bytes Received is {{value}} (Anomaly)
+Critical Threshold:-
+Warning Threshold:-
+
+Host:AWS NAT
+Service:Number of Destination Bytes Received - Anomaly
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,FALSE,300,FALSE,TRUE,0,TRUE,0,900,30,FALSE,,last_1h,last_30m
+Terraform (CSV) - AWS NAT - Number of Destination Bytes Received is High,3,query alert,avg(last_30m):sum:aws.natgateway.bytes_in_from_destination{*},>=,2000000,1900000,1480000,"{{is_alert}}
+
+AWS NAT - Number of bytes received from KS server 
+
+{{is_alert}} slack-cloud-alerts-bindid-prd
+Priority:P3
+
+webhook-XiteIt 
+Summary:P3 - Number of Destination Bytes Received is {{value}}
+Critical Threshold:{{threshold}}
+Warning Threshold:{{warn_threshold}}
+
+Host:AWS NAT
+Service:High number of Destination Bytes Received
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,FALSE,300,FALSE,TRUE,0,TRUE,0,900,30,TRUE,,,
+Terraform (CSV) - AWS NAT - Number of Destination Bytes Received is Low,3,query alert,avg(last_30m):sum:aws.natgateway.bytes_in_from_destination{*},<,110000,120000,,"{{is_alert}}
+
+AWS NAT - Number of bytes received from KS server 
+
+{{is_alert}} slack-cloud-alerts-bindid-prd
+Priority:P3
+
+webhook-XiteIt 
+Summary:P3 - Number of Destination Bytes Received is {{value}}
+Critical Threshold:{{threshold}}
+Warning Threshold:{{warn_threshold}}
+
+Host:AWS NAT
+Service:Low number of Destination Bytes Received
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,FALSE,300,FALSE,TRUE,0,TRUE,0,900,30,TRUE,,,
+Terraform (CSV) - AWS NAT - Number of Error Port Allocations is High,2,query alert,sum(last_30m):sum:aws.natgateway.error_port_allocation{*}.as_count(),>,0,,,"{{is_alert}}
+
+AWS NAT - Number of bytes received from KS server 
+
+{{is_alert}} slack-cloud-alerts-bindid-prd
+Priority:P2
+
+webhook-XiteIt 
+Summary:P2 - {{value}} Port Allocations Errors on AWS NAT
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:AWS NAT
+Service:Number of Error Port Allocations
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,FALSE,300,FALSE,TRUE,0,TRUE,0,900,30,TRUE,,,
+Terraform (CSV) - AWS NAT - Number of Packets Sent to Source is High,3,query alert,sum(last_1h):sum:aws.natgateway.packets_out_to_source{*}.as_count(),>,100000,80000,,"{{is_alert}}
+
+AWS NAT - Number of bytes received from KS server 
+
+{{is_alert}} slack-cloud-alerts-bindid-prd
+Priority:P3
+
+webhook-XiteIt 
+Summary:P3 - Number of Packets Sent to Source is {{value}}
+Critical Threshold:{{threshold}}
+Warning Threshold:{{warn_threshold}}
+
+Host:AWS NAT
+Service:High number of Packets Sent to Source
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,FALSE,300,FALSE,TRUE,0,TRUE,0,900,30,TRUE,,,
+Terraform (CSV) - AWS NAT - Number of Packets Sent to Source is Low,3,query alert,sum(last_1h):sum:aws.natgateway.packets_out_to_source{*}.as_count(),<,25000,27000,,"{{is_alert}}
+
+AWS NAT - Number of bytes received from KS server 
+
+{{is_alert}} slack-cloud-alerts-bindid-prd
+Priority:P3
+
+webhook-XiteIt 
+Summary:P3 - Number of Packets Sent to Source is {{value}} 
+Critical Threshold:{{threshold}}
+Warning Threshold:{{warn_threshold}}
+
+Host:AWS NAT
+Service:Low number of Packets Sent to Source
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,FALSE,300,FALSE,TRUE,0,TRUE,0,900,30,TRUE,,,
+Terraform (CSV) - AWS NAT - Number of Source Bytes Received Anomaly (Weekly),4,query alert,"avg(last_12h):anomalies(avg:aws.natgateway.bytes_in_from_source.sum{*}, 'robust', 2, direction='both', alert_window='last_30m', interval=120, count_default_zero='true', seasonality='weekly', timezone='asia/jerusalem')",>=,0.6,0.5,0,"slack-cloud-alerts-bindid-prd
+Priority:P4
+
+webhook-XiteIt 
+Summary:P4 - Number of Source Bytes Received is {{value}} (Anomaly)
+Critical Threshold:-
+Warning Threshold:-
+
+Host:AWS NAT
+Service:Number of Source Bytes Received - Anomaly
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,FALSE,300,FALSE,TRUE,0,TRUE,0,900,30,FALSE,,last_1h,last_30m
+Terraform (CSV) - AWS NAT - Number of Source Bytes Received is High,3,query alert,avg(last_30m):sum:aws.natgateway.bytes_in_from_source{*},>=,2200000,1800000,,"{{is_alert}}
+
+AWS NAT - Number of bytes received from KS server 
+
+{{is_alert}} slack-cloud-alerts-bindid-prd
+Priority:P3
+
+webhook-XiteIt 
+Summary:P3 - Number of Source Bytes Received is {{value}} 
+Critical Threshold:{{threshold}}
+Warning Threshold:{{warn_threshold}}
+
+Host:AWS NAT
+Service:High number of Source Bytes Received
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,FALSE,300,FALSE,TRUE,0,TRUE,0,900,30,TRUE,,,
+Terraform (CSV) - AWS NAT - Number of Source Bytes Received is Low,3,query alert,avg(last_30m):sum:aws.natgateway.bytes_in_from_source{*},<,700000,800000,,"{{is_alert}}
+
+AWS NAT - Number of bytes received from KS server 
+
+{{is_alert}} slack-cloud-alerts-bindid-prd
+Priority:P3
+
+webhook-XiteIt 
+Summary:P3 - Number of Source Bytes Received is {{value}} 
+Critical Threshold:{{threshold}}
+Warning Threshold:{{warn_threshold}}
+
+Host:AWS NAT
+Service:Low number of Source Bytes Received
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,FALSE,300,FALSE,TRUE,0,TRUE,0,900,30,TRUE,,,
+Terraform (CSV) - [MoovingOn] AWS NAT - High Count of Active Connections,3,query alert,sum(last_1h):max:aws.natgateway.active_connection_count{*} by {name}.as_count(),>=,2500,2000,,"slack-cloud-alerts-bindid-prd
+
+webhook-XiteIt
+
+Summary:Count of Active Connections on {{name}}  is {{value}}
+Critical Threshold:{{threshold}}
+Warning Threshold:{{warn_threshold}} 
+
+Host:AWS NAT - {{name}}
+Service:High Count of Active Connections
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,TRUE,300,FALSE,TRUE,0,TRUE,0,900,30,FALSE,,,
+Terraform (CSV) - EBS - Number of Read Ops is High,3,query alert,sum(last_15m):sum:aws.ebs.volume_read_ops{environment:production} by {host}.as_count(),>,25,20,,"slack-cloud-alerts-bindid-prd
+Priority:P3
+webhook-XiteIt 
+
+Summary:P3 - {{value}}  Read Ops on {{host}}
+Critical Threshold:{{threshold}}ops
+Warning Threshold:{{warn_threshold}}ops
+
+Host:AWS EBS {{host}}
+Service:High Number of Read Ops
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,FALSE,300,FALSE,TRUE,0,FALSE,0,900,30,TRUE,,,
+Terraform (CSV) - EBS - Number of Volumes with Status OK is Low,3,query alert,sum(last_15m):sum:aws.ebs.status.ok{*},<,8,,,"slack-cloud-alerts-bindid-prd
+Priority:P3
+webhook-XiteIt 
+
+Summary:P3 - {{value}} EBS Volumes are with Status OK 
+Critical Threshold:{{threshold}}ops
+Warning Threshold:{{warn_threshold}}ops
+
+Host:AWS EBS
+Service:Low Number of Volumes with Status OK
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,FALSE,300,FALSE,TRUE,0,FALSE,0,900,30,TRUE,,,
+Terraform (CSV) - EBS - Number of Write Ops is High,3,query alert,"sum(last_15m):sum:aws.ebs.volume_write_ops{environment:production,!host:i-0bad31cb7d1ea95a0,!host:i-0210258000ee05a99} by {host}.as_count()",>,120000,110000,,"slack-cloud-alerts-bindid-prd
+Priority:P3
+
+webhook-XiteIt 
+
+Summary:P3 - Number of Write Ops is {{value}} on {{host}}
+Critical Threshold:{{threshold}}ops
+Warning Threshold:{{warn_threshold}}ops
+
+Host:AWS EBS {{host}}
+Service:High Number of Write Ops
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,FALSE,300,FALSE,TRUE,0,FALSE,0,900,30,TRUE,,,
+Terraform (CSV) - EBS [i-0210258000ee05a99] - Number of Write Ops is High,3,query alert,"sum(last_1h):sum:aws.ebs.volume_write_ops{environment:production,host:i-0210258000ee05a99} by {host}.as_count()",>,2000,1700,,slack-cloud-alerts-bindid-prd,,,TRUE,900,FALSE,TRUE,0,FALSE,0,,30,TRUE,,,
+Terraform (CSV) - EBS [i-0bad31cb7d1ea95a0] - Number of Write Ops is High,3,query alert,"sum(last_1h):sum:aws.ebs.volume_write_ops{environment:production,host:i-0bad31cb7d1ea95a0} by {host}.as_count()",>,2000,1700,,"slack-cloud-alerts-bindid-prd
+Priority:P3
+
+webhook-XiteIt 
+
+Summary:P3 - Number of Write Ops is {{value}}  on {{host}}
+Critical Threshold:{{threshold}}ops
+Warning Threshold:{{warn_threshold}}ops
+
+Host:AWS EBS {{host}}
+Service:High Number of Write Ops
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,FALSE,900,FALSE,TRUE,0,FALSE,0,,30,TRUE,,,
+Terraform (CSV) - ELB Monitor - Count 4XX errors on auth server,1,log alert,"logs(""service:elb status:warn @http.url_details.path:\""/api/v2/oidc/bindid-oidc/token\"""").index(""*"").rollup(""count"").last(""15m"")",>=,5,,,"Monitor - Count 4XX errors on auth server: api/v2/oidc/bindid-oidc/token
+
+
+
+Summary:P1 - {{value}} Count 4XX errors on auth server: api/v2/oidc/bindid-oidc/token
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:auth server: api/v2/oidc/bindid-oidc/token
+Service:Number of 4XX Errors
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+Terraform (CSV) - Cloudfront - 401 Error Rate is High - Production,1,metric alert,avg(last_15m):avg:aws.cloudfront.401_error_rate{distributionid:e1dk6tlw75pcfy OR distributionid:e1ixgymmkwy0e5 OR distributionid:e1pjtks53nqq94 OR distributionid:e22of9g37ixhv8 OR distributionid:e2bduc6glnsgo7 OR distributionid:e2iacuwbekgr72 OR distributionid:e3e8gqjwmsm4km OR distributionid:e3jepmxmiylgw0 OR distributionid:efu9jk9yae4fr OR distributionid:eoqgkblrt88po},>=,5,,,"slack-bindid-srvrefine-uptime-alerts
+webhook-Refine-XiteIt
+ 
+Summary:P1 - 401 Error Rate on Cloudfront is {{value}}%
+Critical Threshold:{{threshold}}%
+Warning Threshold:-
+
+Host:AWS Cloudfront
+Service:Cloudfront - 401 Error Rate is High - Production
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Production,,FALSE,300,FALSE,FALSE,0,FALSE,0,900,,TRUE,,,
+Terraform (CSV) - Cloudfront - 403 Error Rate is High - Production,1,metric alert,avg(last_15m):avg:aws.cloudfront.403_error_rate{distributionid:e1dk6tlw75pcfy OR distributionid:e1ixgymmkwy0e5 OR distributionid:e1pjtks53nqq94 OR distributionid:e22of9g37ixhv8 OR distributionid:e2bduc6glnsgo7 OR distributionid:e2iacuwbekgr72 OR distributionid:e3e8gqjwmsm4km OR distributionid:e3jepmxmiylgw0 OR distributionid:efu9jk9yae4fr OR distributionid:eoqgkblrt88po},>=,5,,,"slack-bindid-srvrefine-uptime-alerts
+webhook-Refine-XiteIt
+ 
+Summary:P1 - 403 Error Rate on Cloudfront is {{value}}%
+Critical Threshold:{{threshold}}%
+Warning Threshold:-
+
+Host:AWS Cloudfront
+Service:Cloudfront - 403 Error Rate is High - Production
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Production,,FALSE,300,FALSE,FALSE,0,FALSE,0,900,,TRUE,,,
+Terraform (CSV) - Cloudfront - 404 Error Rate is High -Production,1,metric alert,avg(last_15m):avg:aws.cloudfront.404_error_rate{distributionid:e1dk6tlw75pcfy OR distributionid:e1ixgymmkwy0e5 OR distributionid:e1pjtks53nqq94 OR distributionid:e22of9g37ixhv8 OR distributionid:e2bduc6glnsgo7 OR distributionid:e2iacuwbekgr72 OR distributionid:e3e8gqjwmsm4km OR distributionid:e3jepmxmiylgw0 OR distributionid:efu9jk9yae4fr OR distributionid:eoqgkblrt88po},>=,5,,,"slack-bindid-srvrefine-uptime-alerts
+webhook-Refine-XiteIt
+ 
+Summary:P1 - 404 Error Rate on Cloudfront is {{value}}%
+Critical Threshold:{{threshold}}%
+Warning Threshold:-
+
+Host:AWS Cloudfront
+Service:Cloudfront - 404 Error Rate is High - Production
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Production,,FALSE,300,FALSE,FALSE,0,TRUE,0,,,TRUE,,,
+Terraform (CSV) - Cloudfront - 4XX Error Rate Anomaly  (Weekly),2,query alert,"avg(last_12h):anomalies(avg:aws.cloudfront.4xx_error_rate{*}, 'robust', 2, direction='both', alert_window='last_30m', interval=120, count_default_zero='true', seasonality='weekly', timezone='asia/jerusalem')",>=,0.5,0.4,0,"shahdtransmitsecurity.com slack-cloud-alerts-bindid-prd
+Priority:P2
+
+webhook-XiteIt 
+Summary:P2- {{value}} 4XX Error Rate on Cloudfront (Anomaly)
+Critical Threshold:-
+Warning Threshold:-
+
+Host:AWS Cloudfront
+Service:Cloudfront - 4XX Error Rate - Anomaly
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,FALSE,300,FALSE,TRUE,0,FALSE,0,900,30,FALSE,,last_1h,last_30m
+Terraform (CSV) - Cloudfront - 4XX Error Rate is High - Production,1,query alert,avg(last_15m):avg:aws.cloudfront.4xx_error_rate{distributionid:e1dk6tlw75pcfy OR distributionid:e1ixgymmkwy0e5 OR distributionid:e1pjtks53nqq94 OR distributionid:e22of9g37ixhv8 OR distributionid:e2bduc6glnsgo7 OR distributionid:e2iacuwbekgr72 OR distributionid:e3e8gqjwmsm4km OR distributionid:e3jepmxmiylgw0 OR distributionid:efu9jk9yae4fr OR distributionid:eoqgkblrt88po},>,5,,,"slack-cloud-alerts-bindid-prd slack-bindid-srv-uptime-alerts webhook-Uptime-XiteIt
+
+
+Summary:P1 - {{value}} 4XX Error Rate on Cloudfront - Production
+Critical Threshold:{{threshold}}
+Warning Threshold:{{warn_threshold}}
+
+Host:AWS Cloudfront
+Service:High 4XX Error Rate - Production
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Production,,FALSE,300,FALSE,TRUE,0,FALSE,0,900,30,FALSE,,,
+Terraform (CSV) - Cloudfront - 5XX Error Rate Anomaly  (Weekly),3,query alert,"avg(last_12h):anomalies(avg:aws.cloudfront.5xx_error_rate{*}, 'robust', 2, direction='both', alert_window='last_30m', interval=120, count_default_zero='true', seasonality='weekly', timezone='asia/jerusalem')",>=,0.5,0.4,0,"slack-cloud-alerts-bindid-prd
+Priority:P3
+
+webhook-XiteIt 
+Summary:P3 - {{value}} 5XX Error Rate on Cloudfront (Anomaly)
+Critical Threshold:-
+Warning Threshold:-
+
+Host:AWS Cloudfront
+Service:Cloudfront - 5XX Error Rate - Anomaly
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,FALSE,300,FALSE,TRUE,0,FALSE,0,900,30,FALSE,,last_1h,last_30m
+Terraform (CSV) - Cloudfront - 5XX Error Rate is High - Production,1,query alert,avg(last_15m):avg:aws.cloudfront.5xx_error_rate{distributionid:e1dk6tlw75pcfy OR distributionid:e1ixgymmkwy0e5 OR distributionid:e1pjtks53nqq94 OR distributionid:e22of9g37ixhv8 OR distributionid:e2bduc6glnsgo7 OR distributionid:e2iacuwbekgr72 OR distributionid:e3e8gqjwmsm4km OR distributionid:e3jepmxmiylgw0 OR distributionid:efu9jk9yae4fr OR distributionid:eoqgkblrt88po},>,5,,,"slack-bindid-prd-alerts
+slack-bindid-srv-uptime-alerts
+webhook-Uptime-XiteIt
+
+Summary:P1 - {{value}} 5XX Error Rate on Cloudfront - Production
+Critical Threshold:{{threshold}}
+Warning Threshold:{{warn_threshold}}
+
+Host:AWS Cloudfront
+Service:High 5XX Error Rate - Production
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Production,,FALSE,300,FALSE,TRUE,0,FALSE,0,900,30,FALSE,,,
+Terraform (CSV) - Cloudfront - Cache Hit Rate is Low,2,query alert,avg(last_15m):avg:aws.cloudfront.cache_hit_rate{environment:production} by {distributionid},<=,80,90,,"webhook-XiteIt  slack-cloud-alerts-bindid-prd
+Priority:P2
+
+Summary:P2 - {{value}} Cache Hit Rate on Cloudfront
+Critical Threshold:{{threshold}}
+Warning Threshold:{{warn_threshold}}
+
+Host:AWS Cloudfront
+Service:Low Cache Hit Rate
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,FALSE,300,FALSE,TRUE,0,FALSE,0,900,30,TRUE,,,
+Terraform (CSV) - Cloudfront - Distribution 4XX Error Rate is High,1,query alert,avg(last_15m):sum:aws.cloudfront.4xx_error_rate{environment:production} by {distributionid},>,50,30,,"slack-cloud-alerts-bindid-prd
+Priority:P1
+
+webhook-XiteIt 
+Summary:P1 - Distribution 4XX Error Rate on {{distributionid}} is {{value}}%
+Critical Threshold:{{threshold}}%
+Warning Threshold:{{warn_threshold}}%
+
+Host:AWS Cloudfront - {{distributionid}}
+Service:High Distribution 4XX Error Rate
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,FALSE,300,FALSE,TRUE,0,FALSE,0,900,30,TRUE,,,
+Terraform (CSV) - Cloudfront - Distribution 5XX Error Rate is High,1,query alert,avg(last_15m):sum:aws.cloudfront.5xx_error_rate{environment:production} by {distributionid},>,50,30,,"webhook-XiteIt  slack-cloud-alerts-bindid-prd
+Priority:P1
+
+Summary:P1 -  {{value}} Distribution 5XX Error Rate on {{distributionid}}
+Critical Threshold:{{threshold}}%
+Warning Threshold:{{warn_threshold}}%
+
+Host:AWS Cloudfront {{distributionid}}
+Service:High Distribution 5XX Error Rate
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,FALSE,300,FALSE,TRUE,0,FALSE,0,900,30,TRUE,,,
+Terraform (CSV) - Cloudfront - High Avg Response time on CDN,1,metric alert,avg(last_15m):avg:aws.cloudfront.origin_latency{*},>,700,650,,"slack-cloud-alerts-bindid-prd
+webhook-XiteIt 
+
+Note: No need to be calculated for our service uptime slack channel per Eldan's request
+Priority:P1
+
+Summary:P1 - Avg Response time on CDN is {{value}} 
+Critical Threshold:{{threshold}}s
+Warning Threshold:{{warn_threshold}}s
+
+Host:AWS Cloudfront
+Service:High Avg Response time on CDN
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,FALSE,300,FALSE,TRUE,0,TRUE,0,900,30,TRUE,,,
+Terraform (CSV) - Cloudfront - Low Avg Cache Hit Rate,2,query alert,avg(last_15m):avg:aws.cloudfront.cache_hit_rate{environment:production},<=,80,90,,"webhook-XiteIt  slack-cloud-alerts-bindid-prd
+Priority:P2
+
+Summary:P2 - Avg Cache Hit Rate on Cloudfront is {{value}} 
+Critical Threshold:{{threshold}}%
+Warning Threshold:{{warn_threshold}}%
+
+Host:AWS Cloudfront {{distributionid}}
+Service:Low Avg Cache Hit Rate
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,FALSE,300,FALSE,TRUE,0,FALSE,0,900,30,TRUE,,,
+Terraform (CSV) - Cloudfront - Number of Requests Anomaly (Weekly),3,query alert,"avg(last_12h):anomalies(avg:aws.cloudfront.requests{*}.as_count(), 'robust', 2, direction='both', alert_window='last_30m', interval=120, count_default_zero='true', seasonality='weekly', timezone='asia/jerusalem')",>=,0.5,0.4,0,"webhook-XiteIt  slack-cloud-alerts-bindid-prd
+Priority:P3
+
+Summary:P3 - Weekly Number of Couldfront Requests is {{value}}  (Anomaly)
+Critical Threshold:-
+Warning Threshold:-
+
+Host:AWS Cloudfront
+Service:Number of Requests - Anomaly
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,FALSE,300,FALSE,TRUE,0,TRUE,0,900,30,FALSE,,last_1h,last_30m
+Terraform (CSV) - Cloudfront - Number of Requests is High,2,query alert,sum(last_15m):sum:aws.cloudfront.requests{environment:production}.as_count(),>,2500,1500,,"webhook-XiteIt  slack-cloud-alerts-bindid-prd
+Priority:P2
+
+Summary:P2 - {{value}}  Requests on Cloudfront
+Critical Threshold:{{threshold}}
+Warning Threshold:{{warn_threshold}}
+
+Host:AWS Cloudfront
+Service:High Number of Requests
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,FALSE,300,FALSE,TRUE,0,FALSE,0,900,30,FALSE,,,
+Terraform (CSV) - Cloudfront - Response Time on CDN Distribution is High,1,metric alert,avg(last_15m):avg:aws.cloudfront.origin_latency{*} by {distributionid},>,720,660,,"webhook-XiteIt  slack-cloud-alerts-bindid-prd
+Priority:P1
+
+Summary:P1 - Response Time on CDN Distribution:{{distributionid}} is {{value}}
+Critical Threshold:{{threshold}}s
+Warning Threshold:{{warn_threshold}}s
+
+Host:AWS Cloudfront {{distributionid}}
+Service:High Response Time on CDN Distribution
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,FALSE,300,TRUE,TRUE,0,TRUE,0,900,30,TRUE,,,
+Terraform (CSV) - Cloudfront - High 4XX Errors count on Production,1,log alert,"logs(""service:cloudfront -@http.url_details.path:(\/favicon* OR \""/robots.txt\"" OR \/apple-touch-icon*) @http.ident:*bindid.io @http.status_code:[400 TO 499]"").index(""*"").rollup(""count"").last(""15m"")",>,10,,,"slack-bindid-srv-uptime-alerts webhook-Uptime-XiteIt
+
+Summary:P1 - {{value}} High 4XX Errors count on Production 
+Critical Threshold:{{threshold}} 
+Warning Threshold:-
+
+Host:Cloudfront 
+Service:High 4XX Errors count on Production 
+Value:{{value}} 
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1,,FALSE,300,FALSE,FALSE,,,,,,TRUE,FALSE,,
+Terraform (CSV) - Cloudfront - High 4XX Errors count on Sandbox,1,log alert,"logs(""service:cloudfront -@http.url_details.path:(\/favicon* OR \""/robots.txt\"" OR \/apple-touch-icon*) @http.ident:*bindid-sandbox.io @http.status_code:[400 TO 499]"").index(""*"").rollup(""count"").last(""15m"")",>,25,,,"slack-bindid-srv-uptime-alerts webhook-Uptime-XiteIt
+
+Summary:P1 - {{value}} High 4XX Errors count on Sandbox 
+Critical Threshold:{{threshold}} 
+Warning Threshold:-
+
+Host:Cloudfront 
+Service:High 4XX Errors count on Sandbox
+Value:{{value}} 
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1,,FALSE,300,FALSE,FALSE,,,,,,TRUE,FALSE,,
+Terraform (CSV) - Cloudfront - 4XX Error Rate is High - Sandbox,1,query alert,avg(last_15m):avg:aws.cloudfront.4xx_error_rate{distributionid:e1hdwr1opp59eu OR distributionid:e1hnowufe04l4u OR distributionid:e1zltsdcqsnwg OR distributionid:e27zv9r6zge1bf OR distributionid:e2vdow6e5btlst OR distributionid:e36k3k2yb7i25z OR distributionid:e3qoq285lr3xv3 OR distributionid:ea7188mg43d68 OR distributionid:ebpzvgpchdxvs OR distributionid:etea6nrsz58va},>,5,,,"slack-cloud-alerts-bindid-prd slack-bindid-srv-uptime-alerts webhook-Uptime-XiteIt
+
+
+Summary:P1 - {{value}} 4XX Error Rate on Cloudfront - Sandbox
+Critical Threshold:{{threshold}}
+Warning Threshold:{{warn_threshold}}
+
+Host:AWS Cloudfront
+Service:High 4XX Error Rate - Sandbox
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Sandbox,,FALSE,300,FALSE,TRUE,0,FALSE,0,900,30,FALSE,,,
+Terraform (CSV) - Cloudfront - 5XX Error Rate is High - Sandbox,1,query alert,avg(last_15m):avg:aws.cloudfront.5xx_error_rate{distributionid:e1hdwr1opp59eu OR distributionid:e1hnowufe04l4u OR distributionid:e1zltsdcqsnwg OR distributionid:e27zv9r6zge1bf OR distributionid:e2vdow6e5btlst OR distributionid:e36k3k2yb7i25z OR distributionid:e3qoq285lr3xv3 OR distributionid:ea7188mg43d68 OR distributionid:ebpzvgpchdxvs OR distributionid:etea6nrsz58va},>,5,,,"slack-bindid-prd-alerts
+slack-bindid-srv-uptime-alerts
+webhook-Uptime-XiteIt
+
+Summary:P1 - {{value}} 5XX Error Rate on Cloudfront - Sandbox
+Critical Threshold:{{threshold}}
+Warning Threshold:{{warn_threshold}}
+
+Host:AWS Cloudfront
+Service:High 5XX Error Rate - Sandbox
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Sandbox,,FALSE,300,FALSE,TRUE,0,FALSE,0,900,30,FALSE,,,
+Terraform (CSV) - Cloudfront - 401 Error Rate is High - Sandbox,1,metric alert,avg(last_15m):avg:aws.cloudfront.401_error_rate{distributionid:e1hdwr1opp59eu OR distributionid:e1hnowufe04l4u OR distributionid:e1zltsdcqsnwg OR distributionid:e27zv9r6zge1bf OR distributionid:e2vdow6e5btlst OR distributionid:e36k3k2yb7i25z OR distributionid:e3qoq285lr3xv3 OR distributionid:ea7188mg43d68 OR distributionid:ebpzvgpchdxvs OR distributionid:etea6nrsz58va},>=,5,,,"slack-bindid-srvrefine-uptime-alerts
+webhook-Refine-XiteIt
+ 
+Summary:P1 - 401 Error Rate on Cloudfront is {{value}}%
+Critical Threshold:{{threshold}}%
+Warning Threshold:-
+
+Host:AWS Cloudfront
+Service:Cloudfront - 401 Error Rate is High - Sandbox
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Sandbox,,FALSE,300,FALSE,FALSE,0,FALSE,0,900,,TRUE,,,
+Terraform (CSV) - Cloudfront - 403 Error Rate is High - Sandbox,1,metric alert,avg(last_15m):avg:aws.cloudfront.403_error_rate{distributionid:e1hdwr1opp59eu OR distributionid:e1hnowufe04l4u OR distributionid:e1zltsdcqsnwg OR distributionid:e27zv9r6zge1bf OR distributionid:e2vdow6e5btlst OR distributionid:e36k3k2yb7i25z OR distributionid:e3qoq285lr3xv3 OR distributionid:ea7188mg43d68 OR distributionid:ebpzvgpchdxvs OR distributionid:etea6nrsz58va},>=,5,,,"slack-bindid-srvrefine-uptime-alerts
+webhook-Refine-XiteIt
+ 
+Summary:P1 - 403 Error Rate on Cloudfront is {{value}}%
+Critical Threshold:{{threshold}}%
+Warning Threshold:-
+
+Host:AWS Cloudfront
+Service:Cloudfront - 403 Error Rate is High - Sandbox
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Sandbox,,FALSE,300,FALSE,FALSE,0,FALSE,0,900,,TRUE,,,
+Terraform (CSV) - Cloudfront - 404 Error Rate is High - Sandbox,1,metric alert,avg(last_15m):avg:aws.cloudfront.404_error_rate{distributionid:e1hdwr1opp59eu OR distributionid:e1hnowufe04l4u OR distributionid:e1zltsdcqsnwg OR distributionid:e27zv9r6zge1bf OR distributionid:e2vdow6e5btlst OR distributionid:e36k3k2yb7i25z OR distributionid:e3qoq285lr3xv3 OR distributionid:ea7188mg43d68 OR distributionid:ebpzvgpchdxvs OR distributionid:etea6nrsz58va},>=,5,,,"slack-bindid-srvrefine-uptime-alerts
+webhook-Refine-XiteIt
+ 
+Summary:P1 - 404 Error Rate on Cloudfront is {{value}}%
+Critical Threshold:{{threshold}}%
+Warning Threshold:-
+
+Host:AWS Cloudfront
+Service:Cloudfront - 404 Error Rate is High - Sandbox
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Sandbox,,FALSE,300,FALSE,FALSE,0,TRUE,0,,,TRUE,,,

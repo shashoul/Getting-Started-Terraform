@@ -1,0 +1,33 @@
+{
+	"id": 29309294,
+	"name": "Kubernetes - CPU Total Usage is high on Node Anomaly (Weekly)",
+	"type": "query alert",
+	"query": "avg(last_12h):anomalies(max:kubernetes.cpu.usage.total{*} by {host}, 'robust', 2, direction='above', alert_window='last_30m', interval=120, count_default_zero='true', seasonality='weekly', timezone='asia/jerusalem') >= 0.6",
+	"message": "@slack-cloud-alerts-bindid-prd\nPriority:P4\n\n@webhook-XiteIt \n\nSummary:P4 - CPU Total Usage is {{value}} on Node Anomaly (Weekly)\nCritical Threshold:-\nWarning Threshold:-\n\nHost:Kubernetes Node:{{host}}\nService:CPU Total Usage on Node - Anomaly\nValue:{{value}}\nSeverity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",
+	"tags": [],
+	"options": {
+		"notify_audit": false,
+		"locked": false,
+		"timeout_h": 0,
+		"silenced": {},
+		"include_tags": false,
+		"no_data_timeframe": 15,
+		"require_full_window": true,
+		"new_host_delay": 300,
+		"notify_no_data": true,
+		"renotify_interval": 0,
+		"evaluation_delay": 120,
+		"escalation_message": "",
+		"threshold_windows": {
+			"recovery_window": "last_1h",
+			"trigger_window": "last_30m"
+		},
+		"thresholds": {
+			"critical": 0.6,
+			"warning": 0.5,
+			"critical_recovery": 0
+		}
+	},
+	"priority": 4,
+	"classification": "anomaly"
+}

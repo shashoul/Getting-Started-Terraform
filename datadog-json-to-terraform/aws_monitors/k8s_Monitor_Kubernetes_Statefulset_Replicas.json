@@ -1,0 +1,29 @@
+{
+	"id": 32808304,
+	"name": "[kubernetes] Monitor Kubernetes Statefulset Replicas",
+	"type": "query alert",
+	"query": "max(last_15m):sum:kubernetes_state.statefulset.replicas_desired{*} by {statefulset} - sum:kubernetes_state.statefulset.replicas_ready{*} by {statefulset} >= 2",
+	"message": "More than one Statefulset Replica's pods are down. This might present an unsafe situation for any further manual operations, such as killing other pods.\n\n@webhook-XiteIt\n\nSummary:Kubernetes - Down Pods on Statefulset Replica {{statefulset.name}} is  {{value}} \nCritical Threshold:{{threshold}}\nWarning Threshold:{{warn_threshold}} \n\nHost:Kubernetes - {{statefulset.name}}\nService:High Number of Statefulset Replica's Pods are Down\nValue:{{value}}\nSeverity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",
+	"tags": [
+		"integration:kubernetes"
+	],
+	"options": {
+		"notify_audit": true,
+		"locked": false,
+		"timeout_h": 0,
+		"silenced": {},
+		"include_tags": true,
+		"no_data_timeframe": null,
+		"require_full_window": false,
+		"new_host_delay": 300,
+		"notify_no_data": false,
+		"renotify_interval": 0,
+		"escalation_message": "",
+		"thresholds": {
+			"critical": 2,
+			"warning": 1
+		}
+	},
+	"priority": null,
+	"classification": "integration"
+}

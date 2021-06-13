@@ -1,0 +1,45 @@
+{
+    "restricted_roles":"None",
+    "tags":[
+       
+    ],
+    "deleted":"None",
+    "query":"avg(last_10m):sum:aws.ec2.status_check_failed{*} > 0",
+    "message":"@slack-cloud-alerts-bindid-prd\nPriority:P1\n\n@webhook-XiteIt \n\nSummary:P1 - {{value}} Failed Host Checks on AWS EC2\n\nCritical Threshold:{{threshold}}\nWarning Threshold:-\n\nHost:AWS ALB\nService:Number of Failed Host Checks\nValue:{{value}}\nSeverity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",
+    "id":28985917,
+    "multi":false,
+    "name":"AWS EC2 - Number of Failed Host Checks is High",
+    "created":"2021-01-20T11:19:06.622216+00:00",
+    "created_at":1611141546000,
+    "creator":{
+       "id":2361180,
+       "handle":"silina@transmitsecurity.com",
+       "name":"Silina Zaatri",
+       "email":"silina@transmitsecurity.com"
+    },
+    "org_id":464530,
+    "modified":"2021-04-07T12:14:22.741169+00:00",
+    "priority":1,
+    "overall_state_modified":"2021-01-20T11:22:17+00:00",
+    "overall_state":"OK",
+    "type":"query alert",
+    "options":{
+       "notify_audit":false,
+       "locked":false,
+       "timeout_h":0,
+       "silenced":{
+          
+       },
+       "include_tags":false,
+       "no_data_timeframe":30,
+       "require_full_window":false,
+       "new_host_delay":300,
+       "notify_no_data":true,
+       "renotify_interval":0,
+       "evaluation_delay":900,
+       "escalation_message":"",
+       "thresholds":{
+          "critical":0.0
+       }
+    }
+ }

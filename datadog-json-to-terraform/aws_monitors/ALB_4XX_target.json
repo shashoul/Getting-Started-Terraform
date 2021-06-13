@@ -1,0 +1,28 @@
+{
+	"id": 28986630,
+	"name": "AWS ALB - Target 4XX Error Rate is High",
+	"type": "query alert",
+	"query": "sum(last_15m):avg:aws.applicationelb.httpcode_target_4xx{environment:production} by {targetgroup}.as_count() > 10",
+	"message": "@slack-cloud-alerts-bindid-prd\n@webhook-XiteIt \n\nSummary:P1 - 4XX Error Rate is {{value}} on {{targetgroup}}\n\nCritical Threshold:{{threshold}}\nWarning Threshold:{{warn_threshold}}\n\nHost:AWS ALB\nService:4XX Error Rate per target group\nValue:{{value}}\nSeverity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",
+	"tags": [
+		"targetgroup"
+	],
+	"options": {
+		"notify_audit": false,
+		"locked": false,
+		"timeout_h": 0,
+		"new_host_delay": 300,
+		"require_full_window": false,
+		"notify_no_data": true,
+		"renotify_interval": "0",
+		"evaluation_delay": 900,
+		"escalation_message": "",
+		"no_data_timeframe": 30,
+		"include_tags": true,
+		"thresholds": {
+			"critical": 10,
+			"warning": 6
+		}
+	},
+	"priority": 1
+}

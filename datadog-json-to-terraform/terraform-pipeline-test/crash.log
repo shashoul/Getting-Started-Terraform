@@ -1,0 +1,319 @@
+2021/04/12 18:20:24 [INFO] Terraform version: 0.14.7  
+2021/04/12 18:20:24 [INFO] Go runtime version: go1.15.8
+2021/04/12 18:20:24 [INFO] CLI args: []string{"/usr/local/bin/terraform", "apply", "pipelines.tfplan"}
+2021/04/12 18:20:24 [DEBUG] Attempting to open CLI config file: /Users/shady/.terraformrc
+2021/04/12 18:20:24 [DEBUG] File doesn't exist, but doesn't need to. Ignoring.
+2021/04/12 18:20:24 [DEBUG] ignoring non-existing provider search directory terraform.d/plugins
+2021/04/12 18:20:24 [DEBUG] ignoring non-existing provider search directory /Users/shady/.terraform.d/plugins
+2021/04/12 18:20:24 [DEBUG] ignoring non-existing provider search directory /Users/shady/Library/Application Support/io.terraform/plugins
+2021/04/12 18:20:24 [DEBUG] ignoring non-existing provider search directory /Library/Application Support/io.terraform/plugins
+2021/04/12 18:20:24 [INFO] CLI command args: []string{"apply", "pipelines.tfplan"}
+2021/04/12 18:20:24 [TRACE] Meta.BackendForPlan: instantiated backend of type *local.Local
+2021/04/12 18:20:24 [TRACE] providercache.fillMetaCache: scanning directory .terraform/providers
+2021/04/12 18:20:24 [TRACE] getproviders.SearchLocalDirectory: .terraform/providers is a symlink to .terraform/providers
+2021/04/12 18:20:24 [TRACE] getproviders.SearchLocalDirectory: found registry.terraform.io/datadog/datadog v2.21.0 for darwin_amd64 at .terraform/providers/registry.terraform.io/datadog/datadog/2.21.0/darwin_amd64
+2021/04/12 18:20:24 [TRACE] providercache.fillMetaCache: including .terraform/providers/registry.terraform.io/datadog/datadog/2.21.0/darwin_amd64 as a candidate package for registry.terraform.io/datadog/datadog 2.21.0
+2021/04/12 18:20:24 [DEBUG] checking for provisioner in "."
+2021/04/12 18:20:24 [DEBUG] checking for provisioner in "/usr/local/bin"
+2021/04/12 18:20:24 [INFO] Failed to read plugin lock file .terraform/plugins/darwin_amd64/lock.json: open .terraform/plugins/darwin_amd64/lock.json: no such file or directory
+2021/04/12 18:20:24 [TRACE] Meta.BackendForPlan: backend *local.Local supports operations
+2021/04/12 18:20:24 [INFO] backend/local: starting Apply operation
+2021/04/12 18:20:24 [TRACE] backend/local: requesting state manager for workspace "default"
+2021/04/12 18:20:24 [TRACE] backend/local: state manager for workspace "default" will:
+ - read initial snapshot from terraform.tfstate
+ - write new snapshots to terraform.tfstate
+ - create any backup at terraform.tfstate.backup
+2021/04/12 18:20:24 [TRACE] backend/local: requesting state lock for workspace "default"
+2021/04/12 18:20:24 [TRACE] statemgr.Filesystem: preparing to manage state snapshots at terraform.tfstate
+2021/04/12 18:20:25 [TRACE] statemgr.Filesystem: existing snapshot has lineage "fffcd39d-355b-10ca-43bb-e06619edcc54" serial 34
+2021/04/12 18:20:25 [TRACE] statemgr.Filesystem: locking terraform.tfstate using fcntl flock
+2021/04/12 18:20:25 [TRACE] statemgr.Filesystem: writing lock metadata to .terraform.tfstate.lock.info
+2021/04/12 18:20:25 [TRACE] backend/local: reading remote state for workspace "default"
+2021/04/12 18:20:25 [TRACE] statemgr.Filesystem: reading latest snapshot from terraform.tfstate
+2021/04/12 18:20:25 [TRACE] statemgr.Filesystem: read snapshot with lineage "fffcd39d-355b-10ca-43bb-e06619edcc54" serial 34
+2021/04/12 18:20:25 [TRACE] backend/local: retrieving local state snapshot for workspace "default"
+2021/04/12 18:20:25 [TRACE] backend/local: building context from plan file
+2021/04/12 18:20:25 [TRACE] terraform.NewContext: starting
+2021/04/12 18:20:25 [TRACE] terraform.NewContext: loading provider schemas
+2021/04/12 18:20:25 [TRACE] LoadSchemas: retrieving schema for provider type "registry.terraform.io/datadog/datadog"
+2021-04-12T18:20:25.006+0300 [INFO]  plugin: configuring client automatic mTLS
+2021-04-12T18:20:25.031+0300 [DEBUG] plugin: starting plugin: path=.terraform/providers/registry.terraform.io/datadog/datadog/2.21.0/darwin_amd64/terraform-provider-datadog_v2.21.0 args=[.terraform/providers/registry.terraform.io/datadog/datadog/2.21.0/darwin_amd64/terraform-provider-datadog_v2.21.0]
+2021-04-12T18:20:25.034+0300 [DEBUG] plugin: plugin started: path=.terraform/providers/registry.terraform.io/datadog/datadog/2.21.0/darwin_amd64/terraform-provider-datadog_v2.21.0 pid=78560
+2021-04-12T18:20:25.034+0300 [DEBUG] plugin: waiting for RPC address: path=.terraform/providers/registry.terraform.io/datadog/datadog/2.21.0/darwin_amd64/terraform-provider-datadog_v2.21.0
+2021-04-12T18:20:25.053+0300 [INFO]  plugin.terraform-provider-datadog_v2.21.0: configuring server automatic mTLS: timestamp=2021-04-12T18:20:25.052+0300
+2021-04-12T18:20:25.079+0300 [DEBUG] plugin: using plugin: version=5
+2021-04-12T18:20:25.079+0300 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: plugin address: address=/var/folders/mx/4gqd2w1929v9hzdjxh3bftcw0000gp/T/plugin761549519 network=unix timestamp=2021-04-12T18:20:25.079+0300
+2021/04/12 18:20:25 [TRACE] GRPCProvider: GetSchema
+2021-04-12T18:20:25.133+0300 [TRACE] plugin.stdio: waiting for stdio data
+2021/04/12 18:20:25 [TRACE] No provider meta schema returned
+2021/04/12 18:20:25 [TRACE] GRPCProvider: Close
+2021-04-12T18:20:25.166+0300 [WARN]  plugin.stdio: received EOF, stopping recv loop: err="rpc error: code = Unavailable desc = transport is closing"
+2021-04-12T18:20:25.167+0300 [DEBUG] plugin: plugin process exited: path=.terraform/providers/registry.terraform.io/datadog/datadog/2.21.0/darwin_amd64/terraform-provider-datadog_v2.21.0 pid=78560
+2021-04-12T18:20:25.167+0300 [DEBUG] plugin: plugin exited
+2021/04/12 18:20:25 [TRACE] terraform.NewContext: complete
+2021/04/12 18:20:25 [TRACE] backend/local: finished building terraform.Context
+2021/04/12 18:20:25 [INFO] backend/local: apply calling Apply
+2021/04/12 18:20:25 [INFO] terraform: building graph: GraphTypeApply
+2021/04/12 18:20:25 [TRACE] Executing graph transform *terraform.ConfigTransformer
+2021/04/12 18:20:25 [TRACE] ConfigTransformer: Starting for path: 
+2021/04/12 18:20:25 [TRACE] Completed graph transform *terraform.ConfigTransformer with new graph:
+  datadog_logs_custom_pipeline.pipeline_test5 (expand) - *terraform.nodeExpandApplyableResource
+  ------
+2021/04/12 18:20:25 [TRACE] Executing graph transform *terraform.RootVariableTransformer
+2021/04/12 18:20:25 [TRACE] Completed graph transform *terraform.RootVariableTransformer (no changes)
+2021/04/12 18:20:25 [TRACE] Executing graph transform *terraform.ModuleVariableTransformer
+2021/04/12 18:20:25 [TRACE] Completed graph transform *terraform.ModuleVariableTransformer (no changes)
+2021/04/12 18:20:25 [TRACE] Executing graph transform *terraform.LocalTransformer
+2021/04/12 18:20:25 [TRACE] Completed graph transform *terraform.LocalTransformer (no changes)
+2021/04/12 18:20:25 [TRACE] Executing graph transform *terraform.OutputTransformer
+2021/04/12 18:20:25 [TRACE] Completed graph transform *terraform.OutputTransformer (no changes)
+2021/04/12 18:20:25 [TRACE] Executing graph transform *terraform.DiffTransformer
+2021/04/12 18:20:25 [TRACE] DiffTransformer starting
+2021/04/12 18:20:25 [TRACE] DiffTransformer: found Create change for datadog_logs_custom_pipeline.pipeline_test5 
+2021/04/12 18:20:25 [TRACE] DiffTransformer: datadog_logs_custom_pipeline.pipeline_test5 will be represented by datadog_logs_custom_pipeline.pipeline_test5
+2021/04/12 18:20:25 [TRACE] DiffTransformer complete
+2021/04/12 18:20:25 [TRACE] Completed graph transform *terraform.DiffTransformer with new graph:
+  datadog_logs_custom_pipeline.pipeline_test5 - *terraform.NodeApplyableResourceInstance
+    datadog_logs_custom_pipeline.pipeline_test5 (expand) - *terraform.nodeExpandApplyableResource
+  datadog_logs_custom_pipeline.pipeline_test5 (expand) - *terraform.nodeExpandApplyableResource
+  ------
+2021/04/12 18:20:25 [TRACE] Executing graph transform *terraform.AttachStateTransformer
+2021/04/12 18:20:25 [DEBUG] Resource state not found for node "datadog_logs_custom_pipeline.pipeline_test5", instance datadog_logs_custom_pipeline.pipeline_test5
+2021/04/12 18:20:25 [TRACE] Completed graph transform *terraform.AttachStateTransformer (no changes)
+2021/04/12 18:20:25 [TRACE] Executing graph transform *terraform.OrphanOutputTransformer
+2021/04/12 18:20:25 [TRACE] Completed graph transform *terraform.OrphanOutputTransformer (no changes)
+2021/04/12 18:20:25 [TRACE] Executing graph transform *terraform.AttachResourceConfigTransformer
+2021/04/12 18:20:25 [TRACE] AttachResourceConfigTransformer: attaching to "datadog_logs_custom_pipeline.pipeline_test5 (expand)" (*terraform.nodeExpandApplyableResource) config from pipeline5.tf:1,1-57
+2021/04/12 18:20:25 [TRACE] AttachResourceConfigTransformer: attaching provider meta configs to datadog_logs_custom_pipeline.pipeline_test5 (expand)
+2021/04/12 18:20:25 [TRACE] AttachResourceConfigTransformer: attaching to "datadog_logs_custom_pipeline.pipeline_test5" (*terraform.NodeApplyableResourceInstance) config from pipeline5.tf:1,1-57
+2021/04/12 18:20:25 [TRACE] AttachResourceConfigTransformer: attaching provider meta configs to datadog_logs_custom_pipeline.pipeline_test5
+2021/04/12 18:20:25 [TRACE] Completed graph transform *terraform.AttachResourceConfigTransformer (no changes)
+2021/04/12 18:20:25 [TRACE] Executing graph transform *terraform.MissingProvisionerTransformer
+2021/04/12 18:20:25 [TRACE] Completed graph transform *terraform.MissingProvisionerTransformer (no changes)
+2021/04/12 18:20:25 [TRACE] Executing graph transform *terraform.ProvisionerTransformer
+2021/04/12 18:20:25 [TRACE] Completed graph transform *terraform.ProvisionerTransformer (no changes)
+2021/04/12 18:20:25 [TRACE] Executing graph transform *terraform.graphTransformerMulti
+2021/04/12 18:20:25 [TRACE] (graphTransformerMulti) Executing graph transform *terraform.ProviderConfigTransformer
+2021/04/12 18:20:25 [TRACE] (graphTransformerMulti) Completed graph transform *terraform.ProviderConfigTransformer with new graph:
+  datadog_logs_custom_pipeline.pipeline_test5 - *terraform.NodeApplyableResourceInstance
+    datadog_logs_custom_pipeline.pipeline_test5 (expand) - *terraform.nodeExpandApplyableResource
+  datadog_logs_custom_pipeline.pipeline_test5 (expand) - *terraform.nodeExpandApplyableResource
+  ------
+2021/04/12 18:20:25 [TRACE] (graphTransformerMulti) Executing graph transform *terraform.MissingProviderTransformer
+2021/04/12 18:20:25 [DEBUG] adding implicit provider configuration provider["registry.terraform.io/datadog/datadog"], implied first by datadog_logs_custom_pipeline.pipeline_test5 (expand)
+2021/04/12 18:20:25 [TRACE] (graphTransformerMulti) Completed graph transform *terraform.MissingProviderTransformer with new graph:
+  datadog_logs_custom_pipeline.pipeline_test5 - *terraform.NodeApplyableResourceInstance
+    datadog_logs_custom_pipeline.pipeline_test5 (expand) - *terraform.nodeExpandApplyableResource
+  datadog_logs_custom_pipeline.pipeline_test5 (expand) - *terraform.nodeExpandApplyableResource
+  provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  ------
+2021/04/12 18:20:25 [TRACE] (graphTransformerMulti) Executing graph transform *terraform.ProviderTransformer
+2021/04/12 18:20:25 [TRACE] ProviderTransformer: exact match for provider["registry.terraform.io/datadog/datadog"] serving datadog_logs_custom_pipeline.pipeline_test5 (expand)
+2021/04/12 18:20:25 [DEBUG] ProviderTransformer: "datadog_logs_custom_pipeline.pipeline_test5 (expand)" (*terraform.nodeExpandApplyableResource) needs provider["registry.terraform.io/datadog/datadog"]
+2021/04/12 18:20:25 [TRACE] ProviderTransformer: exact match for provider["registry.terraform.io/datadog/datadog"] serving datadog_logs_custom_pipeline.pipeline_test5
+2021/04/12 18:20:25 [DEBUG] ProviderTransformer: "datadog_logs_custom_pipeline.pipeline_test5" (*terraform.NodeApplyableResourceInstance) needs provider["registry.terraform.io/datadog/datadog"]
+2021/04/12 18:20:25 [TRACE] (graphTransformerMulti) Completed graph transform *terraform.ProviderTransformer with new graph:
+  datadog_logs_custom_pipeline.pipeline_test5 - *terraform.NodeApplyableResourceInstance
+    datadog_logs_custom_pipeline.pipeline_test5 (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_logs_custom_pipeline.pipeline_test5 (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  ------
+2021/04/12 18:20:25 [TRACE] (graphTransformerMulti) Executing graph transform *terraform.PruneProviderTransformer
+2021/04/12 18:20:25 [TRACE] (graphTransformerMulti) Completed graph transform *terraform.PruneProviderTransformer (no changes)
+2021/04/12 18:20:25 [TRACE] (graphTransformerMulti) Executing graph transform *terraform.ParentProviderTransformer
+2021/04/12 18:20:25 [TRACE] (graphTransformerMulti) Completed graph transform *terraform.ParentProviderTransformer (no changes)
+2021/04/12 18:20:25 [TRACE] Completed graph transform *terraform.graphTransformerMulti with new graph:
+  datadog_logs_custom_pipeline.pipeline_test5 - *terraform.NodeApplyableResourceInstance
+    datadog_logs_custom_pipeline.pipeline_test5 (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_logs_custom_pipeline.pipeline_test5 (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  ------
+2021/04/12 18:20:25 [TRACE] Executing graph transform *terraform.RemovedModuleTransformer
+2021/04/12 18:20:25 [TRACE] Completed graph transform *terraform.RemovedModuleTransformer (no changes)
+2021/04/12 18:20:25 [TRACE] Executing graph transform *terraform.AttachSchemaTransformer
+2021/04/12 18:20:25 [TRACE] AttachSchemaTransformer: attaching resource schema to datadog_logs_custom_pipeline.pipeline_test5 (expand)
+2021/04/12 18:20:25 [TRACE] AttachSchemaTransformer: attaching resource schema to datadog_logs_custom_pipeline.pipeline_test5
+2021/04/12 18:20:25 [TRACE] AttachSchemaTransformer: attaching provider config schema to provider["registry.terraform.io/datadog/datadog"]
+2021/04/12 18:20:25 [TRACE] Completed graph transform *terraform.AttachSchemaTransformer (no changes)
+2021/04/12 18:20:25 [TRACE] Executing graph transform *terraform.ModuleExpansionTransformer
+2021/04/12 18:20:25 [TRACE] Completed graph transform *terraform.ModuleExpansionTransformer (no changes)
+2021/04/12 18:20:25 [TRACE] Executing graph transform *terraform.ReferenceTransformer
+2021/04/12 18:20:25 [DEBUG] ReferenceTransformer: "datadog_logs_custom_pipeline.pipeline_test5 (expand)" references: []
+2021/04/12 18:20:25 [DEBUG] ReferenceTransformer: "datadog_logs_custom_pipeline.pipeline_test5" references: []
+2021/04/12 18:20:25 [DEBUG] ReferenceTransformer: "provider[\"registry.terraform.io/datadog/datadog\"]" references: []
+2021/04/12 18:20:25 [TRACE] Completed graph transform *terraform.ReferenceTransformer (no changes)
+2021/04/12 18:20:25 [TRACE] Executing graph transform *terraform.AttachDependenciesTransformer
+2021/04/12 18:20:25 [TRACE] AttachDependenciesTransformer: datadog_logs_custom_pipeline.pipeline_test5 depends on []
+2021/04/12 18:20:25 [TRACE] Completed graph transform *terraform.AttachDependenciesTransformer (no changes)
+2021/04/12 18:20:25 [TRACE] Executing graph transform *terraform.ForcedCBDTransformer
+2021/04/12 18:20:25 [TRACE] ForcedCBDTransformer: "datadog_logs_custom_pipeline.pipeline_test5" (*terraform.NodeApplyableResourceInstance) has no CBD descendent, so skipping
+2021/04/12 18:20:25 [TRACE] Completed graph transform *terraform.ForcedCBDTransformer (no changes)
+2021/04/12 18:20:25 [TRACE] Executing graph transform *terraform.DestroyEdgeTransformer
+2021/04/12 18:20:25 [TRACE] Completed graph transform *terraform.DestroyEdgeTransformer (no changes)
+2021/04/12 18:20:25 [TRACE] Executing graph transform *terraform.CBDEdgeTransformer
+2021/04/12 18:20:25 [TRACE] Completed graph transform *terraform.CBDEdgeTransformer (no changes)
+2021/04/12 18:20:25 [TRACE] Executing graph transform *terraform.pruneUnusedNodesTransformer
+2021/04/12 18:20:25 [TRACE] Completed graph transform *terraform.pruneUnusedNodesTransformer (no changes)
+2021/04/12 18:20:25 [TRACE] Executing graph transform *terraform.TargetsTransformer
+2021/04/12 18:20:25 [TRACE] Completed graph transform *terraform.TargetsTransformer (no changes)
+2021/04/12 18:20:25 [TRACE] Executing graph transform *terraform.CountBoundaryTransformer
+2021/04/12 18:20:25 [TRACE] Completed graph transform *terraform.CountBoundaryTransformer with new graph:
+  datadog_logs_custom_pipeline.pipeline_test5 - *terraform.NodeApplyableResourceInstance
+    datadog_logs_custom_pipeline.pipeline_test5 (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_logs_custom_pipeline.pipeline_test5 (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  meta.count-boundary (EachMode fixup) - *terraform.NodeCountBoundary
+    datadog_logs_custom_pipeline.pipeline_test5 - *terraform.NodeApplyableResourceInstance
+    datadog_logs_custom_pipeline.pipeline_test5 (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  ------
+2021/04/12 18:20:25 [TRACE] Executing graph transform *terraform.CloseProviderTransformer
+2021/04/12 18:20:25 [TRACE] Completed graph transform *terraform.CloseProviderTransformer with new graph:
+  datadog_logs_custom_pipeline.pipeline_test5 - *terraform.NodeApplyableResourceInstance
+    datadog_logs_custom_pipeline.pipeline_test5 (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_logs_custom_pipeline.pipeline_test5 (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  meta.count-boundary (EachMode fixup) - *terraform.NodeCountBoundary
+    datadog_logs_custom_pipeline.pipeline_test5 - *terraform.NodeApplyableResourceInstance
+    datadog_logs_custom_pipeline.pipeline_test5 (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  provider["registry.terraform.io/datadog/datadog"] (close) - *terraform.graphNodeCloseProvider
+    datadog_logs_custom_pipeline.pipeline_test5 - *terraform.NodeApplyableResourceInstance
+    datadog_logs_custom_pipeline.pipeline_test5 (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  ------
+2021/04/12 18:20:25 [TRACE] Executing graph transform *terraform.CloseProvisionerTransformer
+2021/04/12 18:20:25 [TRACE] Completed graph transform *terraform.CloseProvisionerTransformer (no changes)
+2021/04/12 18:20:25 [TRACE] Executing graph transform *terraform.CloseRootModuleTransformer
+2021/04/12 18:20:25 [TRACE] Completed graph transform *terraform.CloseRootModuleTransformer with new graph:
+  datadog_logs_custom_pipeline.pipeline_test5 - *terraform.NodeApplyableResourceInstance
+    datadog_logs_custom_pipeline.pipeline_test5 (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  datadog_logs_custom_pipeline.pipeline_test5 (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  meta.count-boundary (EachMode fixup) - *terraform.NodeCountBoundary
+    datadog_logs_custom_pipeline.pipeline_test5 - *terraform.NodeApplyableResourceInstance
+    datadog_logs_custom_pipeline.pipeline_test5 (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  provider["registry.terraform.io/datadog/datadog"] (close) - *terraform.graphNodeCloseProvider
+    datadog_logs_custom_pipeline.pipeline_test5 - *terraform.NodeApplyableResourceInstance
+    datadog_logs_custom_pipeline.pipeline_test5 (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  root - *terraform.nodeCloseModule
+    meta.count-boundary (EachMode fixup) - *terraform.NodeCountBoundary
+    provider["registry.terraform.io/datadog/datadog"] (close) - *terraform.graphNodeCloseProvider
+  ------
+2021/04/12 18:20:25 [TRACE] Executing graph transform *terraform.TransitiveReductionTransformer
+2021/04/12 18:20:25 [TRACE] Completed graph transform *terraform.TransitiveReductionTransformer with new graph:
+  datadog_logs_custom_pipeline.pipeline_test5 - *terraform.NodeApplyableResourceInstance
+    datadog_logs_custom_pipeline.pipeline_test5 (expand) - *terraform.nodeExpandApplyableResource
+  datadog_logs_custom_pipeline.pipeline_test5 (expand) - *terraform.nodeExpandApplyableResource
+    provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  meta.count-boundary (EachMode fixup) - *terraform.NodeCountBoundary
+    datadog_logs_custom_pipeline.pipeline_test5 - *terraform.NodeApplyableResourceInstance
+  provider["registry.terraform.io/datadog/datadog"] - *terraform.NodeApplyableProvider
+  provider["registry.terraform.io/datadog/datadog"] (close) - *terraform.graphNodeCloseProvider
+    datadog_logs_custom_pipeline.pipeline_test5 - *terraform.NodeApplyableResourceInstance
+  root - *terraform.nodeCloseModule
+    meta.count-boundary (EachMode fixup) - *terraform.NodeCountBoundary
+    provider["registry.terraform.io/datadog/datadog"] (close) - *terraform.graphNodeCloseProvider
+  ------
+2021/04/12 18:20:25 [DEBUG] Starting graph walk: walkApply
+2021/04/12 18:20:25 [TRACE] dag/walk: visiting "provider[\"registry.terraform.io/datadog/datadog\"]"
+2021/04/12 18:20:25 [TRACE] vertex "provider[\"registry.terraform.io/datadog/datadog\"]": starting visit (*terraform.NodeApplyableProvider)
+2021-04-12T18:20:25.171+0300 [INFO]  plugin: configuring client automatic mTLS
+2021-04-12T18:20:25.195+0300 [DEBUG] plugin: starting plugin: path=.terraform/providers/registry.terraform.io/datadog/datadog/2.21.0/darwin_amd64/terraform-provider-datadog_v2.21.0 args=[.terraform/providers/registry.terraform.io/datadog/datadog/2.21.0/darwin_amd64/terraform-provider-datadog_v2.21.0]
+2021-04-12T18:20:25.199+0300 [DEBUG] plugin: plugin started: path=.terraform/providers/registry.terraform.io/datadog/datadog/2.21.0/darwin_amd64/terraform-provider-datadog_v2.21.0 pid=78575
+2021-04-12T18:20:25.199+0300 [DEBUG] plugin: waiting for RPC address: path=.terraform/providers/registry.terraform.io/datadog/datadog/2.21.0/darwin_amd64/terraform-provider-datadog_v2.21.0
+2021-04-12T18:20:25.218+0300 [INFO]  plugin.terraform-provider-datadog_v2.21.0: configuring server automatic mTLS: timestamp=2021-04-12T18:20:25.217+0300
+2021-04-12T18:20:25.244+0300 [DEBUG] plugin: using plugin: version=5
+2021-04-12T18:20:25.244+0300 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: plugin address: address=/var/folders/mx/4gqd2w1929v9hzdjxh3bftcw0000gp/T/plugin097131402 network=unix timestamp=2021-04-12T18:20:25.243+0300
+2021/04/12 18:20:25 [TRACE] BuiltinEvalContext: Initialized "provider[\"registry.terraform.io/datadog/datadog\"]" provider for provider["registry.terraform.io/datadog/datadog"]
+2021/04/12 18:20:25 [TRACE] buildProviderConfig for provider["registry.terraform.io/datadog/datadog"]: no configuration at all
+2021/04/12 18:20:25 [TRACE] GRPCProvider: GetSchema
+2021-04-12T18:20:25.298+0300 [TRACE] plugin.stdio: waiting for stdio data
+2021/04/12 18:20:25 [TRACE] No provider meta schema returned
+2021/04/12 18:20:25 [TRACE] GRPCProvider: Configure
+2021-04-12T18:20:25.331+0300 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: 2021/04/12 18:20:25 [INFO] Datadog client successfully initialized, now validating...
+2021-04-12T18:20:26.109+0300 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: 2021/04/12 18:20:26 [INFO] Datadog Client successfully validated.
+2021/04/12 18:20:26 [TRACE] vertex "provider[\"registry.terraform.io/datadog/datadog\"]": visit complete
+2021/04/12 18:20:26 [TRACE] dag/walk: visiting "datadog_logs_custom_pipeline.pipeline_test5 (expand)"
+2021/04/12 18:20:26 [TRACE] vertex "datadog_logs_custom_pipeline.pipeline_test5 (expand)": starting visit (*terraform.nodeExpandApplyableResource)
+2021/04/12 18:20:26 [TRACE] vertex "datadog_logs_custom_pipeline.pipeline_test5 (expand)": expanding dynamic subgraph
+2021/04/12 18:20:26 [TRACE] vertex "datadog_logs_custom_pipeline.pipeline_test5 (expand)": entering dynamic subgraph
+2021/04/12 18:20:26 [TRACE] dag/walk: visiting "datadog_logs_custom_pipeline.pipeline_test5"
+2021/04/12 18:20:26 [TRACE] vertex "datadog_logs_custom_pipeline.pipeline_test5": starting visit (*terraform.NodeApplyableResource)
+2021/04/12 18:20:26 [TRACE] vertex "datadog_logs_custom_pipeline.pipeline_test5": visit complete
+2021/04/12 18:20:26 [TRACE] vertex "datadog_logs_custom_pipeline.pipeline_test5 (expand)": dynamic subgraph completed successfully
+2021/04/12 18:20:26 [TRACE] vertex "datadog_logs_custom_pipeline.pipeline_test5 (expand)": visit complete
+2021/04/12 18:20:26 [TRACE] dag/walk: visiting "datadog_logs_custom_pipeline.pipeline_test5"
+2021/04/12 18:20:26 [TRACE] vertex "datadog_logs_custom_pipeline.pipeline_test5": starting visit (*terraform.NodeApplyableResourceInstance)
+2021/04/12 18:20:26 [TRACE] EvalReadDiff: Read Create change from plan for datadog_logs_custom_pipeline.pipeline_test5
+2021/04/12 18:20:26 [TRACE] EvalReadState: reading state for datadog_logs_custom_pipeline.pipeline_test5
+2021/04/12 18:20:26 [TRACE] EvalReadState: no state present for datadog_logs_custom_pipeline.pipeline_test5
+2021/04/12 18:20:26 [TRACE] EvalReadDiff: Read Create change from plan for datadog_logs_custom_pipeline.pipeline_test5
+2021/04/12 18:20:26 [TRACE] Re-validating config for "datadog_logs_custom_pipeline.pipeline_test5"
+2021/04/12 18:20:26 [TRACE] GRPCProvider: ValidateResourceTypeConfig
+2021/04/12 18:20:26 [TRACE] GRPCProvider: PlanResourceChange
+2021/04/12 18:20:26 [TRACE] EvalCheckPlannedChange: Verifying that actual change (action Create) matches planned change (action Create)
+2021/04/12 18:20:26 [TRACE] EvalReadState: reading state for datadog_logs_custom_pipeline.pipeline_test5
+2021/04/12 18:20:26 [TRACE] EvalReadState: no state present for datadog_logs_custom_pipeline.pipeline_test5
+2021/04/12 18:20:26 [DEBUG] EvalApply: ProviderMeta config value set
+2021/04/12 18:20:26 [DEBUG] datadog_logs_custom_pipeline.pipeline_test5: applying the planned Create change
+2021/04/12 18:20:26 [TRACE] GRPCProvider: ApplyResourceChange
+2021-04-12T18:20:26.169+0300 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: panic: interface conversion: interface {} is nil, not map[string]interface {}
+2021-04-12T18:20:26.169+0300 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: 
+2021-04-12T18:20:26.169+0300 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: goroutine 48 [running]:
+2021-04-12T18:20:26.169+0300 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: github.com/terraform-providers/terraform-provider-datadog/datadog.buildDatadogNestedPipeline(0xc000e3ad50, 0xc0008b1200, 0x12, 0x2351f01)
+2021-04-12T18:20:26.170+0300 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: 	github.com/terraform-providers/terraform-provider-datadog/datadog/resource_datadog_logs_custom_pipeline.go:840 +0x4bf
+2021-04-12T18:20:26.170+0300 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: github.com/terraform-providers/terraform-provider-datadog/datadog.buildDatadogProcessor(0x239a9b1, 0x8, 0xc000e3ad50, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, ...)
+2021-04-12T18:20:26.170+0300 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: 	github.com/terraform-providers/terraform-provider-datadog/datadog/resource_datadog_logs_custom_pipeline.go:748 +0x1a5
+2021-04-12T18:20:26.170+0300 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: github.com/terraform-providers/terraform-provider-datadog/datadog.buildDatadogProcessors(0xc00030e620, 0xe, 0xe, 0x20a7560, 0xc000c40d00, 0xffffffffffffff01)
+2021-04-12T18:20:26.170+0300 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: 	github.com/terraform-providers/terraform-provider-datadog/datadog/resource_datadog_logs_custom_pipeline.go:709 +0x1ac
+2021-04-12T18:20:26.170+0300 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: github.com/terraform-providers/terraform-provider-datadog/datadog.buildDatadogPipeline(0xc0001ac7e0, 0x203000, 0xffffffffffffffff, 0x16)
+2021-04-12T18:20:26.170+0300 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: 	github.com/terraform-providers/terraform-provider-datadog/datadog/resource_datadog_logs_custom_pipeline.go:695 +0x2c7
+2021-04-12T18:20:26.170+0300 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: github.com/terraform-providers/terraform-provider-datadog/datadog.resourceDatadogLogsPipelineCreate(0xc0001ac7e0, 0x215efc0, 0xc00030c500, 0x2, 0x30c26e0)
+2021-04-12T18:20:26.170+0300 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: 	github.com/terraform-providers/terraform-provider-datadog/datadog/resource_datadog_logs_custom_pipeline.go:359 +0x87
+2021-04-12T18:20:26.170+0300 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: github.com/hashicorp/terraform-plugin-sdk/helper/schema.(*Resource).Apply(0xc0003f86c0, 0xc0005280f0, 0xc0006611c0, 0x215efc0, 0xc00030c500, 0x217a501, 0xc0009e5c88, 0xc000795230)
+2021-04-12T18:20:26.170+0300 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: 	github.com/hashicorp/terraform-plugin-sdk@v1.15.0/helper/schema/resource.go:310 +0x375
+2021-04-12T18:20:26.170+0300 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: github.com/hashicorp/terraform-plugin-sdk/helper/schema.(*Provider).Apply(0xc000046180, 0xc00065fa38, 0xc0005280f0, 0xc0006611c0, 0xc000e5f828, 0xc000b22660, 0x217cec0)
+2021-04-12T18:20:26.170+0300 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: 	github.com/hashicorp/terraform-plugin-sdk@v1.15.0/helper/schema/provider.go:294 +0x99
+2021-04-12T18:20:26.170+0300 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: github.com/hashicorp/terraform-plugin-sdk/internal/helper/plugin.(*GRPCProviderServer).ApplyResourceChange(0xc0000ae1a0, 0x2662f80, 0xc000a7a030, 0xc0003c2000, 0xc0000ae1a0, 0xc000a7a030, 0xc000668ba0)
+2021-04-12T18:20:26.170+0300 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: 	github.com/hashicorp/terraform-plugin-sdk@v1.15.0/internal/helper/plugin/grpc_provider.go:885 +0x8ab
+2021-04-12T18:20:26.170+0300 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: github.com/hashicorp/terraform-plugin-sdk/internal/tfplugin5._Provider_ApplyResourceChange_Handler(0x2324c80, 0xc0000ae1a0, 0x2662f80, 0xc000a7a030, 0xc00067c000, 0x0, 0x2662f80, 0xc000a7a030, 0xc000f0c000, 0xa5b9)
+2021-04-12T18:20:26.170+0300 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: 	github.com/hashicorp/terraform-plugin-sdk@v1.15.0/internal/tfplugin5/tfplugin5.pb.go:3305 +0x214
+2021-04-12T18:20:26.170+0300 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: google.golang.org/grpc.(*Server).processUnaryRPC(0xc0000f8700, 0x266ec40, 0xc00013cc00, 0xc0009f6000, 0xc000889620, 0x307e9c0, 0x0, 0x0, 0x0)
+2021-04-12T18:20:26.170+0300 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: 	google.golang.org/grpc@v1.30.0/server.go:1171 +0x522
+2021-04-12T18:20:26.170+0300 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: google.golang.org/grpc.(*Server).handleStream(0xc0000f8700, 0x266ec40, 0xc00013cc00, 0xc0009f6000, 0x0)
+2021-04-12T18:20:26.170+0300 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: 	google.golang.org/grpc@v1.30.0/server.go:1494 +0xcc5
+2021-04-12T18:20:26.170+0300 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: google.golang.org/grpc.(*Server).serveStreams.func1.2(0xc00003a240, 0xc0000f8700, 0x266ec40, 0xc00013cc00, 0xc0009f6000)
+2021-04-12T18:20:26.170+0300 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: 	google.golang.org/grpc@v1.30.0/server.go:834 +0xa5
+2021-04-12T18:20:26.170+0300 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: created by google.golang.org/grpc.(*Server).serveStreams.func1
+2021-04-12T18:20:26.170+0300 [DEBUG] plugin.terraform-provider-datadog_v2.21.0: 	google.golang.org/grpc@v1.30.0/server.go:832 +0x1fd
+2021-04-12T18:20:26.173+0300 [WARN]  plugin.stdio: received EOF, stopping recv loop: err="rpc error: code = Unavailable desc = transport is closing"
+2021/04/12 18:20:26 [DEBUG] datadog_logs_custom_pipeline.pipeline_test5: apply errored, but we're indicating that via the Error pointer rather than returning it: rpc error: code = Unavailable desc = transport is closing
+2021/04/12 18:20:26 [TRACE] EvalMaybeTainted: datadog_logs_custom_pipeline.pipeline_test5 encountered an error during creation, so it is now marked as tainted
+2021/04/12 18:20:26 [TRACE] EvalWriteState: removing state object for datadog_logs_custom_pipeline.pipeline_test5
+2021/04/12 18:20:26 [TRACE] EvalApplyProvisioners: datadog_logs_custom_pipeline.pipeline_test5 has no state, so skipping provisioners
+2021-04-12T18:20:26.173+0300 [DEBUG] plugin: plugin process exited: path=.terraform/providers/registry.terraform.io/datadog/datadog/2.21.0/darwin_amd64/terraform-provider-datadog_v2.21.0 pid=78575 error="exit status 2"
+2021/04/12 18:20:26 [TRACE] EvalMaybeTainted: datadog_logs_custom_pipeline.pipeline_test5 encountered an error during creation, so it is now marked as tainted
+2021/04/12 18:20:26 [TRACE] EvalWriteState: removing state object for datadog_logs_custom_pipeline.pipeline_test5
+2021/04/12 18:20:26 [TRACE] vertex "datadog_logs_custom_pipeline.pipeline_test5": visit complete
+2021/04/12 18:20:26 [TRACE] dag/walk: upstream of "meta.count-boundary (EachMode fixup)" errored, so skipping
+2021/04/12 18:20:26 [TRACE] dag/walk: upstream of "provider[\"registry.terraform.io/datadog/datadog\"] (close)" errored, so skipping
+2021/04/12 18:20:26 [TRACE] dag/walk: upstream of "root" errored, so skipping
+2021/04/12 18:20:26 [TRACE] statemgr.Filesystem: not making a backup, because the new snapshot is identical to the old
+2021/04/12 18:20:26 [TRACE] statemgr.Filesystem: no state changes since last snapshot
+2021/04/12 18:20:26 [TRACE] statemgr.Filesystem: writing snapshot at terraform.tfstate
+2021/04/12 18:20:26 [TRACE] statemgr.Filesystem: removing lock metadata file .terraform.tfstate.lock.info
+2021/04/12 18:20:26 [TRACE] statemgr.Filesystem: unlocking terraform.tfstate using fcntl flock
+2021-04-12T18:20:26.199+0300 [DEBUG] plugin: plugin exited

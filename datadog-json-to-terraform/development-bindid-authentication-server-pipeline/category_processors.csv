@@ -1,0 +1,33 @@
+name,target,category_name,filter_query
+bindid_env,bindid_env,production,kube_namespace:ts
+bindid_env,bindid_env,sandbox,kube_namespace:ts-sandbox
+Api Audience,api_audience,enduser,@uri:\/api\/v2\/auth\/* OR @uri:\/api\/v2\/oidc\/bindid-oidc\/authorize*
+Api Audience,api_audience,backend,-@uri:\/api\/v2\/auth\/* AND -@uri:\/api\/v2\/oidc\/bindid-oidc\/authorize*
+Error Category,error_category,Foreign errors,"@message:*\""is_foreign_error\""\:true*"
+Error Category,error_category,Recovery Journey Invocations,@message:*Request?started* @message:*anonymous_invoke* @message:*policy_request_id* @message:*ama-rejection-recovery*
+Error Category,error_category,Unknown authorization code on /token,@status:400 @message:*Unknown?authorization?code*
+Error Category,error_category,Backend & Management - unsupported_grant,@uri:\/api\/v2\/oidc\/bindid-oidc\/token @message:*unsupported_grant_type* @message:*Unsupported?grant?type*
+Error Category,error_category,Backend & Management – invalid_grant,@uri:\/api\/v2\/oidc\/bindid-oidc\/token @message:*invalid_grant*
+Error Category,error_category,End User - invalid_client,@uri:\/api\/v2\/oidc\/bindid-oidc\/authorize* @message:*invalid_client* @message:*Invalid?client?credentials*
+Error Category,error_category,Invalid Request - Invalid redirect URI on /authorize,@uri:\/api\/v2\/oidc\/bindid-oidc\/authorize\?* @message:*invalid_request* @message:*Invalid?redirect?uri*
+Error Category,error_category,Invalid Request - Missing client_id on /authorize,@uri:\/api\/v2\/oidc\/bindid-oidc\/authorize\?* @message:*invalid_request* @message:*Missing?* @message:*client_id*
+Error Category,error_category,Invalid authentication to BindID Backend API,@uri:\/api\/v2\/server-api\/anonymous_invoke?aid=bindid-backend-api @message:*api_error_code?\:?invalid_auth*
+Error Category,error_category,Invalid client credentials on /token,@uri:\/api\/v2\/oidc\/bindid-oidc\/token @message:*error?\:?invalid_client*
+Error Category,error_category,"Number of ""Alias already set"" Errors",@message:*api_error_code* @message:*alias_already_set*
+Error Category,error_category,User not found for backend/management support APIs,(@uri:\/api\/v2\/mng-ui\/support\/user* @message:*User?not?found*) OR (@uri:\/api\/v2\/mng-ui\/reports\/user* @message:*User?not?found*)
+Error Category,error_category,Management Console Bad Logins,(@uri:\/api\/v2\/mng-ui\/* @message:*Bad?administrator?session*) OR (@uri:\/api\/v2\/mng-ui\/* @message:*Bad?credentials?provided*)
+Error Category,error_category,FIDO Registration Failures,"@message:*\""assertion_error_code\""\:9* OR @message:*FieldMissingFromRequest\(attestation_credential\)*"
+Error Category,error_category,Invalid HTTP Method: Frontend/End-User,@statusCode:500 @uri:\/api\/v2\/auth\/* @message:*rejection\:?MethodRejection*
+Error Category,error_category,Invalid HTTP Method: Backend/Management,@statusCode:500 -@uri:\/api\/v2\/auth\/* @message:*rejection\:?MethodRejection*
+Error Category,error_category,500: End-Users,@statusCode:500 @uri:(\/api\/v2\/auth\/* OR \/api\/v2\/oidc\/bindid-oidc\/complete) -@message:*rejection\:?MethodRejection* -@message:*client?returned?with?error* -@message:*cannot_consume_ticket*
+Error Category,error_category,Ticket consumption errors,@statusCode:401 @message:*cannot_consume_ticket* status:error
+Error Category,error_category,User Cancellation,@statusCode:(400 OR 401 OR 404) ((@uri:\/api\/v2\/auth\/assert\?aid\=bindid-ama* @message:*bindid_error_user_declined_title*) OR (@uri:\/api\/v2\/auth\/assert\?aid\=bindid-oidc* @message:*Authentication?cancelled?by?the?user*) OR (@uri:\/api\/v2\/auth\/login\?aid\=bindid-oidc* @message:*Authentication?cancelled?by?the?user*)) @errorCode:4001
+Error Category,error_category,500: Backend & Management,(@statusCode:500 OR @status:500) -@uri:\/api\/v2\/auth\/* -@uri:\/api\/v2\/oidc\/bindid-oidc\/complete -@message:*rejection\:?MethodRejection* -@message:*client?returned?with?error* -@message:*cannot_consume_ticket*
+Error Category,error_category,User not found errors,@api_audience:enduser (@statusCode:400 OR @statusCode:401 OR @statusCode:404 OR @status:(400 OR 401)) @message:*User?not?found*
+Error Category,error_category,Device not found errors,@uri:\/api\/v2\/auth\/* (@statusCode:400 OR @statusCode:401 OR @statusCode:404 OR @status:(400 OR 401)) @message:*Device?not?found*
+Error Category,error_category,All Invalid Request Errors on /authorize,@uri:\/api\/v2\/oidc\/bindid-oidc\/authorize\?* @message:*invalid_request*
+Error Category,error_category,OIDC /complete with errors,@message:*Client?returned?with?error*
+Error Category,error_category,Expression evaluation errors,@message:*Unexpected?exception?during?field?resolution*
+Error Category,error_category,OIDC Backend invalid_request errors,"@uri:\/api\/v2\/oidc\/* @message:*\""error\""\:\""invalid_request\""*"
+Error Category,error_category,Invalid Request,@message:*invalid_request*
+Error Category,error_category,Errors Ignored,"@message:*\""failureCommand\""\:\""restart_journey\""*"

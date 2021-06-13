@@ -1,0 +1,5 @@
+name,filter_query,compute_type,compute_path,group_by
+"4XX: Backend & Management - Uncategorized, non-foreign - Production","""@http.status_code:[400 TO 499] @api_audience:backend -@error_category:* -@uri:\""/api/v2/oidc/bindid-oidc/complete\"" @bindid_env:production""",,,
+"4XX: End-Users - Uncategorized, non-foreign - Production","""source:bindid-authentication-server @api_audience:enduser -@error_category:* @http.status_code:(400 OR 401 OR 404",,,
+500: Backend & Management - Categorized - Production,"""@error_category:\""500: Backend & Management\"" @bindid_env:production""",,,
+500: End-Users - Categorized - Production,"""@error_category:\""500: End-Users\"" @bindid_env:production""",,,

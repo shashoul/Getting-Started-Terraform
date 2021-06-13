@@ -1,0 +1,95 @@
+{
+    "id":"_UmCSpx2RbKHtjXEqd5Bbg",
+    "type":"pipeline",
+    "name":"AWS S3 access logs",
+    "is_enabled":true,
+    "is_read_only":true,
+    "filter":{
+       "query":"source:s3"
+    },
+    "processors":[
+       {
+          "name":"Parsing S3 Access logs",
+          "is_enabled":true,
+          "source":"message",
+          "samples":[
+             "79a59df900b949e55d96a1e698fbacedfd6e09d98eacf8f8d5218e7cd47ef2be mybucket [06/Feb/2014:00:00:38 +0000] 192.0.2.3 79a59df900b949e55d96a1e698fbacedfd6e09d98eacf8f8d5218e7cd47ef2be 3E57427F3EXAMPLE REST.GET.VERSIONING - \"GET /mybucket?versioning HTTP/1.1\" 200 - 113 - 7 - \"-\" \"S3Console/0.4\" -",
+             "79a59df900b949e55d96a1e698fbacedfd6e09d98eacf8f8d5218e7cd47ef2be mybucket [06/Feb/2014:00:00:38 +0000] 192.0.2.3 79a59df900b949e55d96a1e698fbacedfd6e09d98eacf8f8d5218e7cd47ef2be 891CE47D2EXAMPLE REST.GET.LOGGING_STATUS - \"GET /mybucket?logging HTTP/1.1\" 200 - 242 - 11 - \"-\" \"S3Console/0.4\" -",
+             "79a59df900b949e55d96a1e698fbacedfd6e09d98eacf8f8d5218e7cd47ef2be mybucket [06/Feb/2014:00:00:38 +0000] 192.0.2.3 79a59df900b949e55d96a1e698fbacedfd6e09d98eacf8f8d5218e7cd47ef2be A1206F460EXAMPLE REST.GET.BUCKETPOLICY - \"GET /mybucket?policy HTTP/1.1\" 404 NoSuchBucketPolicy 297 - 38 - \"-\" \"S3Console/0.4\" -"
+          ],
+          "grok":{
+             "support_rules":"_s3_bucket_owner %{notSpace:s3.bucket_owner}\n_s3_bucket %{notSpace:s3.bucket}\n_s3_operation %{notSpace:s3.operation}\n_s3_error_code %{notSpace:s3.error_code:nullIf(\"-\")}\n_request_processing_time %{integer:http.request_processing_time}\n_request_id %{notSpace:http.request_id}\n_request_version_id %{notSpace:http.request_version_id:nullIf(\"-\")}\n_bytes_written %{integer:network.bytes_written}\n_bytes_read %{integer:network.bytes_read}\n_object_size %{integer:network.object_size}\n_client_ip %{ipOrHost:network.client.ip}\n_client_id %{notSpace:network.client.id}\n_version HTTP\\/%{regex(\"\\\\d+\\\\.\\\\d+\"):http.version}\n_url %{notSpace:http.url}\n_ident %{notSpace:http.ident:nullIf(\"-\")}\n_user_agent %{regex(\"[^\\\\\\\"]*\"):http.useragent}\n_referer %{notSpace:http.referer:nullIf(\"-\")}\n_status_code %{integer:http.status_code}\n_method %{word:http.method}\n_duration %{integer:duration:scale(1000000)}\n_date_access \\[%{date(\"dd/MMM/yyyy:HH:mm:ss Z\"):date_access}\\]\n",
+             "match_rules":"s3.access %{_s3_bucket_owner} %{_s3_bucket} %{_date_access} (?>%{_client_ip}|-) %{_client_id} %{_request_id} %{_s3_operation} %{notSpace} \"(?>%{_method} |)%{_url}(?> %{_version}|)\" %{_status_code} %{_s3_error_code} (?>%{_bytes_written}|-) (?>%{_object_size}|-) %{_duration} (?>%{_request_processing_time}|-) \"%{_referer}\" \"%{_user_agent}\" %{_request_version_id}.*\n\ns3.fallback %{_s3_bucket_owner} %{_s3_bucket} %{_date_access} (?>%{_client_ip}|-) %{_client_id} %{_request_id} %{_s3_operation}.*\n"
+          },
+          "type":"grok-parser"
+       },
+       {
+          "name":"",
+          "is_enabled":true,
+          "sources":[
+             "http.useragent"
+          ],
+          "target":"http.useragent_details",
+          "is_encoded":false,
+          "type":"user-agent-parser"
+       },
+       {
+          "name":"",
+          "is_enabled":true,
+          "sources":[
+             "http.url"
+          ],
+          "target":"http.url_details",
+          "normalize_ending_slashes":false,
+          "type":"url-parser"
+       },
+       {
+          "name":"Define Date_access as the official timestamp of the log",
+          "is_enabled":true,
+          "sources":[
+             "date_access"
+          ],
+          "type":"date-remapper"
+       },
+       {
+          "name":"Categorise status code",
+          "is_enabled":true,
+          "categories":[
+             {
+                "filter":{
+                   "query":"@http.status_code:[200 TO 299]"
+                },
+                "name":"OK"
+             },
+             {
+                "filter":{
+                   "query":"@http.status_code:[300 TO 399]"
+                },
+                "name":"notice"
+             },
+             {
+                "filter":{
+                   "query":"@http.status_code:[400 TO 499]"
+                },
+                "name":"warning"
+             },
+             {
+                "filter":{
+                   "query":"@http.status_code:[500 TO 599]"
+                },
+                "name":"error"
+             }
+          ],
+          "target":"http.status_category",
+          "type":"category-processor"
+       },
+       {
+          "name":"Set the log status based on the status code value",
+          "is_enabled":true,
+          "sources":[
+             "http.status_category"
+          ],
+          "type":"status-remapper"
+       }
+    ]
+ }

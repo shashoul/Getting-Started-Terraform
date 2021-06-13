@@ -1,0 +1,723 @@
+name,priority,type,query,operator,threshold_critical,threshold_warning,threshold_critical_recovery,message,tags,escalation_message,locked,new_host_delay,notify_audit,notify_no_data,renotify_interval,require_full_window,timeout_h,evaluation_delay,no_data_timeframe,include_tags,enable_logs_sample,threshold_windows_recovery_window,threshold_windows_trigger_window
+"Terraform (CSV) - 4XX: Backend & Management - Uncategorized, non-foreign - Production",1,log alert,"logs(""@http.status_code:[400 TO 499] @api_audience:backend -@error_category:* -@uri:\""/api/v2/oidc/bindid-oidc/complete\"" @bindid_env:production"").index(""*"").rollup(""count"").last(""15m"")",>=,1,,,"slack-bindid-srv-uptime-alerts webhook-Uptime-XiteIt
+Summary:P1 - {{value}} 4XX Errors on Backend & Management - Production
+
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:Backend & Management - Uncategorized 
+Service:4XX Errors - Production
+Value:{{value}} 
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Production,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+"Terraform (CSV) - 4XX: End-Users - Uncategorized, non-foreign - Production",1,log alert,"logs(""source:bindid-authentication-server @api_audience:enduser -@error_category:* @http.status_code:(400 OR 401 OR 404) @bindid_env:production"").index(""*"").rollup(""count"").last(""15m"")",>=,3,,,"slack-bindid-srvrefine-uptime-alerts
+webhook-Refine-XiteIt
+
+Summary:P1 - {{value}} 4XX End-Users Errors - Production
+
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host: 4XX: End-Users - Uncategorized, non foreign 
+Service: Number of 4XX Errors - Production
+Value: {{value}}
+Severity: {{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Production,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+Terraform (CSV) - 500: Backend & Management - Categorized - Production,1,log alert,"logs(""@error_category:\""500: Backend & Management\"" @bindid_env:production"").index(""*"").rollup(""count"").last(""15m"")",>=,1,,,"slack-bindid-srv-uptime-alerts
+webhook-Uptime-XiteIt 
+
+Summary:P1 - {{value}} Status Code 500 Errors on Backend & Management - Production
+
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:Backend & Management 
+Service:Number of 500 Errors - Production
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Production,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+Terraform (CSV) - 500: End-Users - Categorized - Production,1,log alert,"logs(""@error_category:\""500: End-Users\"" @bindid_env:production"").index(""*"").rollup(""count"").last(""15m"")",>,3,,,"slack-bindid-srv-uptime-alerts
+webhook-Uptime-XiteIt
+
+Summary:P1 - {{value}} Status Code 500 Errors on End-Users - Production
+
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:End-Users
+Service:Number of 500 Errors - Production
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Production,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+"Terraform (CSV) - Number of ""Alias already set"" Errors - Categorized - Production",1,log alert,"logs(""@error_category:\""Number of \\""Alias already set\\"" Errors\"" @bindid_env:production"").index(""*"").rollup(""count"").last(""15m"")",>=,5,,,"slack-bindid-srv-uptime-alerts
+webhook-Uptime-XiteIt 
+
+Summary:P1 - ""Alias already set"" Errors on bindid-authentication-server is {{value}} - Production
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:bindid-authentication-server
+Service:High Number of ""Alias already set"" Errors - Production
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Production,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+Terraform (CSV) - All Invalid Request Errors on /authorize - Categorized - Production,1,log alert,"logs(""@error_category:\""All Invalid Request Errors on /authorize\"" @bindid_env:production"").index(""*"").rollup(""count"").last(""15m"")",>=,5,,,"slack-bindid-srv-uptime-alerts webhook-Uptime-XiteIt
+Summary:P1 - {{value}}  Invalid Request Errors on /authorize - Production
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:/authorize
+Service:High Number of Invalid Request Errors - Production
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Production,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+Terraform (CSV) - Backend & Management - unsupported_grant - Categorized - Production,1,log alert,"logs(""@error_category:\""Backend & Management - unsupported_grant\"" @bindid_env:production"").index(""*"").rollup(""count"").last(""15m"")",>=,5,,,"slack-bindid-srv-uptime-alerts webhook-Uptime-XiteIt
+Summary:P1 - {{value}} unsupported_grant on Backend & Management - Production
+
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:Backend & Management
+Service:Number of unsupported_grants - Production
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Production,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+Terraform (CSV) - Backend & Management – invalid_grant - Categorized - Production,1,log alert,"logs(""@error_category:\""Backend & Management – invalid_grant\"" @bindid_env:production"").index(""*"").rollup(""count"").last(""15m"")",>=,5,,,"webhook-Uptime-XiteIt
+slack-bindid-srv-uptime-alerts
+
+Summary:P1 - {{value}} invalid_grants on Backend & Management - Production
+
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:Backend & Management
+Service:Number of invalid_grants - Production
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Production,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+Terraform (CSV) - Device not found errors - Categorized - Production,1,log alert,"logs(""@error_category:\""Device not found errors\"" @bindid_env:production"").index(""*"").rollup(""count"").last(""15m"")",>=,1,,,"slack-bindid-srvrefine-uptime-alerts webhook-Refine-XiteIt
+
+Summary:P1 - {{value}} Device not found errors - Production
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:bindid-authentication-server
+Service:High Number of Device not found errors - Production
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Production,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+Terraform (CSV) - End User - invalid_client - Categorized - Production,1,log alert,"logs(""@error_category:\""End User - invalid_client\"" @bindid_env:production"").index(""*"").rollup(""count"").last(""15m"")",>=,5,,,"slack-bindid-srv-uptime-alerts webhook-Uptime-XiteIt
+
+Summary:P1 - End User - {{value}}  invalid_client authentications - Production
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:End User
+Service:Number of Invalid_client Authentications - Production
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Production,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+Terraform (CSV) - Expression evaluation errors - Categorized - Production,1,log alert,"logs(""@error_category:\""Expression evaluation errors\"" @bindid_env:production"").index(""*"").rollup(""count"").last(""15m"")",>=,1,,,"slack-bindid-srvrefine-uptime-alerts webhook-Refine-XiteIt
+
+Summary:P1 - {{value}} Unexpected exception during field resolution - Production
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:bindid-authentication-server
+Service:High Number of Expression evaluation errors - Production
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Production,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+Terraform (CSV) - FIDO Registration Failures - Categorized - Production,1,log alert,"logs(""@error_category:\""FIDO Registration Failures\"" @bindid_env:production"").index(""*"").rollup(""count"").last(""5m"")",>=,1,,,"slack-bindid-srv-uptime-alerts
+webhook-Uptime-XiteIt
+
+Summary:P1 - {{value}} FIDO Registration Failures - Production
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:End User
+Service:High Number of FIDO Registration Failures - Production
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Production,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+Terraform (CSV) - Invalid HTTP Method: Backend/Management - Categorized - Production,1,log alert,"logs(""@error_category:\""Invalid HTTP Method: Backend/Management\"" @bindid_env:production"").index(""*"").rollup(""count"").last(""15m"")",>=,5,,,"slack-bindid-srv-uptime-alerts webhook-Uptime-XiteIt
+
+Summary:P1 - {{value}}  Invalid HTTP Method on Backend/Management - Production
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:Backend/Management
+Service:High Number of Invalid HTTP Method - Production
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Production,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+Terraform (CSV) - Invalid HTTP Method: Frontend/End-User - Categorized - Production,1,log alert,"logs(""@error_category:\""Invalid HTTP Method: Frontend/End-User\"" @bindid_env:production"").index(""*"").rollup(""count"").last(""15m"")",>=,5,,,"slack-bindid-srv-uptime-alerts
+webhook-Uptime-XiteIt
+
+Summary:P1 - {{value}}  Invalid HTTP Method on Frontend/End-User - Production
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:Frontend/End-User
+Service:High Number of Invalid HTTP Method - Production
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Production,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+Terraform (CSV) - Invalid Request - Invalid redirect URI on /authorize - Categorized - Production,1,log alert,"logs(""@error_category:\""Invalid Request - Invalid redirect URI on /authorize\"" @bindid_env:production"").index(""*"").rollup(""count"").last(""15m"")",>=,10,,,"slack-bindid-srv-uptime-alerts webhook-Uptime-XiteIt 
+
+Summary:P1 - {{value}} Invalid redirect URI on /authorize - Production
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:/authorize
+Service:Invalid redirect URI - Production
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Production,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+Terraform (CSV) - Invalid Request - Missing client_id on /authorize - Categorized - Production,1,log alert,"logs(""@error_category:\""Invalid Request - Missing client_id on /authorize\"" @bindid_env:production"").index(""*"").rollup(""count"").last(""15m"")",>=,5,,,"slack-bindid-srv-uptime-alerts webhook-Uptime-XiteIt
+
+Summary:P1 - {{value}}  Invalid Request - Missing client_id on /authorize - Production
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:/authorize
+Service:High Number of Invalid Request Errors - Missing client_id on /authorize - Production
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Production,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+Terraform (CSV) - Invalid authentication to BindID Backend API - Categorized - Production,1,log alert,"logs(""@error_category:\""Invalid authentication to BindID Backend API\"" @bindid_env:production"").index(""*"").rollup(""count"").last(""15m"")",>=,5,,,"slack-bindid-srv-uptime-alerts webhook-Uptime-XiteIt
+
+Summary:P1 - {{value}}  Invalid authentication to BindID on Backend API - Production
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:Backend API
+Service:High Number of Invalid authentication to BindID - Production
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Production,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+Terraform (CSV) - Invalid client credentials on /token - Categorized - Production,1,log alert,"logs(""@error_category:\""Invalid client credentials on /token\"" @bindid_env:production"").index(""*"").rollup(""count"").last(""15m"")",>=,5,,,"slack-bindid-srv-uptime-alerts webhook-Uptime-XiteIt
+
+Summary:P1 - {{value}} Invalid client credentials on /token - Production
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:/token
+Service:Invalid client credentials - Production
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Production,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+Terraform (CSV) - Management Console Bad Logins - Categorized - Production,1,log alert,"logs(""@error_category:\""Management Console Bad Logins\"" @bindid_env:production"").index(""*"").rollup(""count"").last(""15m"")",>,5,,,"slack-bindid-srv-uptime-alerts
+webhook-Uptime-XiteIt 
+
+Summary:P1 - {{Value}} Bad Logins on Management Console - Production
+Critical Threshold:{{threshold}}
+Warning Threshold:{{warn_threshold}}
+
+Host:Management Console
+Service:High Number of Bad Logins - Production
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Production,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+Terraform (CSV) - OIDC /complete with errors - Categorized - Production,1,log alert,"logs(""@error_category:\""OIDC /complete with errors\"" @bindid_env:production"").index(""*"").rollup(""count"").last(""15m"")",>=,5,,,"slack-bindid-srvrefine-uptime-alerts
+webhook-Refine-XiteIt 
+
+Summary:P1 - ""OIDC /complete with errors - Categorized"" Errors on bindid-authentication-server is {{value}} - Production
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:bindid-authentication-server
+Service:High Number of  OIDC /complete with errors - Categorized - Production
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Production,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+Terraform (CSV) - OIDC Backend invalid_request errors - Categorized - Production,1,log alert,"logs(""@error_category:\""OIDC Backend invalid_request errors\"" @bindid_env:production"").index(""*"").rollup(""count"").last(""15m"")",>=,5,,,"Summary:P1 - ""invalid_request"" Errors on bindid-authentication-server is {{value}} - Production
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:bindid-authentication-server
+Service:High Number of ""invalid_request"" Errors - Production
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}} slack-bindid-srv-uptime-alerts webhook-Uptime-XiteIt",Ring1 Production,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+Terraform (CSV) - Recovery Journey Invocations - Categorized - Production,1,log alert,"logs(""@error_category:\""Recovery Journey Invocations\"" @bindid_env:production"").index(""*"").rollup(""count"").last(""15m"")",>=,5,,,"slack-bindid-srv-uptime-alerts
+webhook-Uptime-XiteIt
+
+Summary:P1 - Recovery Journey Invocations on bindid-authentication-server is {{value}} - Production
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:bindid-authentication-server
+Service:Recovery Journey Invocations - Production
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Production,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+Terraform (CSV) - Ticket consumption errors - Categorized - Production,1,log alert,"logs(""@error_category:\""Ticket consumption errors\"" @bindid_env:production"").index(""*"").rollup(""count"").last(""15m"")",>,5,,,"slack-bindid-srv-uptime-alerts
+webhook-Uptime-XiteIt
+
+Summary:cannot_consume_ticket - 401 Errors Number on bindid-authentication-server is {{value}} - Production
+Critical Threshold:{{threshold}} 
+Warning Threshold:-
+
+Host:bindid-authentication-server
+Service:High cannot_consume_ticket - 401 Errors Number - Production
+Value:{{value}} 
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Production,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+Terraform (CSV) - Unknown authorization code on /token - Categorized - Production,1,log alert,"logs(""@error_category:\""Unknown authorization code on /token\"" @bindid_env:production"").index(""*"").rollup(""count"").last(""15m"")",>=,5,,,"slack-bindid-srv-uptime-alerts webhook-Uptime-XiteIt
+
+Summary:P1 - ""Unknown Authorization Code"" Errors Number on bindid-authentication-server - /token is {{value}} - Production
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:bindid-authentication-server
+Service:High Unknown Authorization Code Errors - Production
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Production,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+Terraform (CSV) - User Cancellation - Categorized - Production,1,log alert,"logs(""@error_category:\""User Cancellation\"" @bindid_env:production"").index(""*"").rollup(""count"").last(""15m"")",>,5,,,"slack-bindid-srv-uptime-alerts
+webhook-Uptime-XiteIt
+
+Summary:P1 - User Cancellation Errors Number on bindid-authentication-server is {{value}} - Production
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:bindid-authentication-server
+Service:High User Cancellation Errors  - Production
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Production,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+Terraform (CSV) - User not found errors - Categorized - Production,1,log alert,"logs(""@error_category:\""User not found errors\"" @bindid_env:production"").index(""*"").rollup(""count"").last(""15m"")",>=,5,,,"slack-bindid-srvrefine-uptime-alerts
+webhook-Refine-XiteIt
+
+Summary:P1 - User Not Found Errors Number on bindid-authentication-server is {{value}} - Production
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:bindid-authentication-server
+Service:High User Not Found Errors - Production
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Production,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+Terraform (CSV) - User not found for backend/management support APIs - Categorized - Production,1,log alert,"logs(""@error_category:\""User not found for backend/management support APIs\"" @bindid_env:production"").index(""*"").rollup(""count"").last(""15m"")",>=,10.8,,,"slack-bindid-srv-uptime-alerts
+webhook-Uptime-XiteIt
+
+Summary:P1 - User Not Found Errors Number on bindid-authentication-server - backend/management support APIs is {{value}} - Production
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:bindid-authentication-server
+Service:High User not found for backend/management support APIs - Categorized - Production
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Production,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+Terraform (CSV) - Foreign errors - Categorized - Production,1,log alert,"logs(""@error_category:\""Foreign errors\"" @bindid_env:production"").index(""*"").rollup(""count"").last(""15m"")",>=,5,,,"slack-bindid-srvrefine-uptime-alerts
+webhook-Refine-XiteIt
+
+Summary:P1 - Foreign errors on bindid-authentication-server is {{value}} - Production
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:bindid-authentication-server
+Service:Foreign errors - Production
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Production,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+Terraform (CSV) - Backend - Invalid Request - Categorized - Production,1,log alert,"logs(""@error_category:\""Invalid Request\"" @api_audience:backend @bindid_env:production"").index(""*"").rollup(""count"").last(""15m"")",>=,5,,,"slack-bindid-srvrefine-uptime-alerts
+webhook-Refine-XiteIt
+
+Summary:P1 - Backend - Invalid Request on bindid-authentication-server is {{value}} - Production
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:bindid-authentication-server
+Service:Backend - Invalid Request - Production
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Production,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+Terraform (CSV) - End User - Invalid Request - Categorized - Production,1,log alert,"logs(""@error_category:\""Invalid Request\"" @api_audience:enduser @bindid_env:production"").index(""*"").rollup(""count"").last(""15m"")",>=,5,,,"slack-bindid-srvrefine-uptime-alerts
+webhook-Refine-XiteIt
+
+Summary:P1 - End User - Invalid Request on bindid-authentication-server is {{value}} - Production
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:bindid-authentication-server
+Service:End User - Invalid Request - Production
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Production,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+"Terraform (CSV) - 4XX: Backend & Management - Uncategorized, non-foreign - Sandbox",1,log alert,"logs(""@http.status_code:[400 TO 499] @api_audience:backend -@error_category:* -@uri:\""/api/v2/oidc/bindid-oidc/complete\"" @bindid_env:sandbox"").index(""*"").rollup(""count"").last(""15m"")",>=,1,,,"slack-bindid-srv-uptime-alerts webhook-Uptime-XiteIt
+Summary:P1 - {{value}} 4XX Errors on Backend & Management - Sandbox
+
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:Backend & Management - Uncategorized 
+Service:4XX Errors - Sandbox
+Value:{{value}} 
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Sandbox,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+Terraform (CSV) - 500: Backend & Management - Categorized - Sandbox,1,log alert,"logs(""@error_category:\""500: Backend & Management\"" @bindid_env:sandbox"").index(""*"").rollup(""count"").last(""15m"")",>=,1,,,"slack-bindid-srv-uptime-alerts
+webhook-Uptime-XiteIt 
+
+Summary:P1 - {{value}} Status Code 500 Errors on Backend & Management - Sandbox
+
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:Backend & Management 
+Service:Number of 500 Errors - Sandbox
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Sandbox,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+Terraform (CSV) - 500: End-Users - Categorized - Sandbox,1,log alert,"logs(""@error_category:\""500: End-Users\"" @bindid_env:sandbox"").index(""*"").rollup(""count"").last(""15m"")",>,3,,,"slack-bindid-srv-uptime-alerts
+webhook-Uptime-XiteIt
+
+Summary:P1 - {{value}} Status Code 500 Errors on End-Users - Sandbox
+
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:End-Users
+Service:Number of 500 Errors - Sandbox
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Sandbox,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+Terraform (CSV) - All Invalid Request Errors on /authorize - Categorized - Sandbox,1,log alert,"logs(""@error_category:\""All Invalid Request Errors on /authorize\"" @bindid_env:sandbox"").index(""*"").rollup(""count"").last(""15m"")",>=,5,,,"slack-bindid-srv-uptime-alerts webhook-Uptime-XiteIt
+Summary:P1 - {{value}}  Invalid Request Errors on /authorize - Sandbox
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:/authorize
+Service:High Number of Invalid Request Errors - Sandbox
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Sandbox,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+Terraform (CSV) - Backend & Management - unsupported_grant - Categorized - Sandbox,1,log alert,"logs(""@error_category:\""Backend & Management - unsupported_grant\"" @bindid_env:sandbox"").index(""*"").rollup(""count"").last(""15m"")",>=,5,,,"slack-bindid-srv-uptime-alerts webhook-Uptime-XiteIt
+Summary:P1 - {{value}} unsupported_grant on Backend & Management - Sandbox
+
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:Backend & Management
+Service:Number of unsupported_grants - Sandbox
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Sandbox,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+Terraform (CSV) - Backend & Management – invalid_grant - Categorized - Sandbox,1,log alert,"logs(""@error_category:\""Backend & Management – invalid_grant\"" @bindid_env:sandbox"").index(""*"").rollup(""count"").last(""15m"")",>=,5,,,"webhook-Uptime-XiteIt
+slack-bindid-srv-uptime-alerts
+
+Summary:P1 - {{value}} invalid_grants on Backend & Management - Sandbox
+
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:Backend & Management
+Service:Number of invalid_grants  - Sandbox
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Sandbox,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+Terraform (CSV) - End User - invalid_client - Categorized - Sandbox,1,log alert,"logs(""@error_category:\""End User - invalid_client\"" @bindid_env:sandbox"").index(""*"").rollup(""count"").last(""15m"")",>=,5,,,"slack-bindid-srv-uptime-alerts webhook-Uptime-XiteIt
+
+Summary:P1 - End User - {{value}}  invalid_client authentications - Sandbox
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:End User
+Service:Number of Invalid_client Authentications - Sandbox
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Sandbox,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+Terraform (CSV) - FIDO Registration Failures - Categorized - Sandbox,1,log alert,"logs(""@error_category:\""FIDO Registration Failures\"" @bindid_env:sandbox"").index(""*"").rollup(""count"").last(""5m"")",>=,1,,,"slack-bindid-srv-uptime-alerts
+webhook-Uptime-XiteIt
+
+Summary:P1 - {{value}} FIDO Registration Failures - Sandbox
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:End User
+Service:High Number of FIDO Registration Failures - Sandbox
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Sandbox,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+Terraform (CSV) - Invalid HTTP Method: Backend/Management - Categorized - Sandbox,1,log alert,"logs(""@error_category:\""Invalid HTTP Method: Backend/Management\"" @bindid_env:sandbox"").index(""*"").rollup(""count"").last(""15m"")",>=,5,,,"slack-bindid-srv-uptime-alerts webhook-Uptime-XiteIt
+
+Summary:P1 - {{value}}  Invalid HTTP Method on Backend/Management - Sandbox
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:Backend/Management
+Service:High Number of Invalid HTTP Method - Sandbox
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Sandbox,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+Terraform (CSV) - Invalid HTTP Method: Frontend/End-User - Categorized - Sandbox,1,log alert,"logs(""@error_category:\""Invalid HTTP Method: Frontend/End-User\"" @bindid_env:sandbox"").index(""*"").rollup(""count"").last(""15m"")",>=,5,,,"slack-bindid-srv-uptime-alerts
+webhook-Uptime-XiteIt
+
+Summary:P1 - {{value}}  Invalid HTTP Method on Frontend/End-User - Sandbox
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:Frontend/End-User
+Service:High Number of Invalid HTTP Method - Sandbox
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Sandbox,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+Terraform (CSV) - Invalid Request - Invalid redirect URI on /authorize - Categorized - Sandbox,1,log alert,"logs(""@error_category:\""Invalid Request - Invalid redirect URI on /authorize\"" @bindid_env:sandbox"").index(""*"").rollup(""count"").last(""15m"")",>=,10,,,"slack-bindid-srv-uptime-alerts webhook-Uptime-XiteIt 
+
+Summary:P1 - {{value}} Invalid redirect URI on /authorize - Sandbox
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:/authorize
+Service:Invalid redirect URI - Sandbox
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Sandbox,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+Terraform (CSV) - Invalid Request - Missing client_id on /authorize - Categorized - Sandbox,1,log alert,"logs(""@error_category:\""Invalid Request - Missing client_id on /authorize\"" @bindid_env:sandbox"").index(""*"").rollup(""count"").last(""15m"")",>=,5,,,"slack-bindid-srv-uptime-alerts webhook-Uptime-XiteIt
+
+Summary:P1 - {{value}}  Invalid Request - Missing client_id on /authorize - Sandbox
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:/authorize
+Service:High Number of Invalid Request Errors - Missing client_id on /authorize - Sandbox
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Sandbox,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+Terraform (CSV) - Invalid authentication to BindID Backend API - Categorized - Sandbox,1,log alert,"logs(""@error_category:\""Invalid authentication to BindID Backend API\"" @bindid_env:sandbox"").index(""*"").rollup(""count"").last(""15m"")",>=,5,,,"slack-bindid-srv-uptime-alerts webhook-Uptime-XiteIt
+
+Summary:P1 - {{value}}  Invalid authentication to BindID on Backend API - Sandbox
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:Backend API
+Service:High Number of Invalid authentication to BindID - Sandbox
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Sandbox,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+Terraform (CSV) - Invalid client credentials on /token - Categorized - Sandbox,1,log alert,"logs(""@error_category:\""Invalid client credentials on /token\"" @bindid_env:sandbox"").index(""*"").rollup(""count"").last(""15m"")",>=,5,,,"slack-bindid-srv-uptime-alerts webhook-Uptime-XiteIt
+
+Summary:P1 - {{value}} Invalid client credentials on /token - Sandbox
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:/token
+Service:Invalid client credentials - Sandbox
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Sandbox,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+Terraform (CSV) - Management Console Bad Logins - Categorized - Sandbox,1,log alert,"logs(""@error_category:\""Management Console Bad Logins\"" @bindid_env:sandbox"").index(""*"").rollup(""count"").last(""15m"")",>,5,,,"slack-bindid-srv-uptime-alerts
+webhook-Uptime-XiteIt 
+
+Summary:P1 - {{Value}} Bad Logins on Management Console - Sandbox
+Critical Threshold:{{threshold}}
+Warning Threshold:{{warn_threshold}}
+
+Host:Management Console
+Service:High Number of Bad Logins  - Sandbox
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Sandbox,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+"Terraform (CSV) - Number of ""Alias already set"" Errors - Categorized - Sandbox",1,log alert,"logs(""@error_category:\""Number of \\""Alias already set\\"" Errors\"" @bindid_env:sandbox"").index(""*"").rollup(""count"").last(""15m"")",>=,5,,,"slack-bindid-srv-uptime-alerts
+webhook-Uptime-XiteIt 
+
+Summary:P1 - ""Alias already set"" Errors on bindid-authentication-server is {{value}} - Sandbox
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:bindid-authentication-server
+Service:High Number of ""Alias already set"" Errors - Sandbox
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Sandbox,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+Terraform (CSV) - OIDC Backend invalid_request errors - Categorized - Sandbox,1,log alert,"logs(""@error_category:\""OIDC Backend invalid_request errors\"" @bindid_env:sandbox"").index(""*"").rollup(""count"").last(""15m"")",>=,5,,,"Summary:P1 - ""invalid_request"" Errors on bindid-authentication-server is {{value}} - Sandbox
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:bindid-authentication-server
+Service:High Number of ""invalid_request"" Errors - Sandbox
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}} slack-bindid-srv-uptime-alerts webhook-Uptime-XiteIt",Ring1 Sandbox,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+Terraform (CSV) - Recovery Journey Invocations - Categorized - Sandbox,1,log alert,"logs(""@error_category:\""Recovery Journey Invocations\"" @bindid_env:sandbox"").index(""*"").rollup(""count"").last(""15m"")",>=,5,,,"slack-bindid-srv-uptime-alerts
+webhook-Uptime-XiteIt
+
+Summary:P1 - Recovery Journey Invocations on bindid-authentication-server is {{value}} - Sandbox
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:bindid-authentication-server
+Service:Recovery Journey Invocations - Sandbox
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Sandbox,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+Terraform (CSV) - Ticket consumption errors - Categorized - Sandbox,1,log alert,"logs(""@error_category:\""Ticket consumption errors\"" @bindid_env:sandbox"").index(""*"").rollup(""count"").last(""15m"")",>,5,,,"slack-bindid-srv-uptime-alerts
+webhook-Uptime-XiteIt
+
+Summary:cannot_consume_ticket - 401 Errors Number on bindid-authentication-server is {{value}} - Sandbox
+Critical Threshold:{{threshold}} 
+Warning Threshold:-
+
+Host:bindid-authentication-server
+Service:High cannot_consume_ticket - 401 Errors Number - Sandbox
+Value:{{value}} 
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Sandbox,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+Terraform (CSV) - Unknown authorization code on /token - Categorized - Sandbox,1,log alert,"logs(""@error_category:\""Unknown authorization code on /token\"" @bindid_env:sandbox"").index(""*"").rollup(""count"").last(""15m"")",>=,5,,,"slack-bindid-srv-uptime-alerts webhook-Uptime-XiteIt
+
+Summary:P1 - ""Unknown Authorization Code"" Errors Number on bindid-authentication-server - /token is {{value}} - Sandbox
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:bindid-authentication-server
+Service:High Unknown Authorization Code Errors - Sandbox
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Sandbox,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+"Terraform (CSV) - 4XX: End-Users - Uncategorized, non-foreign - Sandbox",1,log alert,"logs(""source:bindid-authentication-server @api_audience:enduser -@error_category:* @http.status_code:(400 OR 401 OR 404) @bindid_env:sandbox"").index(""*"").rollup(""count"").last(""15m"")",>=,3,,,"slack-bindid-srvrefine-uptime-alerts
+webhook-Refine-XiteIt
+
+Summary:P1 - {{value}} 4XX End-Users Errors - Sandbox
+
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host: 4XX: End-Users - Uncategorized, non foreign 
+Service: Number of 4XX Errors - Sandbox
+Value: {{value}}
+Severity: {{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Sandbox,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+Terraform (CSV) - Backend - Invalid Request - Categorized - Sandbox,1,log alert,"logs(""@error_category:\""Invalid Request\"" @api_audience:backend @bindid_env:sandbox"").index(""*"").rollup(""count"").last(""15m"")",>=,5,,,"slack-bindid-srvrefine-uptime-alerts
+webhook-Refine-XiteIt
+
+Summary:P1 - Backend - Invalid Request on bindid-authentication-server is {{value}} - Sandbox
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:bindid-authentication-server
+Service:Backend - Invalid Request - Sandbox
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Sandbox,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+Terraform (CSV) - Device not found errors - Categorized - Sandbox,1,log alert,"logs(""@error_category:\""Device not found errors\"" @bindid_env:sandbox"").index(""*"").rollup(""count"").last(""15m"")",>=,1,,,"slack-bindid-srvrefine-uptime-alerts webhook-Refine-XiteIt
+
+Summary:P1 - {{value}} Device not found errors - Sandbox
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:bindid-authentication-server
+Service:High Number of Device not found errors - Sandbox
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Sandbox,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+Terraform (CSV) - End User - Invalid Request - Categorized - Sandbox,1,log alert,"logs(""@error_category:\""Invalid Request\"" @api_audience:enduser @bindid_env:sandbox"").index(""*"").rollup(""count"").last(""15m"")",>=,5,,,"slack-bindid-srvrefine-uptime-alerts
+webhook-Refine-XiteIt
+
+Summary:P1 - End User - Invalid Request on bindid-authentication-server is {{value}} - Sandbox
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:bindid-authentication-server
+Service:End User - Invalid Request - Sandbox
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Sandbox,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+Terraform (CSV) - Expression evaluation errors - Categorized - Sandbox,1,log alert,"logs(""@error_category:\""Expression evaluation errors\"" @bindid_env:sandbox"").index(""*"").rollup(""count"").last(""15m"")",>=,1,,,"slack-bindid-srvrefine-uptime-alerts webhook-Refine-XiteIt
+
+Summary:P1 - {{value}} Unexpected exception during field resolution - Sandbox
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:bindid-authentication-server
+Service:High Number of Expression evaluation errors - Sandbox
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Sandbox,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+Terraform (CSV) - Foreign errors - Categorized - Sandbox,1,log alert,"logs(""@error_category:\""Foreign errors\"" @bindid_env:sandbox"").index(""*"").rollup(""count"").last(""15m"")",>=,5,,,"slack-bindid-srvrefine-uptime-alerts
+webhook-Refine-XiteIt
+
+Summary:P1 - Foreign errors on bindid-authentication-server is {{value}} - Sandbox
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:bindid-authentication-server
+Service:Foreign errors - Sandbox
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Sandbox,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+Terraform (CSV) - OIDC /complete with errors - Categorized - Sandbox,1,log alert,"logs(""@error_category:\""OIDC /complete with errors\"" @bindid_env:sandbox"").index(""*"").rollup(""count"").last(""15m"")",>=,5,,,"slack-bindid-srvrefine-uptime-alerts
+webhook-Refine-XiteIt 
+
+Summary:P1 - ""OIDC /complete with errors - Categorized"" Errors on bindid-authentication-server is {{value}} - Sandbox
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:bindid-authentication-server
+Service:High Number of  OIDC /complete with errors - Categorized - Sandbox
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Sandbox,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+Terraform (CSV) - User Cancellation - Categorized - Sandbox,1,log alert,"logs(""@error_category:\""User Cancellation\"" @bindid_env:sandbox"").index(""*"").rollup(""count"").last(""15m"")",>,5,,,"slack-bindid-srv-uptime-alerts
+webhook-Uptime-XiteIt
+
+Summary:P1 - User Cancellation Errors Number on bindid-authentication-server is {{value}} - Sandbox
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:bindid-authentication-server
+Service:High User Cancellation Errors - Sandbox
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Sandbox,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+Terraform (CSV) - User not found errors - Categorized - Sandbox,1,log alert,"logs(""@error_category:\""User not found errors\"" @bindid_env:sandbox"").index(""*"").rollup(""count"").last(""15m"")",>=,5,,,"slack-bindid-srvrefine-uptime-alerts
+webhook-Refine-XiteIt
+
+Summary:P1 - User Not Found Errors Number on bindid-authentication-server is {{value}} - Sandbox
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:bindid-authentication-server
+Service:High User Not Found Errors - Sandbox
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Sandbox,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+Terraform (CSV) - User not found for backend/management support APIs - Categorized - Sandbox,1,log alert,"logs(""@error_category:\""User not found for backend/management support APIs\"" @bindid_env:sandbox"").index(""*"").rollup(""count"").last(""15m"")",>=,10.8,,,"slack-bindid-srv-uptime-alerts
+webhook-Uptime-XiteIt
+
+Summary:P1 - User Not Found Errors Number on bindid-authentication-server - backend/management support APIs is {{value}} - Sandbox
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:bindid-authentication-server
+Service:High User not found for backend/management support APIs - Categorized - Sandbox
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Sandbox,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+Terraform (CSV) - BindID Self Serve Failed Registrations on env: BindID Production,,log alert,"logs(""self-serve-registration;Failure"").index(""*"").rollup(""count"").last(""5m"")",>=,1,,,"slack-p-bindid-selfserve-failure-alerts
+Priority:-
+webhook-XiteIt 
+
+Summary:{{value}} Failed Registrations on BindID Production
+
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:BindID Production
+Service:Number of Self Serve Failed Registrations
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+Terraform (CSV) - BindID Self Serve Successful Registrations on env: BindID Production,,log alert,"logs(""self-serve-registration;Success"").index(""*"").rollup(""count"").last(""5m"")",>=,1,,,"slack-p-bindid-selfserve-success-alerts
+Priority:-
+
+webhook-XiteIt 
+
+Summary:{{value}} Successful Registrations on BindID Production
+
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:BindID Production
+Service:Number of Self Serve Successful Registrations
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+Terraform (CSV) - BindId Service Errors on env: BindID Production,,log alert,"logs(""source:(nodejs OR bindid-authentication-server OR bindid-authentication-server-activity-log) service:(bindid-oauth-service OR bindid-appless-service OR bindid-demo-app OR bindid-authentication-server) status:error"").index(""*"").rollup(""count"").by(""service"").last(""5m"")",>,5,,,"slack-bindid-prd-alerts
+Priority:-
+
+webhook-XiteIt 
+
+Summary:{{value}} Service Errors on BindID Production
+
+Critical Threshold:{{threshold}}
+Warning Threshold:-
+
+Host:BindID Production
+Service:Number of Service Errors
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+Terraform (CSV) - Test on admin.bindid-sandbox.io/version - Response time check,1,query alert,avg(last_15m):avg:synthetics.http.response.time{url:https://admin.bindid-sandbox.io/version} - avg:synthetics.http.dns.time{url:https://admin.bindid-sandbox.io/version},>,250,,,"slack-bindid-srv-uptime-alerts 
+webhook-Uptime-XiteIt
+
+Summary:P1 - Response Time on admin.bindid-sandbox.io/version is {{value}}ms 
+Critical Threshold:{{threshold}}ms
+Warning Threshold:-
+
+Host:admin.bindid-sandbox.io/version
+Service:High Response Time
+Value:{{value}}ms
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Sandbox,,FALSE,300,FALSE,FALSE,0,TRUE,0,,,TRUE,,,
+Terraform (CSV) - Test on ts.bindid-sandbox.io/api/v2/status - Response time check,1,query alert,avg(last_5m):avg:synthetics.http.response.time{url:https://ts.bindid-sandbox.io/api/v2/status} - avg:synthetics.http.dns.time{url:https://ts.bindid-sandbox.io/api/v2/status},>,250,,,"slack-bindid-srv-uptime-alerts 
+webhook-Uptime-XiteIt
+
+Summary:P1 - Response Time on ts.bindid-sandbox.io/api/v2/status is {{value}}ms
+Critical Threshold:{{threshold}}ms
+Warning Threshold:-
+
+Host:ts.bindid-sandbox.io/api/v2/status
+Service:High Response Time
+Value:{{value}}ms
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1 Sandbox,,FALSE,300,FALSE,FALSE,0,TRUE,0,,,TRUE,,,
+Terraform (CSV) - URL's - Response time over 250ms for {{[@http.url_details.path].name}},1,log alert,"logs(""(-\""/api/*\"" OR \""/.well-known/openid-configuration\"" OR \""/_complete/*\"" OR \""/ama\"" OR \""/authorize\"" OR \""/authorize_ciba\"" OR \""/config/*\"" OR \""/console\"" OR \""/console/invite\"" OR \""/console/preview\"" OR \""/console/resume-invite\"" OR \""/demo-token-exchange\"" OR \""/initial/*\"" OR \""/jwks\"" OR \""/login\"" OR \""/logout\"" OR \""/manage\"" OR \""/manage/delete-device\"" OR \""/manage/login\"" OR \""/manager/html\"" OR \""/other_login\"" OR \""/playground\"" OR \""/register\"" OR \""/registration-result\"" OR \""/report\"" OR \""/send-session-feedback\"" OR \""/session-feedback\"" OR \""/token\"" OR \""/userinfo\"" OR \""/version\"") service:cloudfront -@http.url_details.path:(*\/websdk* OR *\/main\-* OR *\/polyfills\-* OR *\/runtime\-* OR *\/journey* OR \""/styles.eeed0a952180434276c0.css\"" OR \""/styles.7579e9ab48bb69114ea4.css\"" OR \""/favicon.ico\"" OR \""/img/playground-hover.svg\"" OR *\/assets\/playground* OR *\/console\/assets* OR *\/env.js* OR *\/initial\/transmit\-internal\-login*)"").index(""*"").rollup(""pc95"", ""@duration"").by(""@http.url_details.path"").last(""1h"")",>,250000000,,,"slack-bindid-srvrefine-uptime-alerts
+webhook-Refine-XiteIt
+
+Summary:P1 - Response Time on {{[http.url_details.path].name}} is {{value}}ms 
+Critical Threshold:{{threshold}}ms
+Warning Threshold:-
+
+Host:{{[http.url_details.path].name}}
+Service:High Response Time
+Value:{{value}}ms
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,
+Terraform (CSV) - API's - Response time over 250ms for {{[@http.url_details.path].name}},1,log alert,"logs(""service:cloudfront @http.referer:(\""https://admin.bindid-sandbox.io/\"" OR \""https://ts.bindid-sandbox.io/console/\"" OR \""https://admin.bindid-sandbox.io/console/\"") @http.url_details.path:(\""/api/v2/mng-ui/application/policies\"" OR \""/api/v2/mng-ui/identity/trusted/list\"" OR \""/api/v2/mng-ui/application/procedures\"" OR \""/api/v2/mng-ui/localization/keys\"" OR \""/api/v1/tenants\"" OR \""/api/v1/tenant\"" OR \""/api/v2/mng-ui/external-connections/metadata\"" OR \""/api/v1/admin-data\"" OR \""/api/v2/mng-ui/debugger/update_debug_context\"" OR \""/api/v2/mng-ui/debugger/console_messages\"" OR \""/api/v2/mng-ui/identity/credentials/list\"")"").index(""*"").rollup(""pc95"", ""@duration"").by(""@http.url_details.path"").last(""1h"")",>,250000000,,,"slack-bindid-srvrefine-uptime-alerts
+webhook-Refine-XiteIt
+
+Summary:P1 - Response Time is {{value}} on {{[http.url_details.path].name}}
+
+Critical Threshold:250ms
+Warning Threshold:-
+
+Host:{{[http.url_details.path].name}}
+Service:Response Time
+Value:{{value}}
+Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1,,FALSE,300,FALSE,FALSE,0,,0,,,TRUE,TRUE,,

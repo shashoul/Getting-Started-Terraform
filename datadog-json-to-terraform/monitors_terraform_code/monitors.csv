@@ -1,0 +1,6 @@
+name,priority,type,query,trigger,threshold_critical,threshold_warning,threshold_critical_recovery,message,tags,escalation_message,locked,new_host_delay,notify_audit,notify_no_data,renotify_interval,require_full_window,timeout_h,evaluation_delay,no_data_timeframe,include_tags,enable_logs_sample,threshold_windows_recovery_window,threshold_windows_trigger_window
+Terraform Shady Test - Invalid Request - Invalid redirect URI on /authorize - Categorized,1,log alert,"logs(""@error_category:""Invalid Request - Invalid redirect URI on /authorize"""").index(""*"").rollup(""count"").last(""15m"")",>=,10,,,"Summary:P1 - {{value}} Invalid redirect URI on /authorize
+ Critical Threshold:{{threshold}}
+ Warning Threshold:-Host:/authorize Service:Invalidredirect URI
+   Value:{{value}}
+ Severity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",Ring1,,,,,,,,,,,,,,

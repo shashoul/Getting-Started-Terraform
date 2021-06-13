@@ -1,0 +1,29 @@
+{
+	"id": 32808331,
+	"name": "[kubernetes] Monitor Unschedulable Kubernetes Nodes",
+	"type": "query alert",
+	"query": "max(last_15m):sum:kubernetes_state.node.status{status:schedulable} by {kubernetes_cluster} * 100 / sum:kubernetes_state.node.status{*} by {kubernetes_cluster} < 80",
+	"message": "More than 20% of nodes are unschedulable on ({{kubernetes_cluster.name}} cluster).\n\n@webhook-XiteIt\n\nSummary:Kubernetes - {{value}}% of Kubernetes Node are Unschedulable on {{kubernetes_cluster.name}} Cluster.\nCritical Threshold:{{threshold}}%\nWarning Threshold:{{warn_threshold}}% \n\nHost:Kubernetes - {{kubernetes_cluster.name}}\nService:High Unschedulable Kubernetes Nodes\nValue:{{value}}%\nSeverity:{{#is_alert}}Critical{{/is_alert}}{{#is_warning}}Warning{{/is_warning}}{{#is_no_data}}No Data{{/is_no_data}}{{#is_recovery}}Recovered{{/is_recovery}}",
+	"tags": [
+		"integration:kubernetes"
+	],
+	"options": {
+		"notify_audit": true,
+		"locked": false,
+		"timeout_h": 0,
+		"silenced": {},
+		"include_tags": true,
+		"no_data_timeframe": null,
+		"require_full_window": false,
+		"new_host_delay": 300,
+		"notify_no_data": false,
+		"renotify_interval": 0,
+		"escalation_message": "",
+		"thresholds": {
+			"critical": 80,
+			"warning": 90
+		}
+	},
+	"priority": null,
+	"classification": "integration"
+}

@@ -1,0 +1,5 @@
+{"attributes": {"compute": {"aggregation_type": "count"},
+                "filter": {"query": "cannot_consume_ticket ERROR 401"},
+                "group_by": []},
+ "id": "cannot.consume",
+ "type": "logs_metrics"}

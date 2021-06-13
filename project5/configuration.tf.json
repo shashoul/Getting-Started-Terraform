@@ -1,0 +1,18 @@
+{
+  "variable": {
+    "result" : {
+      "default": "yourname"
+      },
+    "var1": {
+      "default": "var1"
+    },
+    "A1": {
+        "default": {
+          "aa": "aaaaaa",
+          "bb": "bbbbbb",
+          "cc": "cccccc",
+          "dd": "dddddd"
+        }
+    }
+  }
+}
